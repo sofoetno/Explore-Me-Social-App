@@ -15,12 +15,22 @@ struct AuthDataResultModel {
 
 
 final class AuthManager {
+
     static let shared = AuthManager()
     
+    @discardableResult
     func creatUser(email: String, password: String) async throws -> AuthDataResultModel {
         let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
         let result = AuthDataResultModel(uid: authDataResult.user.uid, email: authDataResult.user.email)
         return result
-        
     }
+    
+    @discardableResult
+    func signInUser(email: String, password: String) async throws -> AuthDataResultModel {
+        let authDataResult = try await Auth.auth().signIn(withEmail: email, password: password)
+        let result = AuthDataResultModel(uid: authDataResult.user.uid, email: authDataResult.user.email)
+        return result
+    }
+    
+
 }
