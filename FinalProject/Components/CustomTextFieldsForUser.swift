@@ -1,5 +1,5 @@
 //
-//  CustumTextFieldsForUser.swift
+//  CustomTextFieldsForUser.swift
 //  FinalProject
 //
 //  Created by Sofo Machurishvili on 16.01.24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustumTextFieldsForUser: View {
+struct CustomTextFieldsForUser: View {
     @ObservedObject var signUpViewModel: SignUpAndLoginViewModel
     
     var body: some View {
@@ -32,5 +32,5 @@ struct CustumTextFieldsForUser: View {
 }
 
 #Preview {
-    CustumTextFieldsForUser(signUpViewModel: SignUpAndLoginViewModel())
+    CustomTextFieldsForUser(signUpViewModel: SignUpAndLoginViewModel())
 }

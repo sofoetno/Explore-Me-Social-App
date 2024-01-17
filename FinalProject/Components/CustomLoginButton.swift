@@ -1,5 +1,5 @@
 //
-//  LoginCustumButton.swift
+//  CustomLoginButton.swift
 //  FinalProject
 //
 //  Created by Sofo Machurishvili on 16.01.24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginCustumButton: View, WithRootNavigationController {
+struct CustomLoginButton: View, WithRootNavigationController {
     
     @ObservedObject var signUpViewModel: SignUpAndLoginViewModel
 //    @State private var signUpSuccess = false
@@ -43,5 +43,5 @@ struct LoginCustumButton: View, WithRootNavigationController {
 }
 
 #Preview {
-    LoginCustumButton(signUpViewModel: SignUpAndLoginViewModel())
+    CustomLoginButton(signUpViewModel: SignUpAndLoginViewModel())
 }
