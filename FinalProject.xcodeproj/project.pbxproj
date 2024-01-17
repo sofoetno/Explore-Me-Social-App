@@ -24,13 +24,14 @@
 		8805DD5B2B558B7B00D16B5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8805DD5A2B558B7B00D16B5E /* GoogleService-Info.plist */; };
 		889108AB2B55B3EC00EE831A /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108AA2B55B3EC00EE831A /* ButtonExtension.swift */; };
 		889108AD2B55B44900EE831A /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108AC2B55B44900EE831A /* ColorExtention.swift */; };
-		889108B22B56812500EE831A /* SignUpCustumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108B12B56812500EE831A /* SignUpCustumButton.swift */; };
-		889108B42B5683D600EE831A /* CastumBackgroundLabelForUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108B32B5683D600EE831A /* CastumBackgroundLabelForUser.swift */; };
-		889108B62B56846B00EE831A /* CustumTextFieldsForUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108B52B56846B00EE831A /* CustumTextFieldsForUser.swift */; };
+		889108B22B56812500EE831A /* CustomSignUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108B12B56812500EE831A /* CustomSignUpButton.swift */; };
+		889108B42B5683D600EE831A /* CustomBackgroundLabelForUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108B32B5683D600EE831A /* CustomBackgroundLabelForUser.swift */; };
+		889108B62B56846B00EE831A /* CustomTextFieldsForUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108B52B56846B00EE831A /* CustomTextFieldsForUser.swift */; };
 		889108B82B56855400EE831A /* PasswordChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108B72B56855400EE831A /* PasswordChecker.swift */; };
-		889108BB2B56888600EE831A /* LoginCustumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108BA2B56888600EE831A /* LoginCustumButton.swift */; };
+		889108BB2B56888600EE831A /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108BA2B56888600EE831A /* CustomLoginButton.swift */; };
 		889108BD2B568CFD00EE831A /* LoginWithGoogleAndFb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108BC2B568CFD00EE831A /* LoginWithGoogleAndFb.swift */; };
 		88CFEEDC2B57152A0018DE6A /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEDB2B57152A0018DE6A /* HomePageView.swift */; };
+		88CFEEDE2B57CB850018DE6A /* CustomSignUpAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEDD2B57CB850018DE6A /* CustomSignUpAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,13 +51,14 @@
 		8805DD5A2B558B7B00D16B5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		889108AA2B55B3EC00EE831A /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		889108AC2B55B44900EE831A /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
-		889108B12B56812500EE831A /* SignUpCustumButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCustumButton.swift; sourceTree = "<group>"; };
-		889108B32B5683D600EE831A /* CastumBackgroundLabelForUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastumBackgroundLabelForUser.swift; sourceTree = "<group>"; };
-		889108B52B56846B00EE831A /* CustumTextFieldsForUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumTextFieldsForUser.swift; sourceTree = "<group>"; };
+		889108B12B56812500EE831A /* CustomSignUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignUpButton.swift; sourceTree = "<group>"; };
+		889108B32B5683D600EE831A /* CustomBackgroundLabelForUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundLabelForUser.swift; sourceTree = "<group>"; };
+		889108B52B56846B00EE831A /* CustomTextFieldsForUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldsForUser.swift; sourceTree = "<group>"; };
 		889108B72B56855400EE831A /* PasswordChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChecker.swift; sourceTree = "<group>"; };
-		889108BA2B56888600EE831A /* LoginCustumButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCustumButton.swift; sourceTree = "<group>"; };
+		889108BA2B56888600EE831A /* CustomLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginButton.swift; sourceTree = "<group>"; };
 		889108BC2B568CFD00EE831A /* LoginWithGoogleAndFb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithGoogleAndFb.swift; sourceTree = "<group>"; };
 		88CFEEDB2B57152A0018DE6A /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		88CFEEDD2B57CB850018DE6A /* CustomSignUpAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignUpAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,10 +167,11 @@
 			isa = PBXGroup;
 			children = (
 				889108B72B56855400EE831A /* PasswordChecker.swift */,
-				889108B12B56812500EE831A /* SignUpCustumButton.swift */,
-				889108B32B5683D600EE831A /* CastumBackgroundLabelForUser.swift */,
-				889108B52B56846B00EE831A /* CustumTextFieldsForUser.swift */,
-				889108BA2B56888600EE831A /* LoginCustumButton.swift */,
+				88CFEEDD2B57CB850018DE6A /* CustomSignUpAnimation.swift */,
+				889108B12B56812500EE831A /* CustomSignUpButton.swift */,
+				889108B32B5683D600EE831A /* CustomBackgroundLabelForUser.swift */,
+				889108B52B56846B00EE831A /* CustomTextFieldsForUser.swift */,
+				889108BA2B56888600EE831A /* CustomLoginButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -289,17 +292,18 @@
 				88CFEEDC2B57152A0018DE6A /* HomePageView.swift in Sources */,
 				8805DD282B5588A700D16B5E /* Validator.swift in Sources */,
 				8805DD262B55888600D16B5E /* AuthManager.swift in Sources */,
+				88CFEEDE2B57CB850018DE6A /* CustomSignUpAnimation.swift in Sources */,
 				889108B82B56855400EE831A /* PasswordChecker.swift in Sources */,
 				8805DD232B55884800D16B5E /* PasswordValidationStatus.swift in Sources */,
 				889108BD2B568CFD00EE831A /* LoginWithGoogleAndFb.swift in Sources */,
 				8805DD1B2B5587B800D16B5E /* LoginView.swift in Sources */,
-				889108B62B56846B00EE831A /* CustumTextFieldsForUser.swift in Sources */,
+				889108B62B56846B00EE831A /* CustomTextFieldsForUser.swift in Sources */,
 				8805DD1F2B55880500D16B5E /* SignUpAndLoginViewModel.swift in Sources */,
-				889108BB2B56888600EE831A /* LoginCustumButton.swift in Sources */,
-				889108B22B56812500EE831A /* SignUpCustumButton.swift in Sources */,
+				889108BB2B56888600EE831A /* CustomLoginButton.swift in Sources */,
+				889108B22B56812500EE831A /* CustomSignUpButton.swift in Sources */,
 				8805DD032B55863700D16B5E /* AppDelegate.swift in Sources */,
 				889108AB2B55B3EC00EE831A /* ButtonExtension.swift in Sources */,
-				889108B42B5683D600EE831A /* CastumBackgroundLabelForUser.swift in Sources */,
+				889108B42B5683D600EE831A /* CustomBackgroundLabelForUser.swift in Sources */,
 				889108AD2B55B44900EE831A /* ColorExtention.swift in Sources */,
 				8805DD052B55863700D16B5E /* SceneDelegate.swift in Sources */,
 				8805DD212B55882400D16B5E /* WithRootNavigationController.swift in Sources */,

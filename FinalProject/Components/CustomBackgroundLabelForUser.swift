@@ -1,5 +1,5 @@
 //
-//  CastumBackgroundLabelForUser.swift
+//  CustomBackgroundLabelForUser.swift
 //  FinalProject
 //
 //  Created by Sofo Machurishvili on 16.01.24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CastumBackgroundLabelForUser: View {
+struct CustomBackgroundLabelForUser: View {
     var body: some View {
         VStack {
             Rectangle()
@@ -26,5 +26,5 @@ struct CastumBackgroundLabelForUser: View {
 }
 
 #Preview {
-    CastumBackgroundLabelForUser()
+    CustomBackgroundLabelForUser()
 }

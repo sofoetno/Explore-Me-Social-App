@@ -1,5 +1,5 @@
 //
-//  SignUpCustumButton.swift
+//  CustomSignUpButton.swift
 //  FinalProject
 //
 //  Created by Sofo Machurishvili on 16.01.24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SignUpCustumButton: View {
+struct CustomSignUpButton: View, WithRootNavigationController {
     @ObservedObject var signUpViewModel: SignUpAndLoginViewModel
     @State private var signUpSuccess = false
     @State private var showAlert = false
@@ -19,6 +19,7 @@ struct SignUpCustumButton: View {
                 switch result {
                 case .success:
                     signUpViewModel.clearForm()
+                    registrationSuccsess()
                     signUpSuccess = true
                     
                 case .failure:
@@ -31,8 +32,12 @@ struct SignUpCustumButton: View {
         }
         .primaryButtonStyle
     }
+    
+    func registrationSuccsess() {
+        self.push(viewController: UIHostingController(rootView: CustomSignUpAnimation()), animated: true)
+    }
 }
 
 #Preview {
-    SignUpCustumButton(signUpViewModel: SignUpAndLoginViewModel())
+    CustomSignUpButton(signUpViewModel: SignUpAndLoginViewModel())
 }

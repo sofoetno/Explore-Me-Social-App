@@ -15,21 +15,21 @@ struct SignUpView: View, WithRootNavigationController {
     // MARK: - Body
     var body: some View {
         ZStack {
-            CastumBackgroundLabelForUser()
+            CustomBackgroundLabelForUser()
             
             VStack(spacing: 20) {
                 Text("Create your account")
                     .foregroundStyle(.white)
                     .font(.largeTitle)
                 
-                CustumTextFieldsForUser(signUpViewModel: signUpViewModel)
+                CustomTextFieldsForUser(signUpViewModel: signUpViewModel)
                 Spacer()
                 
                 PasswordChecker(signUpViewModel: signUpViewModel)
                     .foregroundColor(.red)
                     .padding(.vertical, 40)
                 
-                SignUpCustumButton(signUpViewModel: signUpViewModel)
+                CustomSignUpButton(signUpViewModel: signUpViewModel)
                 
                 HStack {
                     Text("Already have an account?")

@@ -14,17 +14,17 @@ struct LoginView: View, WithRootNavigationController {
     
     var body: some View {
         ZStack {
-            CastumBackgroundLabelForUser()
+            CustomBackgroundLabelForUser()
             VStack(spacing: 20) {
                 
                 Text("Welcome back")
                     .foregroundStyle(.white)
                     .font(.largeTitle)
                 
-                CustumTextFieldsForUser(signUpViewModel: signUpViewModel)
+                CustomTextFieldsForUser(signUpViewModel: signUpViewModel)
                 Spacer()
                 
-                LoginCustumButton(signUpViewModel: signUpViewModel)
+                CustomLoginButton(signUpViewModel: signUpViewModel)
 
                 
                 LoginWithGoogleAndFb()
