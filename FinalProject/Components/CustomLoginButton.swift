@@ -38,7 +38,7 @@ struct CustomLoginButton: View, WithRootNavigationController {
     }
     
     func goToHome() {
-        self.push(viewController: UIHostingController(rootView: HomePageView()), animated: true)
+        self.push(viewController: UIHostingController(rootView: FeedView()), animated: true)
     }
 }
 

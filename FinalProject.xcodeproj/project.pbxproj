@@ -22,6 +22,8 @@
 		8805DD2F2B55892D00D16B5E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8805DD2E2B55892D00D16B5E /* FirebaseAnalyticsSwift */; };
 		8805DD372B55892D00D16B5E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8805DD362B55892D00D16B5E /* FirebaseAuth */; };
 		8805DD5B2B558B7B00D16B5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8805DD5A2B558B7B00D16B5E /* GoogleService-Info.plist */; };
+		884FCD852B592F8200DDB630 /* CustomRectangleForCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FCD842B592F8200DDB630 /* CustomRectangleForCell.swift */; };
+		884FCD872B5969F000DDB630 /* FeedBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FCD862B5969F000DDB630 /* FeedBar.swift */; };
 		889108AB2B55B3EC00EE831A /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108AA2B55B3EC00EE831A /* ButtonExtension.swift */; };
 		889108AD2B55B44900EE831A /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108AC2B55B44900EE831A /* ColorExtention.swift */; };
 		889108B22B56812500EE831A /* CustomSignUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108B12B56812500EE831A /* CustomSignUpButton.swift */; };
@@ -32,6 +34,11 @@
 		889108BD2B568CFD00EE831A /* LoginWithGoogleAndFb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108BC2B568CFD00EE831A /* LoginWithGoogleAndFb.swift */; };
 		88CFEEDC2B57152A0018DE6A /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEDB2B57152A0018DE6A /* HomePageView.swift */; };
 		88CFEEDE2B57CB850018DE6A /* CustomSignUpAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEDD2B57CB850018DE6A /* CustomSignUpAnimation.swift */; };
+		88CFEEE02B5866430018DE6A /* PostsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEDF2B5866430018DE6A /* PostsTable.swift */; };
+		88CFEEE22B586AAF0018DE6A /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEE12B586AAF0018DE6A /* FeedView.swift */; };
+		88CFEEE42B5877E90018DE6A /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEE32B5877E90018DE6A /* PostItem.swift */; };
+		88CFEEE72B587AFE0018DE6A /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEE62B587AFE0018DE6A /* FeedViewModel.swift */; };
+		88CFEEE92B587C610018DE6A /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEE82B587C610018DE6A /* PostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +56,8 @@
 		8805DD252B55888600D16B5E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		8805DD272B5588A700D16B5E /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		8805DD5A2B558B7B00D16B5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		884FCD842B592F8200DDB630 /* CustomRectangleForCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRectangleForCell.swift; sourceTree = "<group>"; };
+		884FCD862B5969F000DDB630 /* FeedBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBar.swift; sourceTree = "<group>"; };
 		889108AA2B55B3EC00EE831A /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		889108AC2B55B44900EE831A /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
 		889108B12B56812500EE831A /* CustomSignUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignUpButton.swift; sourceTree = "<group>"; };
@@ -59,6 +68,11 @@
 		889108BC2B568CFD00EE831A /* LoginWithGoogleAndFb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithGoogleAndFb.swift; sourceTree = "<group>"; };
 		88CFEEDB2B57152A0018DE6A /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		88CFEEDD2B57CB850018DE6A /* CustomSignUpAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignUpAnimation.swift; sourceTree = "<group>"; };
+		88CFEEDF2B5866430018DE6A /* PostsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTable.swift; sourceTree = "<group>"; };
+		88CFEEE12B586AAF0018DE6A /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		88CFEEE32B5877E90018DE6A /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
+		88CFEEE62B587AFE0018DE6A /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		88CFEEE82B587C610018DE6A /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				8805DD1E2B55880500D16B5E /* SignUpAndLoginViewModel.swift */,
+				88CFEEE52B587AE40018DE6A /* Feed */,
 				88CFEEDA2B5715110018DE6A /* HomePage */,
 				889108B92B56871300EE831A /* Login */,
 				889108B02B55CF1500EE831A /* SignUp */,
@@ -167,6 +182,10 @@
 			isa = PBXGroup;
 			children = (
 				889108B72B56855400EE831A /* PasswordChecker.swift */,
+				884FCD862B5969F000DDB630 /* FeedBar.swift */,
+				88CFEEDF2B5866430018DE6A /* PostsTable.swift */,
+				88CFEEE32B5877E90018DE6A /* PostItem.swift */,
+				884FCD842B592F8200DDB630 /* CustomRectangleForCell.swift */,
 				88CFEEDD2B57CB850018DE6A /* CustomSignUpAnimation.swift */,
 				889108B12B56812500EE831A /* CustomSignUpButton.swift */,
 				889108B32B5683D600EE831A /* CustomBackgroundLabelForUser.swift */,
@@ -207,6 +226,16 @@
 				88CFEEDB2B57152A0018DE6A /* HomePageView.swift */,
 			);
 			path = HomePage;
+			sourceTree = "<group>";
+		};
+		88CFEEE52B587AE40018DE6A /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				88CFEEE12B586AAF0018DE6A /* FeedView.swift */,
+				88CFEEE62B587AFE0018DE6A /* FeedViewModel.swift */,
+				88CFEEE82B587C610018DE6A /* PostView.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,15 +317,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88CFEEE42B5877E90018DE6A /* PostItem.swift in Sources */,
 				8805DD1D2B5587E200D16B5E /* SignUpView.swift in Sources */,
+				88CFEEE02B5866430018DE6A /* PostsTable.swift in Sources */,
 				88CFEEDC2B57152A0018DE6A /* HomePageView.swift in Sources */,
 				8805DD282B5588A700D16B5E /* Validator.swift in Sources */,
 				8805DD262B55888600D16B5E /* AuthManager.swift in Sources */,
+				88CFEEE72B587AFE0018DE6A /* FeedViewModel.swift in Sources */,
+				884FCD852B592F8200DDB630 /* CustomRectangleForCell.swift in Sources */,
 				88CFEEDE2B57CB850018DE6A /* CustomSignUpAnimation.swift in Sources */,
 				889108B82B56855400EE831A /* PasswordChecker.swift in Sources */,
+				88CFEEE22B586AAF0018DE6A /* FeedView.swift in Sources */,
+				88CFEEE92B587C610018DE6A /* PostView.swift in Sources */,
 				8805DD232B55884800D16B5E /* PasswordValidationStatus.swift in Sources */,
 				889108BD2B568CFD00EE831A /* LoginWithGoogleAndFb.swift in Sources */,
 				8805DD1B2B5587B800D16B5E /* LoginView.swift in Sources */,
+				884FCD872B5969F000DDB630 /* FeedBar.swift in Sources */,
 				889108B62B56846B00EE831A /* CustomTextFieldsForUser.swift in Sources */,
 				8805DD1F2B55880500D16B5E /* SignUpAndLoginViewModel.swift in Sources */,
 				889108BB2B56888600EE831A /* CustomLoginButton.swift in Sources */,

@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
 //
 //        var rootView = AnyView(SignInView())
-          let rootView = SignUpView()
+          let rootView = LoginView()
         
 //        let isUserOnboarded = UserDefaults.standard.bool(forKey: "has-seen-onboarding")
         
