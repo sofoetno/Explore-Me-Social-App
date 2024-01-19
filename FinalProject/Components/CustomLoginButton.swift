@@ -21,7 +21,8 @@ struct CustomLoginButton: View, WithRootNavigationController {
                 case .success:
                     signUpViewModel.clearForm()
 //                    signUpSuccess = true
-                    goToHome()
+//                    goToHome()
+                    goToTab(tab: 0)
                     
                 case .failure:
                     showAlert = true

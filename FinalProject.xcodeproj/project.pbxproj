@@ -24,6 +24,9 @@
 		8805DD5B2B558B7B00D16B5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8805DD5A2B558B7B00D16B5E /* GoogleService-Info.plist */; };
 		884FCD852B592F8200DDB630 /* CustomRectangleForCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FCD842B592F8200DDB630 /* CustomRectangleForCell.swift */; };
 		884FCD872B5969F000DDB630 /* FeedBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FCD862B5969F000DDB630 /* FeedBar.swift */; };
+		88576F152B5A6C1000673431 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F142B5A6C1000673431 /* TabViewController.swift */; };
+		88576F172B5A7C2800673431 /* AuthNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F162B5A7C2800673431 /* AuthNavigationController.swift */; };
+		88576F1D2B5AB35300673431 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F1C2B5AB35300673431 /* ProfilePage.swift */; };
 		889108AB2B55B3EC00EE831A /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108AA2B55B3EC00EE831A /* ButtonExtension.swift */; };
 		889108AD2B55B44900EE831A /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108AC2B55B44900EE831A /* ColorExtention.swift */; };
 		889108B22B56812500EE831A /* CustomSignUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108B12B56812500EE831A /* CustomSignUpButton.swift */; };
@@ -58,6 +61,9 @@
 		8805DD5A2B558B7B00D16B5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		884FCD842B592F8200DDB630 /* CustomRectangleForCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRectangleForCell.swift; sourceTree = "<group>"; };
 		884FCD862B5969F000DDB630 /* FeedBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBar.swift; sourceTree = "<group>"; };
+		88576F142B5A6C1000673431 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		88576F162B5A7C2800673431 /* AuthNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationController.swift; sourceTree = "<group>"; };
+		88576F1C2B5AB35300673431 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 		889108AA2B55B3EC00EE831A /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		889108AC2B55B44900EE831A /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
 		889108B12B56812500EE831A /* CustomSignUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignUpButton.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 				88CFEEDA2B5715110018DE6A /* HomePage */,
 				889108B92B56871300EE831A /* Login */,
 				889108B02B55CF1500EE831A /* SignUp */,
+				88576F1C2B5AB35300673431 /* ProfilePage.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -157,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				8805DD202B55882400D16B5E /* WithRootNavigationController.swift */,
+				88576F142B5A6C1000673431 /* TabViewController.swift */,
+				88576F162B5A7C2800673431 /* AuthNavigationController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -324,7 +333,9 @@
 				8805DD282B5588A700D16B5E /* Validator.swift in Sources */,
 				8805DD262B55888600D16B5E /* AuthManager.swift in Sources */,
 				88CFEEE72B587AFE0018DE6A /* FeedViewModel.swift in Sources */,
+				88576F172B5A7C2800673431 /* AuthNavigationController.swift in Sources */,
 				884FCD852B592F8200DDB630 /* CustomRectangleForCell.swift in Sources */,
+				88576F1D2B5AB35300673431 /* ProfilePage.swift in Sources */,
 				88CFEEDE2B57CB850018DE6A /* CustomSignUpAnimation.swift in Sources */,
 				889108B82B56855400EE831A /* PasswordChecker.swift in Sources */,
 				88CFEEE22B586AAF0018DE6A /* FeedView.swift in Sources */,
@@ -341,6 +352,7 @@
 				889108AB2B55B3EC00EE831A /* ButtonExtension.swift in Sources */,
 				889108B42B5683D600EE831A /* CustomBackgroundLabelForUser.swift in Sources */,
 				889108AD2B55B44900EE831A /* ColorExtention.swift in Sources */,
+				88576F152B5A6C1000673431 /* TabViewController.swift in Sources */,
 				8805DD052B55863700D16B5E /* SceneDelegate.swift in Sources */,
 				8805DD212B55882400D16B5E /* WithRootNavigationController.swift in Sources */,
 			);

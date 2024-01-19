@@ -22,6 +22,7 @@ struct LoginView: View, WithRootNavigationController {
                     .font(.largeTitle)
                 
                 CustomTextFieldsForUser(signUpViewModel: signUpViewModel)
+                    .offset(y: 120)
                 Spacer()
                 
                 CustomLoginButton(signUpViewModel: signUpViewModel)
@@ -51,7 +52,7 @@ struct LoginView: View, WithRootNavigationController {
     }
     
     func goToSignUp() {
-        self.push(viewController: UIHostingController(rootView: SignUpView()), animated: true)
+        authNavigationController?.pushViewController( UIHostingController(rootView: SignUpView()), animated: true)
     }
 }
 

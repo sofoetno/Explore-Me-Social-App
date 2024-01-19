@@ -18,11 +18,13 @@ struct SignUpView: View, WithRootNavigationController {
             CustomBackgroundLabelForUser()
             
             VStack(spacing: 20) {
+ 
                 Text("Create your account")
                     .foregroundStyle(.white)
                     .font(.largeTitle)
                 
                 CustomTextFieldsForUser(signUpViewModel: signUpViewModel)
+                    .offset(y: 120)
                 Spacer()
                 
                 PasswordChecker(signUpViewModel: signUpViewModel)
@@ -46,11 +48,10 @@ struct SignUpView: View, WithRootNavigationController {
             }
             .padding()
         }
-        
     }
     
     func goToLogin() {
-        self.push(viewController: UIHostingController(rootView: LoginView()), animated: true)
+        authNavigationController?.pushViewController(UIHostingController(rootView: LoginView()), animated: true)
     }
 }
 

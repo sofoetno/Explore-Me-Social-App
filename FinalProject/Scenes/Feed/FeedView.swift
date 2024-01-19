@@ -7,10 +7,17 @@
 
 import SwiftUI
 
-struct FeedView: View {
+struct FeedView: View, WithRootNavigationController {
     @StateObject var feedViewModel = FeedViewModel()
     
     var body: some View {
+        Button {
+            AuthManager.shared.signOutUser()
+            goToAuth()
+        } label: {
+            Text("Sign out!")
+        }
+
         
         VStack(alignment: .trailing, spacing: 12) {
             Spacer()

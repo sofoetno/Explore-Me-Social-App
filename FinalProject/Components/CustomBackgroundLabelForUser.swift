@@ -21,7 +21,7 @@ struct CustomBackgroundLabelForUser: View {
                 )
         }
         .ignoresSafeArea(.all)
-        .offset(y: -450)
+        .offset(y: -600)
     }
 }
 
