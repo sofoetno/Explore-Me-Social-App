@@ -32,5 +32,20 @@ final class AuthManager {
         return result
     }
     
-
+    func signOutUser() {
+        do {
+            print("signing out")
+            try Auth.auth().signOut()
+            print("signed out")
+        } catch {
+            print(error)
+        }
+    }
+    
+    func getAuthenticagedUser() -> AuthDataResultModel? {
+        guard let user = Auth.auth().currentUser else {
+            return nil
+        }
+        return AuthDataResultModel(uid: user.uid, email: user.email)
+    }
 }

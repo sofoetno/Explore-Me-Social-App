@@ -10,6 +10,16 @@ import SwiftUI
 struct HomePageView: View, WithRootNavigationController {
     var body: some View {
         Text("Hello, World!")
+        
+        Button {
+            goToFeed()
+        } label: {
+            Text("Go to feed")
+        }
+    }
+    
+    func goToFeed() {
+        self.push(viewController: UIHostingController(rootView: FeedView()), animated: true, tab: 1)
     }
 }
 

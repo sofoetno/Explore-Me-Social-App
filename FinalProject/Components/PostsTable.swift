@@ -30,9 +30,9 @@ struct PostsTable: UIViewRepresentable, WithRootNavigationController {
     class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
         @ObservedObject var feedViewModel: FeedViewModel
         
-        private var didSelectHandler: (UIViewController, Bool) -> Void
+        private var didSelectHandler: (UIViewController, Bool, Int) -> Void
         
-        init(feedViewModel: FeedViewModel, didSelectHandler: @escaping (UIViewController, Bool) -> Void) {
+        init(feedViewModel: FeedViewModel, didSelectHandler: @escaping (UIViewController, Bool, Int) -> Void) {
             self.feedViewModel = feedViewModel
             self.didSelectHandler = didSelectHandler
         }
@@ -58,7 +58,7 @@ struct PostsTable: UIViewRepresentable, WithRootNavigationController {
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let post = feedViewModel.posts[indexPath.row]
             
-            didSelectHandler(UIHostingController(rootView: PostView(post: post)), true)
+            didSelectHandler(UIHostingController(rootView: PostView(post: post)), true, 0)
         }
         
     }

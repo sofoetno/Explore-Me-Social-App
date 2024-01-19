@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: scene)
-//
+
 //        var rootView = AnyView(SignInView())
           let rootView = LoginView()
         
@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        }
         
         let rootViewController = UIHostingController(rootView: rootView)
-        let navigationController = UINavigationController(rootViewController: rootViewController)
+        let navigationController = AuthNavigationController(rootViewController: rootViewController)
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
