@@ -50,7 +50,7 @@ struct CustomSignUpAnimation: View, WithRootNavigationController {
     }
     
     func goToLogin() {
-        self.push(viewController: UIHostingController(rootView: LoginView()), animated: true)
+        authNavigationController?.pushViewController(UIHostingController(rootView: LoginView()), animated: true)
     }
 }
 

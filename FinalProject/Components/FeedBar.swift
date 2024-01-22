@@ -7,19 +7,41 @@
 
 import SwiftUI
 
-struct FeedBar: View {
+struct FeedBar: View, WithRootNavigationController {
+    @ObservedObject var feedViewModel: FeedViewModel
+    
     var body: some View {
         HStack(spacing: 20) {
-            Image(systemName: "plus.circle")
-            Image(systemName: "message")
-            Image(systemName: "magnifyingglass")
+            Button {
+                openPostForm()
+            } label: {
+                Image(systemName: "plus.circle")
+            }
+            
+            Button {
+                
+            } label: {
+                Image(systemName: "message")
+            }
+            
+            Button {
+                
+            } label: {
+                Image(systemName: "magnifyingglass")
+            }
+        
         }
         .font(.title)
         .foregroundColor(.gray)
 
     }
+    
+    func openPostForm() {
+        present(viewController: UIHostingController(rootView: PostFormView(feedViewModel: feedViewModel)), animated: true, tab: 1)
+        
+    }
 }
 
 #Preview {
-    FeedBar()
+    FeedBar(feedViewModel: FeedViewModel())
 }

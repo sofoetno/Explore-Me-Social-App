@@ -10,7 +10,6 @@ import SwiftUI
 struct CustomLoginButton: View, WithRootNavigationController {
     
     @ObservedObject var signUpViewModel: SignUpAndLoginViewModel
-//    @State private var signUpSuccess = false
     @State private var showAlert = false
     
     var body: some View {
@@ -20,9 +19,7 @@ struct CustomLoginButton: View, WithRootNavigationController {
                 switch result {
                 case .success:
                     signUpViewModel.clearForm()
-//                    signUpSuccess = true
-//                    goToHome()
-                    goToTab(tab: 0)
+                    goToHome()
                     
                 case .failure:
                     showAlert = true
@@ -39,7 +36,7 @@ struct CustomLoginButton: View, WithRootNavigationController {
     }
     
     func goToHome() {
-        self.push(viewController: UIHostingController(rootView: FeedView()), animated: true)
+        goToTab(tab: 0)
     }
 }
 

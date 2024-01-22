@@ -11,7 +11,7 @@ struct CustomTextFieldsForUser: View {
     @ObservedObject var signUpViewModel: SignUpAndLoginViewModel
     
     var body: some View {
-        TextField("enter your Email...", text: $signUpViewModel.email)
+        TextField("Enter your email...", text: $signUpViewModel.email)
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
             .frame(width: .infinity, alignment: .leading)

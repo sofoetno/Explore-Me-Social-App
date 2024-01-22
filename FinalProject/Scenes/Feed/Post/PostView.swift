@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct PostView: View {
-    let post: String
+    let post: PostModel
     
     var body: some View {
-        Text("Single post \(post)!")
+        Text("Single post \(post.title)!")
     }
 }
 
 #Preview {
-    PostView(post: "Test single post")
+    PostView(post: PostModel(title: "Title", description: "Desc"))
 }

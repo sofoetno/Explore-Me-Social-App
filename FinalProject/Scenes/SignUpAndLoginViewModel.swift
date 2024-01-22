@@ -24,6 +24,7 @@ final class SignUpAndLoginViewModel: ObservableObject {
     func signUp() async -> Result<AuthDataResultModel, Error> {
         do {
             let userData = try await AuthManager.shared.creatUser(email: email, password: password)
+            try await UserManager.shared.creatUser(auth: userData)
             return .success(userData)
         } catch {
             print(error)

@@ -42,6 +42,18 @@ extension WithRootNavigationController where Self:View {
         }
     }
     
+    func present(viewController: UIViewController, animated: Bool, tab: Int = 0) {
+        if let navigationController = getNavigationController(tab: tab) {
+            navigationController.present(viewController, animated: animated)
+        }
+    }
+    
+    func dismiss(animated: Bool, tab: Int = 0) {
+        if let navigationController = getNavigationController(tab: tab) {
+            navigationController.dismiss(animated: animated)
+        }
+    }
+    
     func goToAuth() {
         guard let scene = UIApplication.shared.connectedScenes.first,
               let sceneDelegate = scene as? UIWindowScene,

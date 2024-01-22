@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PostItem: View {
-    let post: String
+    let post: PostModel
     
     
     var body: some View {
@@ -19,20 +19,20 @@ struct PostItem: View {
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(10)
-    
-                        Image("avatar")
-                            .resizable()
-                            .frame(width: 70, height: 70)
-                            .cornerRadius(6)
-                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                            .shadow(color: .white, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                
+                Image("avatar")
+                    .resizable()
+                    .frame(width: 70, height: 70)
+                    .cornerRadius(6)
+                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                    .shadow(color: .white, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             }
             
             ZStack {
                 CustomRectangleForCell()
                 
                 VStack(spacing: 24) {
-                    Text("Information:")
+                    Text("Explore the story: \(post.title)")
                         .foregroundStyle(.white)
                         .font(.title3)
                         .fontWeight(.semibold)
@@ -54,7 +54,7 @@ struct PostItem: View {
                             )
                         )
                     
-                    Text("Prompt writing involves crafting clear and engaging prompts, while using images to create a visual representation of the idea or concept.")
+                    Text(post.description)
                         .font(Font.custom("Inter", size: 15))
                         .foregroundColor(.white.opacity(0.6))
                         .frame(width: 280, height: 64, alignment: .topLeading)
@@ -68,5 +68,5 @@ struct PostItem: View {
 }
 
 #Preview {
-    PostItem(post: "Test post")
+    PostItem(post: PostModel(title: "lile", description: "kargi gogoa"))
 }

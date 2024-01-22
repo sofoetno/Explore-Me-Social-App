@@ -27,6 +27,13 @@
 		88576F152B5A6C1000673431 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F142B5A6C1000673431 /* TabViewController.swift */; };
 		88576F172B5A7C2800673431 /* AuthNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F162B5A7C2800673431 /* AuthNavigationController.swift */; };
 		88576F1D2B5AB35300673431 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F1C2B5AB35300673431 /* ProfilePage.swift */; };
+		88576F1F2B5D486500673431 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 88576F1E2B5D486500673431 /* FirebaseFirestore */; };
+		88576F212B5D486500673431 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 88576F202B5D486500673431 /* FirebaseFirestoreSwift */; };
+		88576F232B5D4DD600673431 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F222B5D4DD600673431 /* UserManager.swift */; };
+		88576F252B5D790700673431 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F242B5D790700673431 /* PostModel.swift */; };
+		88576F282B5D7A0B00673431 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F272B5D7A0B00673431 /* PostViewModel.swift */; };
+		88576F2C2B5D7D3300673431 /* PostFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F2B2B5D7D3300673431 /* PostFormView.swift */; };
+		88576F2E2B5D80B300673431 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F2D2B5D80B300673431 /* PostManager.swift */; };
 		889108AB2B55B3EC00EE831A /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108AA2B55B3EC00EE831A /* ButtonExtension.swift */; };
 		889108AD2B55B44900EE831A /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108AC2B55B44900EE831A /* ColorExtention.swift */; };
 		889108B22B56812500EE831A /* CustomSignUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108B12B56812500EE831A /* CustomSignUpButton.swift */; };
@@ -64,6 +71,11 @@
 		88576F142B5A6C1000673431 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		88576F162B5A7C2800673431 /* AuthNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationController.swift; sourceTree = "<group>"; };
 		88576F1C2B5AB35300673431 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
+		88576F222B5D4DD600673431 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		88576F242B5D790700673431 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		88576F272B5D7A0B00673431 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		88576F2B2B5D7D3300673431 /* PostFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFormView.swift; sourceTree = "<group>"; };
+		88576F2D2B5D80B300673431 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		889108AA2B55B3EC00EE831A /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		889108AC2B55B44900EE831A /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
 		889108B12B56812500EE831A /* CustomSignUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignUpButton.swift; sourceTree = "<group>"; };
@@ -86,7 +98,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88576F212B5D486500673431 /* FirebaseFirestoreSwift in Frameworks */,
 				8805DD2F2B55892D00D16B5E /* FirebaseAnalyticsSwift in Frameworks */,
+				88576F1F2B5D486500673431 /* FirebaseFirestore in Frameworks */,
 				8805DD2B2B55892D00D16B5E /* FirebaseAnalytics in Frameworks */,
 				8805DD372B55892D00D16B5E /* FirebaseAuth in Frameworks */,
 			);
@@ -156,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				8805DD222B55884800D16B5E /* PasswordValidationStatus.swift */,
+				88576F242B5D790700673431 /* PostModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -176,6 +191,8 @@
 				8805DD252B55888600D16B5E /* AuthManager.swift */,
 				889108BC2B568CFD00EE831A /* LoginWithGoogleAndFb.swift */,
 				8805DD272B5588A700D16B5E /* Validator.swift */,
+				88576F222B5D4DD600673431 /* UserManager.swift */,
+				88576F2D2B5D80B300673431 /* PostManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -185,6 +202,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88576F262B5D79ED00673431 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				88CFEEE82B587C610018DE6A /* PostView.swift */,
+				88576F272B5D7A0B00673431 /* PostViewModel.swift */,
+				88576F2B2B5D7D3300673431 /* PostFormView.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		889108A82B55B2E700EE831A /* Components */ = {
@@ -240,9 +267,9 @@
 		88CFEEE52B587AE40018DE6A /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				88576F262B5D79ED00673431 /* Post */,
 				88CFEEE12B586AAF0018DE6A /* FeedView.swift */,
 				88CFEEE62B587AFE0018DE6A /* FeedViewModel.swift */,
-				88CFEEE82B587C610018DE6A /* PostView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -267,6 +294,8 @@
 				8805DD2A2B55892D00D16B5E /* FirebaseAnalytics */,
 				8805DD2E2B55892D00D16B5E /* FirebaseAnalyticsSwift */,
 				8805DD362B55892D00D16B5E /* FirebaseAuth */,
+				88576F1E2B5D486500673431 /* FirebaseFirestore */,
+				88576F202B5D486500673431 /* FirebaseFirestoreSwift */,
 			);
 			productName = FinalProject;
 			productReference = 8805DCFF2B55863700D16B5E /* FinalProject.app */;
@@ -326,8 +355,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88576F282B5D7A0B00673431 /* PostViewModel.swift in Sources */,
+				88576F2E2B5D80B300673431 /* PostManager.swift in Sources */,
 				88CFEEE42B5877E90018DE6A /* PostItem.swift in Sources */,
 				8805DD1D2B5587E200D16B5E /* SignUpView.swift in Sources */,
+				88576F252B5D790700673431 /* PostModel.swift in Sources */,
 				88CFEEE02B5866430018DE6A /* PostsTable.swift in Sources */,
 				88CFEEDC2B57152A0018DE6A /* HomePageView.swift in Sources */,
 				8805DD282B5588A700D16B5E /* Validator.swift in Sources */,
@@ -344,10 +376,12 @@
 				889108BD2B568CFD00EE831A /* LoginWithGoogleAndFb.swift in Sources */,
 				8805DD1B2B5587B800D16B5E /* LoginView.swift in Sources */,
 				884FCD872B5969F000DDB630 /* FeedBar.swift in Sources */,
+				88576F232B5D4DD600673431 /* UserManager.swift in Sources */,
 				889108B62B56846B00EE831A /* CustomTextFieldsForUser.swift in Sources */,
 				8805DD1F2B55880500D16B5E /* SignUpAndLoginViewModel.swift in Sources */,
 				889108BB2B56888600EE831A /* CustomLoginButton.swift in Sources */,
 				889108B22B56812500EE831A /* CustomSignUpButton.swift in Sources */,
+				88576F2C2B5D7D3300673431 /* PostFormView.swift in Sources */,
 				8805DD032B55863700D16B5E /* AppDelegate.swift in Sources */,
 				889108AB2B55B3EC00EE831A /* ButtonExtension.swift in Sources */,
 				889108B42B5683D600EE831A /* CustomBackgroundLabelForUser.swift in Sources */,
@@ -596,6 +630,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8805DD292B55892D00D16B5E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		88576F1E2B5D486500673431 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8805DD292B55892D00D16B5E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		88576F202B5D486500673431 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8805DD292B55892D00D16B5E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

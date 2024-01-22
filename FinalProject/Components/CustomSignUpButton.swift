@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CustomSignUpButton: View, WithRootNavigationController {
     @ObservedObject var signUpViewModel: SignUpAndLoginViewModel
-    @State private var signUpSuccess = false
     @State private var showAlert = false
     
     var body: some View {
@@ -20,7 +19,6 @@ struct CustomSignUpButton: View, WithRootNavigationController {
                 case .success:
                     signUpViewModel.clearForm()
                     registrationSuccsess()
-                    signUpSuccess = true
                     
                 case .failure:
                     showAlert = true
@@ -34,7 +32,7 @@ struct CustomSignUpButton: View, WithRootNavigationController {
     }
     
     func registrationSuccsess() {
-        self.push(viewController: UIHostingController(rootView: CustomSignUpAnimation()), animated: true)
+        authNavigationController?.pushViewController(UIHostingController(rootView: CustomSignUpAnimation()), animated: true)
     }
 }
 
