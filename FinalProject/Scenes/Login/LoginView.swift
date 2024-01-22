@@ -40,7 +40,7 @@ struct LoginView: View, WithRootNavigationController {
     
     var notHaveaccount: some View {
         HStack {
-            Text("Don't have account?")
+            Text("Don't have an account?")
                 .foregroundStyle(AppColors.darkGray)
             Button {
                 goToSignUp()

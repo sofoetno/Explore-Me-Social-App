@@ -8,8 +8,8 @@
 import Foundation
 
 struct PostModel: Codable, Identifiable {
+    var id: String = UUID().uuidString
     let title: String
     let description: String
     var photoUrl: String? = nil
-    var id: String = UUID().uuidString
 }

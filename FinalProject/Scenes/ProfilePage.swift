@@ -12,20 +12,32 @@ struct ProfilePage: View {
         ZStack {
             CustomBackgroundLabelForUser()
             
-            
-            Button {
+            HStack {
+                Button {
+                    
+                }label: {
+                    Image(systemName: "gearshape")
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(.white)
+                }
+              
+                Spacer()
                 
-            } label: {
-                Capsule()
-                    .frame(width: 80, height: 40)
-                    .foregroundColor(.white)
-                    .overlay(
-                        Text("Follow")
-                            .foregroundColor(Color(red: 0.53, green: 0.55, blue: 0.96))
-                    )
-                    .offset(x: 126, y: -340)
+                Button {
+                    
+                } label: {
+                    Capsule()
+                        .frame(width: 80, height: 40)
+                        .foregroundColor(.white)
+                        .overlay(
+                            Text("Follow")
+                                .foregroundColor(Color(red: 0.53, green: 0.55, blue: 0.96))
+                        )
+            }
                     
             }
+            .padding(.horizontal, 12)
+            .offset(y: -340)
             
             VStack {
                 Circle()
@@ -46,7 +58,7 @@ struct ProfilePage: View {
             VStack {
                 Text("Bruno Mars")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                Text("Georgia, Tbilisi")
+                Text("Singer")
                     .foregroundStyle(Color.gray)
                 
                 HStack(alignment: .center, spacing: 48) {

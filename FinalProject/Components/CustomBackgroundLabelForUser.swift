@@ -16,7 +16,6 @@ struct CustomBackgroundLabelForUser: View {
                     Image("background1")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: .infinity)
                         .clipShape(Circle())
                 )
         }

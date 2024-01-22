@@ -14,12 +14,16 @@ final class PostManager {
     private init() {}
     
     func creatPost(post: PostModel) async throws {
-        let postData: [String:Any] = [
+        var postData: [String:Any] = [
             "user_id" : AuthManager.shared.getAuthenticagedUser()?.uid ?? "",
             "title" : post.title,
             "description" : post.description,
             "date_created" : Timestamp(),
         ]
+        
+        if let photoUrl = post.photoUrl {
+            postData["photo_url"] = photoUrl
+        }
          
         try await Firestore.firestore().collection("posts").document(post.id).setData(postData, merge: false)
     }
@@ -29,7 +33,12 @@ final class PostManager {
         var posts: [PostModel] = []
         snapshot.documents.forEach { document in
             let dictionary = document.data()
-            let post = PostModel(title: dictionary["title"] as! String, description: dictionary["description"] as! String)
+            let post = PostModel(
+                id: document.documentID,
+                title: dictionary["title"] as! String,
+                description: dictionary["description"] as! String,
+                photoUrl: dictionary["photo_url"] as? String
+            )
             posts.append(post)
         }
         return posts
