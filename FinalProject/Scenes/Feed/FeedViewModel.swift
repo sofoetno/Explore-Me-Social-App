@@ -9,5 +9,19 @@ import SwiftUI
 
 @MainActor
 final class FeedViewModel: ObservableObject {
-    @Published var posts: [String] = ["Erti", "Ori", "Sami", "otxi", "xuti", "jj", "ll"]
+    @Published var posts: [PostModel] = []
+    
+    init() {
+        Task {
+            await fetchPosts()
+        }
+    }
+    
+    func fetchPosts() async {
+        do {
+            posts = try await PostManager.shared.getPosts()
+        } catch {
+            print(error)
+        }
+    }
 }

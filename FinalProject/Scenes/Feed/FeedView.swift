@@ -18,7 +18,6 @@ struct FeedView: View, WithRootNavigationController {
             Text("Sign out!")
         }
 
-        
         VStack(alignment: .trailing, spacing: 12) {
             Spacer()
             HStack {
@@ -27,17 +26,12 @@ struct FeedView: View, WithRootNavigationController {
                     .scaledToFit()
                     .frame(width: 170)
                     Spacer()
-                FeedBar()
+                FeedBar(feedViewModel: feedViewModel)
             }
 
                 .padding(.horizontal, 12)
             PostsTable(feedViewModel: feedViewModel)
         }
-        
-
-
-        
-        
     }
 }
 

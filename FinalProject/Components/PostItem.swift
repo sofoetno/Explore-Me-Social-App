@@ -8,34 +8,55 @@
 import SwiftUI
 
 struct PostItem: View {
-    let post: String
+    let post: PostModel
     
     
     var body: some View {
         
         ZStack {
             ZStack {
-                Image("test2")
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(10)
-    
-                        Image("avatar")
+                AsyncImage(url: URL(string: post.photoUrl ?? "")) { phase in
+                    if let image = phase.image {
+                        image
                             .resizable()
-                            .frame(width: 70, height: 70)
-                            .cornerRadius(6)
-                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                            .shadow(color: .white, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                            .scaledToFit()
+                            .cornerRadius(10)
+                    } else if (phase.error != nil) {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(10)
+                    } else {
+                        ProgressView()
+//                        Image("test2")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .cornerRadius(10)
+                    }
+                }
+                
+                Circle()
+                    .foregroundColor(.white)
+                    .frame(width: 74, height: 74)
+                
+                Image("avatar")
+                    .resizable()
+                    .frame(width: 70, height: 70)
+                    .cornerRadius(6)
+                    .clipShape(Circle())
+                    .shadow(color: .white, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                    
             }
             
             ZStack {
                 CustomRectangleForCell()
                 
-                VStack(spacing: 24) {
-                    Text("Information:")
+                VStack(spacing: 8) {
+                    Text("Explore the story: \(post.title)")
                         .foregroundStyle(.white)
-                        .font(.title3)
+                        .font(.caption)
                         .fontWeight(.semibold)
+                        .lineLimit(2)
                         .frame(width: 280, alignment: .topLeading)
                     
                     
@@ -54,7 +75,7 @@ struct PostItem: View {
                             )
                         )
                     
-                    Text("Prompt writing involves crafting clear and engaging prompts, while using images to create a visual representation of the idea or concept.")
+                    Text(post.description)
                         .font(Font.custom("Inter", size: 15))
                         .foregroundColor(.white.opacity(0.6))
                         .frame(width: 280, height: 64, alignment: .topLeading)
@@ -68,5 +89,5 @@ struct PostItem: View {
 }
 
 #Preview {
-    PostItem(post: "Test post")
+    PostItem(post: PostModel(title: "Story name", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus."))
 }

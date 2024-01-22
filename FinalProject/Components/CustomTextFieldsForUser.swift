@@ -11,10 +11,9 @@ struct CustomTextFieldsForUser: View {
     @ObservedObject var signUpViewModel: SignUpAndLoginViewModel
     
     var body: some View {
-        TextField("enter your Email...", text: $signUpViewModel.email)
+        TextField("Enter your email...", text: $signUpViewModel.email)
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
-            .frame(width: .infinity, alignment: .leading)
             .background(Color(red: 0.95, green: 0.96, blue: 0.97))
             .cornerRadius(30)
         
@@ -25,7 +24,6 @@ struct CustomTextFieldsForUser: View {
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
-            .frame(width: .infinity, alignment: .leading)
             .background(Color(red: 0.95, green: 0.96, blue: 0.97))
             .cornerRadius(30)
     }
