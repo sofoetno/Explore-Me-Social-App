@@ -14,6 +14,7 @@ struct AppColors {
     static let lightGray = Color(hex: 0xE1E3E7)
     static let silver = Color(hex: 0xEDEFF3)
     static let white = Color(hex: 0xF7F7F7)
+    static let customRed = Color(hex: 0xE95050)
 }
 
 extension Color {

@@ -24,7 +24,7 @@ struct PostFormView: View, WithRootNavigationController {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 300, height: 200)
-                    .padding()
+                    .offset(y: 50)
                 
                 TextField("Your story title", text: $postViewModel.title)
                     .padding(.horizontal, 20)
@@ -42,8 +42,10 @@ struct PostFormView: View, WithRootNavigationController {
                 
                 image?
                     .resizable()
+                    .frame(width: 60, height: 60)
                     .scaledToFit()
-                    .frame(width: 50, height: 50)
+                    .clipShape(Rectangle())
+                    .cornerRadius(6)
                 
                 
                 Button {

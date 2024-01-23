@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PostItem: View {
     let post: PostModel
+    @State var isLiked: Bool = false
     
     
     var body: some View {
@@ -45,6 +46,18 @@ struct PostItem: View {
                     .cornerRadius(6)
                     .clipShape(Circle())
                     .shadow(color: .white, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                
+                HStack {
+                    Image(systemName: isLiked ? "heart.fill" : "heart")
+                        .foregroundColor(isLiked ? AppColors.customRed : .purple)
+                        .font(.title)
+                }
+                .onTapGesture {
+                    isLiked.toggle()
+                }
+                .offset(x: 120, y: -90)
+                
+                
                     
             }
             
