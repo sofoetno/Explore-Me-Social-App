@@ -58,7 +58,7 @@ struct PostsTable: UIViewRepresentable, WithRootNavigationController {
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let post = feedViewModel.posts[indexPath.row]
             
-            didSelectHandler(UIHostingController(rootView: PostView(post: post)), true, 0)
+            didSelectHandler(UIHostingController(rootView: PostView(post: post, feedViewModel: feedViewModel)), true, 0)
         }
         
     }

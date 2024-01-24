@@ -14,6 +14,8 @@ struct PostFormView: View, WithRootNavigationController {
     @State private var image: Image?
     @State private var showImagePicker = false
     @State private var inputImage: UIImage?
+    var existingPost: PostModel? = nil
+    var updateCallback: ((PostModel) -> Void)?
     
     var body: some View {
         ZStack {
@@ -58,11 +60,13 @@ struct PostFormView: View, WithRootNavigationController {
                 Button {
                     Task  {
                         let (_, _, downloadUrl) = await postViewModel.saveImage() ?? (path: "", name: "", URL(string: ""))
-                        await postViewModel.savePost(photoUrl: downloadUrl?.absoluteString)
-                        await feedViewModel.fetchPosts()
+                        let savedPost = await postViewModel.savePost(photoUrl: downloadUrl?.absoluteString, postId: existingPost?.id)
                         dismiss(animated: true, tab: 1)
+                        await feedViewModel.fetchPosts()
+                        if let savedPost, let updateCallback {
+                            updateCallback(savedPost)
+                        }
                     }
-                    
                 } label: {
                     Text("POST")
                         .fontWeight(.bold)
@@ -74,6 +78,12 @@ struct PostFormView: View, WithRootNavigationController {
             .sheet(isPresented: $showImagePicker, content: {
                 ImagePicker(image: $inputImage)
             })
+            .onAppear() {
+                if let existingPost {
+                    postViewModel.title = existingPost.title
+                    postViewModel.description = existingPost.description
+                }
+            }
         }
     }
     

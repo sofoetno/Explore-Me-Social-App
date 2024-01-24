@@ -27,6 +27,11 @@ struct FeedView: View{
                 .padding(.horizontal, 16)
             PostsTable(feedViewModel: feedViewModel)
         }
+        .onAppear() {
+            Task {
+                await feedViewModel.fetchPosts()
+            }
+        }
     }
 }
 

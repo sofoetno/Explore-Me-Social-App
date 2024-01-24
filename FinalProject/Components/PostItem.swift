@@ -16,25 +16,8 @@ struct PostItem: View {
         
         ZStack {
             ZStack {
-                AsyncImage(url: URL(string: post.photoUrl ?? "")) { phase in
-                    if let image = phase.image {
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(10)
-                    } else if (phase.error != nil) {
-                        Image(systemName: "photo")
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(10)
-                    } else {
-                        ProgressView()
-//                        Image("test2")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .cornerRadius(10)
-                    }
-                }
+                CustomAsyncImage(imageUrl: post.photoUrl ?? "")
+                    .cornerRadius(10)
                 
                 Circle()
                     .foregroundColor(.white)

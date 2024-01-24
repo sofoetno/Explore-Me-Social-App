@@ -13,19 +13,30 @@ final class PostManager {
     static let shared = PostManager()
     private init() {}
     
-    func creatPost(post: PostModel) async throws {
+    func savePost(post: PostModel, postId: String? = nil) async throws -> PostModel {
         var postData: [String:Any] = [
-            "user_id" : AuthManager.shared.getAuthenticagedUser()?.uid ?? "",
             "title" : post.title,
-            "description" : post.description,
-            "date_created" : Timestamp(),
+            "description" : post.description
         ]
+        
+        if postId == nil {
+            postData["user_id"] = AuthManager.shared.getAuthenticagedUser()?.uid ?? ""
+            postData["date_created"] = Timestamp()
+        }
         
         if let photoUrl = post.photoUrl {
             postData["photo_url"] = photoUrl
         }
-         
-        try await Firestore.firestore().collection("posts").document(post.id).setData(postData, merge: false)
+        
+        let id = postId ?? post.id
+        
+        try await Firestore.firestore().collection("posts").document(id).setData(postData, merge: postId != nil)
+        
+        return PostModel(id: id, title: post.title, description: post.description, photoUrl: post.photoUrl)
+    }
+    
+    func deletePost(postId: String) async throws {
+        try await Firestore.firestore().collection("posts").document(postId).delete()
     }
     
     func getPosts() async throws -> [PostModel] {
