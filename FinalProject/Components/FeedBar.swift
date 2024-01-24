@@ -29,11 +29,9 @@ struct FeedBar: View, WithRootNavigationController {
             } label: {
                 Image(systemName: "magnifyingglass")
             }
-        
         }
         .font(.title)
         .foregroundColor(.gray)
-
     }
     
     func openPostForm() {

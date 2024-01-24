@@ -44,8 +44,7 @@ struct CommentsTable: UIViewRepresentable, WithRootNavigationController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             
             cell.contentConfiguration = UIHostingConfiguration {
-                //                CommentItem(comment: comment)
-                Text(comment.text)
+               CommentItem(comment: comment)
             }
             cell.selectionStyle = .none
             

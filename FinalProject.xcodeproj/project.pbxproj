@@ -34,6 +34,9 @@
 		88576F282B5D7A0B00673431 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F272B5D7A0B00673431 /* PostViewModel.swift */; };
 		88576F2C2B5D7D3300673431 /* PostFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F2B2B5D7D3300673431 /* PostFormView.swift */; };
 		88576F2E2B5D80B300673431 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F2D2B5D80B300673431 /* PostManager.swift */; };
+		887E12B52B610D4D00137EA0 /* ProfilePageDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E12B42B610D4D00137EA0 /* ProfilePageDropDownMenu.swift */; };
+		887E12B72B610E0B00137EA0 /* PostViewDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E12B62B610E0B00137EA0 /* PostViewDropDownMenu.swift */; };
+		887E12BB2B6133E800137EA0 /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E12BA2B6133E800137EA0 /* CustomAsyncImage.swift */; };
 		889108AB2B55B3EC00EE831A /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108AA2B55B3EC00EE831A /* ButtonExtension.swift */; };
 		889108AD2B55B44900EE831A /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108AC2B55B44900EE831A /* ColorExtention.swift */; };
 		889108B22B56812500EE831A /* CustomSignUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108B12B56812500EE831A /* CustomSignUpButton.swift */; };
@@ -50,6 +53,7 @@
 		88B6D75E2B5EEE4C00F3D3DD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D75D2B5EEE4C00F3D3DD /* ImagePicker.swift */; };
 		88B6D7602B5EF49300F3D3DD /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D75F2B5EF49300F3D3DD /* ImageManager.swift */; };
 		88B6D7622B5EF4EB00F3D3DD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 88B6D7612B5EF4EB00F3D3DD /* FirebaseStorage */; };
+		88B6D7642B5FC25800F3D3DD /* CommentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D7632B5FC25700F3D3DD /* CommentItem.swift */; };
 		88CFEEDC2B57152A0018DE6A /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEDB2B57152A0018DE6A /* HomePageView.swift */; };
 		88CFEEDE2B57CB850018DE6A /* CustomSignUpAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEDD2B57CB850018DE6A /* CustomSignUpAnimation.swift */; };
 		88CFEEE02B5866430018DE6A /* PostsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEDF2B5866430018DE6A /* PostsTable.swift */; };
@@ -84,6 +88,9 @@
 		88576F272B5D7A0B00673431 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		88576F2B2B5D7D3300673431 /* PostFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFormView.swift; sourceTree = "<group>"; };
 		88576F2D2B5D80B300673431 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
+		887E12B42B610D4D00137EA0 /* ProfilePageDropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageDropDownMenu.swift; sourceTree = "<group>"; };
+		887E12B62B610E0B00137EA0 /* PostViewDropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewDropDownMenu.swift; sourceTree = "<group>"; };
+		887E12BA2B6133E800137EA0 /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
 		889108AA2B55B3EC00EE831A /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		889108AC2B55B44900EE831A /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
 		889108B12B56812500EE831A /* CustomSignUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignUpButton.swift; sourceTree = "<group>"; };
@@ -99,6 +106,7 @@
 		88B6D75B2B5E9BA100F3D3DD /* CommentsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTable.swift; sourceTree = "<group>"; };
 		88B6D75D2B5EEE4C00F3D3DD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		88B6D75F2B5EF49300F3D3DD /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		88B6D7632B5FC25700F3D3DD /* CommentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItem.swift; sourceTree = "<group>"; };
 		88CFEEDB2B57152A0018DE6A /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		88CFEEDD2B57CB850018DE6A /* CustomSignUpAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignUpAnimation.swift; sourceTree = "<group>"; };
 		88CFEEDF2B5866430018DE6A /* PostsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTable.swift; sourceTree = "<group>"; };
@@ -246,6 +254,10 @@
 				88B6D7592B5E97CA00F3D3DD /* CommentsView.swift */,
 				88B6D75B2B5E9BA100F3D3DD /* CommentsTable.swift */,
 				88B6D75D2B5EEE4C00F3D3DD /* ImagePicker.swift */,
+				88B6D7632B5FC25700F3D3DD /* CommentItem.swift */,
+				887E12B42B610D4D00137EA0 /* ProfilePageDropDownMenu.swift */,
+				887E12B62B610E0B00137EA0 /* PostViewDropDownMenu.swift */,
+				887E12BA2B6133E800137EA0 /* CustomAsyncImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -389,6 +401,7 @@
 			files = (
 				88576F282B5D7A0B00673431 /* PostViewModel.swift in Sources */,
 				88576F2E2B5D80B300673431 /* PostManager.swift in Sources */,
+				88B6D7642B5FC25800F3D3DD /* CommentItem.swift in Sources */,
 				88B6D7602B5EF49300F3D3DD /* ImageManager.swift in Sources */,
 				88CFEEE42B5877E90018DE6A /* PostItem.swift in Sources */,
 				8805DD1D2B5587E200D16B5E /* SignUpView.swift in Sources */,
@@ -396,10 +409,12 @@
 				88CFEEE02B5866430018DE6A /* PostsTable.swift in Sources */,
 				88CFEEDC2B57152A0018DE6A /* HomePageView.swift in Sources */,
 				8805DD282B5588A700D16B5E /* Validator.swift in Sources */,
+				887E12BB2B6133E800137EA0 /* CustomAsyncImage.swift in Sources */,
 				8805DD262B55888600D16B5E /* AuthManager.swift in Sources */,
 				88CFEEE72B587AFE0018DE6A /* FeedViewModel.swift in Sources */,
 				88B6D7542B5E8D7600F3D3DD /* CommentManager.swift in Sources */,
 				88576F172B5A7C2800673431 /* AuthNavigationController.swift in Sources */,
+				887E12B52B610D4D00137EA0 /* ProfilePageDropDownMenu.swift in Sources */,
 				884FCD852B592F8200DDB630 /* CustomRectangleForCell.swift in Sources */,
 				88576F1D2B5AB35300673431 /* ProfilePage.swift in Sources */,
 				88CFEEDE2B57CB850018DE6A /* CustomSignUpAnimation.swift in Sources */,
@@ -409,6 +424,7 @@
 				8805DD232B55884800D16B5E /* PasswordValidationStatus.swift in Sources */,
 				889108BD2B568CFD00EE831A /* LoginWithGoogleAndFb.swift in Sources */,
 				88B6D75A2B5E97CA00F3D3DD /* CommentsView.swift in Sources */,
+				887E12B72B610E0B00137EA0 /* PostViewDropDownMenu.swift in Sources */,
 				8805DD1B2B5587B800D16B5E /* LoginView.swift in Sources */,
 				884FCD872B5969F000DDB630 /* FeedBar.swift in Sources */,
 				88576F232B5D4DD600673431 /* UserManager.swift in Sources */,

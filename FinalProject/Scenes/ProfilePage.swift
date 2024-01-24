@@ -7,19 +7,13 @@
 
 import SwiftUI
 
-struct ProfilePage: View {
+struct ProfilePage: View, WithRootNavigationController {
     var body: some View {
         ZStack {
             CustomBackgroundLabelForUser()
             
             HStack {
-                Button {
-                    
-                }label: {
-                    Image(systemName: "gearshape")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(.white)
-                }
+                ProfilePageDropDownMenu()
               
                 Spacer()
                 

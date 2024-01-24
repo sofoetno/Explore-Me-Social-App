@@ -13,8 +13,20 @@ class PostViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var imageData: Data? = nil
     
-    func savePost(photoUrl: String?) async {
-        try? await PostManager.shared.creatPost(post: PostModel(title: title, description: description, photoUrl: photoUrl))
+    func savePost(photoUrl: String?, postId: String? = nil) async -> PostModel? {
+        do {
+            return try await PostManager.shared.savePost(
+                post: PostModel(title: title, description: description, photoUrl: photoUrl),
+                postId: postId
+            )
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    
+    func deletePost(postId: String) async {
+        try? await PostManager.shared.deletePost(postId: postId)
     }
     
     func saveImage() async -> (path: String, name: String, downloadUrl: URL)? {

@@ -9,31 +9,15 @@ import SwiftUI
 
 struct PostItem: View {
     let post: PostModel
+    @State var isLiked: Bool = false
     
     
     var body: some View {
         
         ZStack {
             ZStack {
-                AsyncImage(url: URL(string: post.photoUrl ?? "")) { phase in
-                    if let image = phase.image {
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(10)
-                    } else if (phase.error != nil) {
-                        Image(systemName: "photo")
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(10)
-                    } else {
-                        ProgressView()
-//                        Image("test2")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .cornerRadius(10)
-                    }
-                }
+                CustomAsyncImage(imageUrl: post.photoUrl ?? "")
+                    .cornerRadius(10)
                 
                 Circle()
                     .foregroundColor(.white)
@@ -45,6 +29,18 @@ struct PostItem: View {
                     .cornerRadius(6)
                     .clipShape(Circle())
                     .shadow(color: .white, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                
+                HStack {
+                    Image(systemName: isLiked ? "heart.fill" : "heart")
+                        .foregroundColor(isLiked ? AppColors.customRed : .purple)
+                        .font(.title)
+                }
+                .onTapGesture {
+                    isLiked.toggle()
+                }
+                .offset(x: 120, y: -90)
+                
+                
                     
             }
             

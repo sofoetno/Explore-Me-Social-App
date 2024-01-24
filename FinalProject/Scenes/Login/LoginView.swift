@@ -25,7 +25,14 @@ struct LoginView: View, WithRootNavigationController {
                     .offset(y: 120)
                 Spacer()
                 
+                Image("mainLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 220)
+                    .padding(.vertical, 30)
+                
                 CustomLoginButton(signUpViewModel: signUpViewModel)
+                
 
                 
                 LoginWithGoogleAndFb()

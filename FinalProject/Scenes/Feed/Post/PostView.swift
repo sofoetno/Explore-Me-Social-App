@@ -7,15 +7,18 @@
 
 import SwiftUI
 
-struct PostView: View {
-    let post: PostModel
+struct PostView: View, WithRootNavigationController {
+    @State var post: PostModel
     @StateObject var commentViewModel = CommentViewModel()
+    @StateObject var postViewModel = PostViewModel()
+    @ObservedObject var feedViewModel: FeedViewModel
     
     var body: some View {
         VStack {
             ScrollView {
                 VStack {
                     HStack {
+                        
                         Image("testForPost2")
                             .resizable()
                             .frame(width: 60, height: 60)
@@ -27,20 +30,11 @@ struct PostView: View {
                             .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
                         Spacer()
                         
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "slider.vertical.3")
-                                .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
-                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                .padding(.horizontal, 12)
-                        }
+                        PostViewDropDownMenu(feedViewModel: feedViewModel, post: $post)
                     }
                     .padding(.horizontal, 12)
                     
-                    Image("testForPost")
-                        .resizable()
-                        .scaledToFill()
+                    CustomAsyncImage(imageUrl: post.photoUrl ?? "")
                     
                     VStack {
                         HStack {
@@ -51,7 +45,7 @@ struct PostView: View {
                         }
                         
                         
-                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.")
+                        Text(post.description)
                             .foregroundColor(Color(red: 0.51, green: 0.51, blue: 0.51))
                         
                     }
@@ -91,16 +85,19 @@ struct PostView: View {
                         .foregroundColor(.gray)
                 }
                 .offset(x: 140)
-
+                
             }
             .padding(.horizontal, 12)
             .frame(height: 78)
             .background(.white)
         }
     }
+    func goToFeed() {
+        self.pop(animated: true, tab: 0)
+    }
 }
 
 #Preview {
-    PostView(post: PostModel(title: "Title", description: "Desc"))
+    PostView(post: PostModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus."), feedViewModel: FeedViewModel())
 }
 

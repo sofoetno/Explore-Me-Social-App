@@ -7,16 +7,11 @@
 
 import SwiftUI
 
-struct FeedView: View, WithRootNavigationController {
+struct FeedView: View{
     @StateObject var feedViewModel = FeedViewModel()
     
     var body: some View {
-        Button {
-            AuthManager.shared.signOutUser()
-            goToAuth()
-        } label: {
-            Text("Sign out!")
-        }
+        Spacer()
 
         VStack(alignment: .trailing, spacing: 12) {
             Spacer()
@@ -29,8 +24,13 @@ struct FeedView: View, WithRootNavigationController {
                 FeedBar(feedViewModel: feedViewModel)
             }
 
-                .padding(.horizontal, 12)
+                .padding(.horizontal, 16)
             PostsTable(feedViewModel: feedViewModel)
+        }
+        .onAppear() {
+            Task {
+                await feedViewModel.fetchPosts()
+            }
         }
     }
 }

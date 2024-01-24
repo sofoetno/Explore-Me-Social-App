@@ -32,6 +32,7 @@ extension WithRootNavigationController where Self:View {
     // MARK: - Methods
     func push(viewController: UIViewController, animated: Bool, tab: Int = 0) {
         if let navigationController = getNavigationController(tab: tab) {
+            print("found navigation controller")
             navigationController.pushViewController(viewController, animated: animated)
         }
     }

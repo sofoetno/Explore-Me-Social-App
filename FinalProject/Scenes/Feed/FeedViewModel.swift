@@ -11,12 +11,6 @@ import SwiftUI
 final class FeedViewModel: ObservableObject {
     @Published var posts: [PostModel] = []
     
-    init() {
-        Task {
-            await fetchPosts()
-        }
-    }
-    
     func fetchPosts() async {
         do {
             posts = try await PostManager.shared.getPosts()
