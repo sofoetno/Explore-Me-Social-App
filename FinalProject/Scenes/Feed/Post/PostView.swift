@@ -27,14 +27,8 @@ struct PostView: View {
                             .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
                         Spacer()
                         
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "slider.vertical.3")
-                                .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
-                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                .padding(.horizontal, 12)
-                        }
+                        PostViewDropDownMenu()
+                       
                     }
                     .padding(.horizontal, 12)
                     
