@@ -12,4 +12,5 @@ struct PostModel: Codable, Identifiable {
     let title: String
     let description: String
     var photoUrl: String? = nil
+    let userId: String
 }

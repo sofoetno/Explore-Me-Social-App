@@ -15,7 +15,6 @@ struct CustomAsyncImage: View {
             if let image = phase.image {
                 image
                     .resizable()
-                    .scaledToFit()
             } else {
                 Image("mainLogo")
                     .resizable()

@@ -19,15 +19,20 @@ struct PostView: View, WithRootNavigationController {
                 VStack {
                     HStack {
                         
-                        Image("testForPost2")
-                            .resizable()
-                            .frame(width: 60, height: 60)
-                            .cornerRadius(6)
-                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                        Button {
+                            push(viewController: UIHostingController(rootView: ProfilePageView(userId: post.userId)), animated: true, tab: 0)
+                        } label: {
+                            Image("testForPost2")
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                                .cornerRadius(6)
+                                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                            
+                            Text("José Saramago")
+                                .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
+                        }
                         
-                        
-                        Text("José Saramago")
-                            .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
+                       
                         Spacer()
                         
                         PostViewDropDownMenu(feedViewModel: feedViewModel, post: $post)
@@ -35,24 +40,26 @@ struct PostView: View, WithRootNavigationController {
                     .padding(.horizontal, 12)
                     
                     CustomAsyncImage(imageUrl: post.photoUrl ?? "")
+                        .scaledToFit()
                     
                     VStack {
                         HStack {
                             Text("The story")
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            Spacer()
                         }
+                        .padding(.vertical, 8)
                         
                         
                         Text(post.description)
                             .foregroundColor(Color(red: 0.51, green: 0.51, blue: 0.51))
                         
                     }
-                    .padding()
+                    .padding(.horizontal, 1)
                 }
                 
                 Text("Comments")
+                    .padding()
                 
                 CommentsTable(commentViewModel: commentViewModel)
                     .onAppear() {
@@ -61,7 +68,7 @@ struct PostView: View, WithRootNavigationController {
                             await commentViewModel.fetchComments()
                         }
                     }
-                    .frame(height: 1000)
+                    .frame(height: 500)
             }
         }
         .safeAreaInset(edge: .bottom) {
@@ -98,6 +105,6 @@ struct PostView: View, WithRootNavigationController {
 }
 
 #Preview {
-    PostView(post: PostModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus."), feedViewModel: FeedViewModel())
+    PostView(post: PostModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", userId: ""), feedViewModel: FeedViewModel())
 }
 

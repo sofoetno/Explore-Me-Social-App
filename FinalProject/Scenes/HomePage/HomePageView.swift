@@ -19,7 +19,7 @@ struct HomePageView: View, WithRootNavigationController {
     }
     
     func goToFeed() {
-        self.push(viewController: UIHostingController(rootView: FeedView()), animated: true, tab: 1)
+        self.push(viewController: UIHostingController(rootView: FeedView()), animated: true, tab: 0)
     }
 }
 
