@@ -45,4 +45,12 @@ final class CommentManager {
         }
         return comments
     }
+    
+    func countComments(by postId: String) async throws -> Int {
+        let count = try await Firestore.firestore()
+            .collection("comments")
+            .whereField("post_id", isEqualTo: postId)
+            .count.getAggregation(source: .server).count
+        return Int(truncating: count)
+    }
 }

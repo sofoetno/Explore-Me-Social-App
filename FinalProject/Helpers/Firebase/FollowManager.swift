@@ -12,7 +12,7 @@ import Foundation
 final class FollowManager {
     static let shared = FollowManager()
     
-    init() {}
+    private init() {}
     
     func createFollower(followingId: String) async throws {
         let id = UUID().uuidString

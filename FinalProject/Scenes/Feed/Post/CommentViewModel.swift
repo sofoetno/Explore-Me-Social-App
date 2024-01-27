@@ -10,8 +10,8 @@ import SwiftUI
 @MainActor
 final class CommentViewModel: ObservableObject {
     @Published var comments: [CommentModel] = []
+    @Published var commentsCount: Int = 0
     @Published var text: String = ""
-    
     var postId: String = ""
     
     func saveComment() async {
@@ -32,5 +32,9 @@ final class CommentViewModel: ObservableObject {
     
     func clearForm() {
         text = ""
+    }
+    
+    func countComments() async throws {
+        commentsCount = try await CommentManager.shared.countComments(by: postId)
     }
 }
