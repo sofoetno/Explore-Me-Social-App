@@ -9,8 +9,7 @@ import SwiftUI
 
 struct PostItem: View {
     let post: PostModel
-    @State var isLiked: Bool = false
-    
+    @StateObject var likeViewModel = LikeViewModel()
     
     var body: some View {
         
@@ -31,18 +30,8 @@ struct PostItem: View {
                     .clipShape(Circle())
                     .shadow(color: .white, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                 
-                HStack {
-                    Image(systemName: isLiked ? "heart.fill" : "heart")
-                        .foregroundColor(isLiked ? AppColors.customRed : .purple)
-                        .font(.title)
-                }
-                .onTapGesture {
-                    isLiked.toggle()
-                }
-                .offset(x: 120, y: -90)
-                
-                
-                    
+                Like(likeViewModel: likeViewModel)
+                    .offset(x: 120, y: -90)
             }
             
             ZStack {
@@ -82,6 +71,13 @@ struct PostItem: View {
         }
         .frame(height: 324)
         .shadow(color: Color(red: 0.2, green: 0.33, blue: 0.55).opacity(0.3), radius: 22, x: 0, y: 14)
+        .onAppear() {
+            likeViewModel.postId = post.id
+            
+            Task {
+                try await likeViewModel.checkIfLikes()
+            }
+        }
     }
 }
 

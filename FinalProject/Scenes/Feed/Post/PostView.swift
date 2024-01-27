@@ -12,6 +12,7 @@ struct PostView: View, WithRootNavigationController {
     @StateObject var commentViewModel = CommentViewModel()
     @StateObject var postViewModel = PostViewModel()
     @ObservedObject var feedViewModel: FeedViewModel
+    @StateObject var likeViewModel = LikeViewModel()
     
     var body: some View {
         VStack {
@@ -41,6 +42,20 @@ struct PostView: View, WithRootNavigationController {
                     
                     CustomAsyncImage(imageUrl: post.photoUrl ?? "")
                         .scaledToFit()
+                        .overlay(
+                            HStack {
+                                Like(likeViewModel: likeViewModel)
+                                
+                                VStack {
+                                    Image(systemName: "text.bubble")
+                                    Text("\(commentViewModel.commentsCount)")
+                                }
+                 
+                            }
+
+                              
+                           .offset(x: 120, y: -80)
+                            )
                     
                     VStack {
                         HStack {
@@ -71,6 +86,14 @@ struct PostView: View, WithRootNavigationController {
                     .frame(height: 500)
             }
         }
+        .onAppear() {
+            likeViewModel.postId = post.id
+            
+            Task {
+                try await likeViewModel.checkIfLikes()
+                try await commentViewModel.countComments()
+            }
+        }
         .safeAreaInset(edge: .bottom) {
             ZStack {
                 TextField("Type your comment here...", text: $commentViewModel.text)
@@ -85,6 +108,7 @@ struct PostView: View, WithRootNavigationController {
                         await commentViewModel.saveComment()
                         commentViewModel.clearForm()
                         await commentViewModel.fetchComments()
+                        try await commentViewModel.countComments()
                     }
                 } label: {
                     Image(systemName: "arrow.right.circle")
@@ -99,6 +123,7 @@ struct PostView: View, WithRootNavigationController {
             .background(.white)
         }
     }
+    
     func goToFeed() {
         self.pop(animated: true, tab: 0)
     }
