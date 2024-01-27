@@ -19,8 +19,10 @@ final class PostManager {
             "description" : post.description
         ]
         
+        let userId = AuthManager.shared.getAuthenticagedUser()?.uid ?? ""
+        
         if postId == nil {
-            postData["user_id"] = AuthManager.shared.getAuthenticagedUser()?.uid ?? ""
+            postData["user_id"] = userId
             postData["date_created"] = Timestamp()
         }
         
@@ -32,7 +34,7 @@ final class PostManager {
         
         try await Firestore.firestore().collection("posts").document(id).setData(postData, merge: postId != nil)
         
-        return PostModel(id: id, title: post.title, description: post.description, photoUrl: post.photoUrl)
+        return PostModel(id: id, title: post.title, description: post.description, photoUrl: post.photoUrl, userId: userId)
     }
     
     func deletePost(postId: String) async throws {
@@ -48,7 +50,8 @@ final class PostManager {
                 id: document.documentID,
                 title: dictionary["title"] as! String,
                 description: dictionary["description"] as! String,
-                photoUrl: dictionary["photo_url"] as? String
+                photoUrl: dictionary["photo_url"] as? String, 
+                userId: dictionary["user_id"] as! String
             )
             posts.append(post)
         }

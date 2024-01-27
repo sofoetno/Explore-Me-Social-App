@@ -53,7 +53,8 @@ struct PostFormView: View, WithRootNavigationController {
                 Button {
                     showImagePicker = true
                 } label: {
-                    Text("add image")
+                    Image(systemName: "photo.badge.plus.fill")
+                        .fontWeight(.bold)
                 }
                 .primaryButtonStyle
                 
@@ -61,7 +62,7 @@ struct PostFormView: View, WithRootNavigationController {
                     Task  {
                         let (_, _, downloadUrl) = await postViewModel.saveImage() ?? (path: "", name: "", URL(string: ""))
                         let savedPost = await postViewModel.savePost(photoUrl: downloadUrl?.absoluteString, postId: existingPost?.id)
-                        dismiss(animated: true, tab: 1)
+                        dismiss(animated: true, tab: 0)
                         await feedViewModel.fetchPosts()
                         if let savedPost, let updateCallback {
                             updateCallback(savedPost)

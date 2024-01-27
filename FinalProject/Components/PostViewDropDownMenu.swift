@@ -40,15 +40,17 @@ struct PostViewDropDownMenu: View, WithRootNavigationController {
                 rootView: PostFormView(
                     feedViewModel: feedViewModel,
                     existingPost: post,
-                    updateCallback: { post in self.post = post }
+                    updateCallback: { post in
+                        self.post = post
+                    }
                 )
             ),
             animated: true,
-            tab: 1
+            tab: 0
         )
     }
 }
 
 #Preview {
-    PostViewDropDownMenu(feedViewModel: FeedViewModel(), post: .constant(PostModel(id: "", title: "", description: "", photoUrl: "")))
+    PostViewDropDownMenu(feedViewModel: FeedViewModel(), post: .constant(PostModel(id: "", title: "", description: "", photoUrl: "", userId: "")))
 }

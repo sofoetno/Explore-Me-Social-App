@@ -17,6 +17,7 @@ struct PostItem: View {
         ZStack {
             ZStack {
                 CustomAsyncImage(imageUrl: post.photoUrl ?? "")
+                    .scaledToFit()
                     .cornerRadius(10)
                 
                 Circle()
@@ -85,5 +86,5 @@ struct PostItem: View {
 }
 
 #Preview {
-    PostItem(post: PostModel(title: "Story name", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus."))
+    PostItem(post: PostModel(title: "Story name", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", userId: ""))
 }
