@@ -22,25 +22,41 @@ struct ProfilePageView: View, WithRootNavigationController {
                 if profilePageViewModel.isMyProfile() {
                     ProfilePageDropDownMenu()
                 }
-              
+                
                 Spacer()
                 
                 if !profilePageViewModel.isMyProfile() {
                     Button {
+                        Task {
+                            
+                            if profilePageViewModel.following {
+                                try await profilePageViewModel.unfollow()
+                            } else {
+                                try await profilePageViewModel.follow()
+                            }
+                            try await profilePageViewModel.countFollowers()
+                            
+                        }
                         
                     } label: {
                         Capsule()
-                            .frame(width: 80, height: 40)
+                            .frame(width: 100, height: 40)
                             .foregroundColor(.white)
-                            .overlay(
-                                Text("Follow")
-                                    .foregroundColor(Color(red: 0.53, green: 0.55, blue: 0.96))
-                            )
-                }
+                            .overlay {
+                                if profilePageViewModel.following {
+                                    Text("Following")
+                                        .foregroundColor(Color(red: 0.53, green: 0.55, blue: 0.96))
+                                } else {
+                                    Text("Follow")
+                                        .foregroundColor(Color(red: 0.53, green: 0.55, blue: 0.96))
+                                }
+                               
+                            }
+                    }
                 }
                 
-               
-                    
+                
+                
             }
             .padding(.horizontal, 12)
             .offset(y: -340)
@@ -49,8 +65,8 @@ struct ProfilePageView: View, WithRootNavigationController {
                 Circle()
                     .foregroundColor(.white)
                     .frame(width: 100, height: 100)
-
-               
+                
+                
                     .overlay(
                         
                         CustomAsyncImage(imageUrl: profilePageViewModel.currentProfileImageUrl)
@@ -95,12 +111,12 @@ struct ProfilePageView: View, WithRootNavigationController {
                     .foregroundStyle(Color.gray)
                 
                 HStack(alignment: .center, spacing: 48) {
-                    Text("220 Followers")
+                    Text("\(profilePageViewModel.followersCount) Followers")
                         .kerning(0.6)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
                     
-                    Text("150 Following")
+                    Text("\(profilePageViewModel.followingsCount) Following")
                         .kerning(0.6)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
@@ -112,19 +128,26 @@ struct ProfilePageView: View, WithRootNavigationController {
                 .cornerRadius(6)
             }
             .offset(y: -110)
-           
-   
+            
+            
         }
         .onAppear() {
             profilePageViewModel.userId = userId
             Task {
-                try? await profilePageViewModel.getUser()
+                do {
+                    try await profilePageViewModel.getUser()
+                    try await profilePageViewModel.countFollowers()
+                    try await profilePageViewModel.countFollowings()
+                    try await profilePageViewModel.checkIfFollows()
+                } catch {
+                    print(error)
+                }
             }
-
+            
         }
     }
 }
 
 #Preview {
-    ProfilePageView(userId: "")
+    ProfilePageView(userId: "QVILtCNWoQOunCgxvcYX6nN8Y9D3")
 }

@@ -12,6 +12,9 @@ class ProfilePageViewModel: ObservableObject {
     
     @Published var imageData: Data? = nil
     @Published var currentProfileImageUrl: String = ""
+    @Published var followersCount: Int = 0
+    @Published var followingsCount: Int = 0
+    @Published var following = false
     var userId: String = ""
    
         
@@ -40,5 +43,27 @@ class ProfilePageViewModel: ObservableObject {
     
     func isMyProfile() -> Bool {
         userId == AuthManager.shared.getAuthenticagedUser()?.uid
+    }
+    
+    func countFollowers() async throws {
+        followersCount = try await FollowManager.shared.countFollowers(followingUserId: userId)
+    }
+    
+    func follow() async throws {
+        try await FollowManager.shared.createFollower(followingId: userId)
+        following = true
+    }
+    
+    func unfollow() async throws {
+        try await FollowManager.shared.deleteFollower(followingId: userId)
+        following = false
+    }
+    
+    func countFollowings() async throws {
+        followingsCount = try await FollowManager.shared.countFollowings(followerUserId: userId)
+    }
+    
+    func checkIfFollows() async throws {
+        following = try await FollowManager.shared.checkIfFollows(to: userId)
     }
 }

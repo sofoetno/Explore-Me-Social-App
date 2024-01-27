@@ -63,6 +63,7 @@
 		88CFEEE42B5877E90018DE6A /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEE32B5877E90018DE6A /* PostItem.swift */; };
 		88CFEEE72B587AFE0018DE6A /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEE62B587AFE0018DE6A /* FeedViewModel.swift */; };
 		88CFEEE92B587C610018DE6A /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEE82B587C610018DE6A /* PostView.swift */; };
+		88E607FC2B653B0B00D5978D /* FollowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E607FB2B653B0B00D5978D /* FollowManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		88CFEEE32B5877E90018DE6A /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
 		88CFEEE62B587AFE0018DE6A /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		88CFEEE82B587C610018DE6A /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		88E607FB2B653B0B00D5978D /* FollowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 				88576F2D2B5D80B300673431 /* PostManager.swift */,
 				88B6D7532B5E8D7600F3D3DD /* CommentManager.swift */,
 				88B6D75F2B5EF49300F3D3DD /* ImageManager.swift */,
+				88E607FB2B653B0B00D5978D /* FollowManager.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				889108B42B5683D600EE831A /* CustomBackgroundLabelForUser.swift in Sources */,
 				889108AD2B55B44900EE831A /* ColorExtention.swift in Sources */,
 				88576F152B5A6C1000673431 /* TabViewController.swift in Sources */,
+				88E607FC2B653B0B00D5978D /* FollowManager.swift in Sources */,
 				88B6D75E2B5EEE4C00F3D3DD /* ImagePicker.swift in Sources */,
 				8805DD052B55863700D16B5E /* SceneDelegate.swift in Sources */,
 				8805DD212B55882400D16B5E /* WithRootNavigationController.swift in Sources */,
