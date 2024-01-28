@@ -9,29 +9,56 @@ import SwiftUI
 
 struct FeedBar: View, WithRootNavigationController {
     @ObservedObject var feedViewModel: FeedViewModel
+    @State var searchIsShown: Bool = false
     
     var body: some View {
-        HStack(spacing: 20) {
-            Button {
-                openPostForm()
-            } label: {
-                Image(systemName: "plus.circle")
-            }
-            
-            Button {
+        VStack(spacing: 20) {
+            HStack(spacing: 20) {
+                Button {
+                    openPostForm()
+                } label: {
+                    Image(systemName: "plus.circle")
+                }
                 
-            } label: {
-                Image(systemName: "message")
-            }
-            
-            Button {
+                Button {
+                 
+                } label: {
+                    Image(systemName: "message")
+                }
                 
-            } label: {
-                Image(systemName: "magnifyingglass")
+                Button {
+                    searchIsShown.toggle()
+                    Task {
+                        await feedViewModel.fetchPosts()
+                    }
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                }
+            }
+            .font(.title)
+            .foregroundColor(.gray)
+            
+            VStack {
+                if searchIsShown {
+                    TextField("search...", text: $feedViewModel.searchTerm)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 16)
+                        .background(Color(red: 0.95, green: 0.96, blue: 0.97))
+                        .cornerRadius(30)
+                    
+                    Button {
+                        Task {
+                            await feedViewModel.fetchPosts()
+                        }
+                        
+                    } label: {
+                        Text("Search")
+                    }
+                }
             }
         }
-        .font(.title)
-        .foregroundColor(.gray)
+        
+      
     }
     
     func openPostForm() {

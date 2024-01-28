@@ -41,8 +41,18 @@ final class PostManager {
         try await Firestore.firestore().collection("posts").document(postId).delete()
     }
     
-    func getPosts() async throws -> [PostModel] {
-        let snapshot = try await Firestore.firestore().collection("posts").getDocuments()
+    func getPosts(searchTerm: String?) async throws -> [PostModel] {
+        
+        let collection = Firestore.firestore().collection("posts")
+        var query: Query? = nil
+        if let searchTerm {
+            if searchTerm != "" {
+                query = collection
+                    .whereField("title", isEqualTo: searchTerm)
+            }
+        }
+        let snapshot = try await query != nil ? query!.getDocuments() : collection.getDocuments()
+        
         var posts: [PostModel] = []
         snapshot.documents.forEach { document in
             let dictionary = document.data()
@@ -50,11 +60,12 @@ final class PostManager {
                 id: document.documentID,
                 title: dictionary["title"] as! String,
                 description: dictionary["description"] as! String,
-                photoUrl: dictionary["photo_url"] as? String, 
+                photoUrl: dictionary["photo_url"] as? String,
                 userId: dictionary["user_id"] as! String
             )
             posts.append(post)
         }
+        
         return posts
     }
 }
