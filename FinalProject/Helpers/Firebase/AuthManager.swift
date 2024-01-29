@@ -34,9 +34,7 @@ final class AuthManager {
     
     func signOutUser() {
         do {
-            print("signing out")
             try Auth.auth().signOut()
-            print("signed out")
         } catch {
             print(error)
         }

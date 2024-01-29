@@ -29,7 +29,7 @@ final class ChatManager {
         if document.exists {
             let dictionary = document.data()
             
-            let chat = ChatModel(participants: dictionary?["participants"] as! [String])
+            let chat = ChatModel(id: chatId, participants: dictionary?["participants"] as! [String])
             
             return chat
         }
@@ -50,14 +50,15 @@ final class ChatManager {
         snapshot.documents.forEach { document in
             let dictionary = document.data()
          
-            let chat = ChatModel(participants: dictionary["participants"] as! [String])
+            let chat = ChatModel(id: document.documentID, participants: dictionary["participants"] as! [String])
             chats.append(chat)
         }
         
         return chats.count > 0 ? chats[0] : nil
     }
     
-    func getChats(participantId: String) async throws -> [ChatModel] {
+    func getChats() async throws -> [ChatModel] {
+        print(AuthManager.shared.getAuthenticagedUser()?.uid)
         let snapshot = try await Firestore.firestore()
             .collection("chats")
             .whereField("participants", arrayContains: AuthManager.shared.getAuthenticagedUser()?.uid ?? "")
@@ -68,7 +69,7 @@ final class ChatManager {
         snapshot.documents.forEach { document in
             let dictionary = document.data()
          
-            let chat = ChatModel(participants: dictionary["participants"] as! [String])
+            let chat = ChatModel(id: document.documentID, participants: dictionary["participants"] as! [String])
             chats.append(chat)
         }
         

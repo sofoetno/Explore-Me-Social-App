@@ -30,6 +30,7 @@ final class MessageManager {
         let snapshot = try await Firestore.firestore()
             .collection("messages")
             .whereField("chat_id", isEqualTo: chatId)
+            .order(by: "send_date")
             .getDocuments()
         
         var messages: [MessageModel] = []
@@ -49,5 +50,32 @@ final class MessageManager {
         }
         
         return messages
+    }
+    
+    func getLatestMessage(by chatId: String) async throws -> MessageModel? {
+        let snapshot = try await Firestore.firestore()
+            .collection("messages")
+            .order(by: "send_date", descending: true)
+            .limit(to: 1)
+            .getDocuments()
+        
+        var messages: [MessageModel] = []
+        
+        snapshot.documents.forEach { document in
+            let dictionary = document.data()
+            
+            let created = dictionary["send_date"] as! Timestamp
+            let sendDate = created.dateValue()
+            
+            let message = MessageModel(
+                text: dictionary["text"] as! String,
+                chatId: dictionary["chat_id"] as! String,
+                senderId: dictionary["sender_id"] as! String,
+                sendDate: sendDate
+            )
+            messages.append(message)
+        }
+        
+        return messages.count > 0 ? messages[0] : nil
     }
 }

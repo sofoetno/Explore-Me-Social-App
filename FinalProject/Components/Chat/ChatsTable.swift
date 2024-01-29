@@ -1,19 +1,21 @@
 //
-//  MessagesTable.swift
+//  ChatTsable.swift
 //  FinalProject
 //
-//  Created by Sofo Machurishvili on 28.01.24.
+//  Created by Sofo Machurishvili on 29.01.24.
 //
-
 
 import SwiftUI
 import UIKit
 
-struct MessagesTable: UIViewRepresentable, WithRootNavigationController {
-    @ObservedObject var chatViewModel: ChatViewModel
+import SwiftUI
+import UIKit
+
+struct ChatsTable: UIViewRepresentable, WithRootNavigationController {
+    @ObservedObject var chatsViewModel: ChatsViewModel
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(chatViewModel: chatViewModel)
+        return Coordinator(chatsViewModel: chatsViewModel)
     }
     
     func makeUIView(context: Context) -> UITableView {
@@ -28,24 +30,24 @@ struct MessagesTable: UIViewRepresentable, WithRootNavigationController {
     }
     
     class Coordinator: NSObject, UITableViewDataSource {
-        @ObservedObject var chatViewModel: ChatViewModel
+        @ObservedObject var chatsViewModel: ChatsViewModel
         
-        init(chatViewModel: ChatViewModel) {
-            self.chatViewModel = chatViewModel
+        init(chatsViewModel: ChatsViewModel) {
+            self.chatsViewModel = chatsViewModel
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            chatViewModel.messages.count
+            chatsViewModel.chats.count
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-            let message = chatViewModel.messages[indexPath.row]
+            let chat = chatsViewModel.chats[indexPath.row]
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             
             cell.contentConfiguration = UIHostingConfiguration {
-                MessageItem(message: message)
+                ChatItem(chat: chat, chatsViewModel: chatsViewModel)
             }
             cell.selectionStyle = .none
             
@@ -55,6 +57,5 @@ struct MessagesTable: UIViewRepresentable, WithRootNavigationController {
 }
 
 #Preview {
-    MessagesTable(chatViewModel: ChatViewModel())
+    ChatsTable(chatsViewModel: ChatsViewModel())
 }
-

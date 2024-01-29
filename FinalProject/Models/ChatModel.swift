@@ -8,5 +8,6 @@
 import Foundation
 
 struct ChatModel {
+    let id: String
     let participants: [String]
 }

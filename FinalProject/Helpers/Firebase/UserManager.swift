@@ -36,7 +36,7 @@ final class UserManager {
         if document.exists {
             let dictionary = document.data()
             
-            var user = UserModel()
+            var user = UserModel(userId: userId, email: dictionary?["email"] as? String ?? "")
             
             if let imageUrl =  dictionary?["image_url"] as? String {
                 user.imageUrl = imageUrl
