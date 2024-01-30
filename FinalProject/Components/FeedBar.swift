@@ -12,7 +12,7 @@ struct FeedBar: View, WithRootNavigationController {
     @State var searchIsShown: Bool = false
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(alignment: .trailing, spacing: 10) {
             HStack(spacing: 20) {
                 Button {
                     openPostForm()
@@ -38,7 +38,7 @@ struct FeedBar: View, WithRootNavigationController {
             .font(.title)
             .foregroundColor(.gray)
             
-            VStack {
+            VStack() {
                 if searchIsShown {
                     TextField("search...", text: $feedViewModel.searchTerm)
                         .padding(.horizontal, 20)
@@ -53,6 +53,7 @@ struct FeedBar: View, WithRootNavigationController {
                         
                     } label: {
                         Text("Search")
+                            .foregroundStyle(.purple)
                     }
                 }
             }

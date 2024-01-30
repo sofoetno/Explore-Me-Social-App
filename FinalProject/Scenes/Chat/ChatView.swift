@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ChatView: View {
     @ObservedObject var chatViewModel = ChatViewModel()
-    let chatId: String 
+    let chatId: String?
+    let participantId: String?
     
     
     var body: some View {
@@ -24,7 +25,6 @@ struct ChatView: View {
                     .padding(.vertical, 60)
                     .background(Color(red: 0.95, green: 0.96, blue: 0.97))
                     .cornerRadius(10)
-                
                 
                 Button {
                     Task {
@@ -42,17 +42,14 @@ struct ChatView: View {
             }
             .padding(.horizontal, 12)
             .frame(height: 78)
-
-            
         }
-        
-        
-        
-        
         .onAppear() {
             chatViewModel.chatId = chatId
+            chatViewModel.participantId = participantId
             Task {
-                print("test")
+                if chatId == nil {
+                    try await chatViewModel.findOrCreateChat()
+                }
                 try await chatViewModel.loadData()
             }
             
@@ -61,5 +58,5 @@ struct ChatView: View {
 }
 
 #Preview {
-    ChatView(chatId: "d2nJDIUeecCeUztMp75n")
+    ChatView(chatId: "d2nJDIUeecCeUztMp75n", participantId: "")
 }

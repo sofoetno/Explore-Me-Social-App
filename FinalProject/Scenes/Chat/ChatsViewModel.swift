@@ -13,7 +13,6 @@ final class ChatsViewModel: ObservableObject {
     
     func getChats() async throws {
         chats = try await ChatManager.shared.getChats()
-        print(chats)
     }
     
     func getLatestMessage(by chatId: String) async throws -> MessageModel? {

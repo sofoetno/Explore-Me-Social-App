@@ -49,6 +49,7 @@ final class PostManager {
             if searchTerm != "" {
                 query = collection
                     .whereField("title", isEqualTo: searchTerm)
+                    .order(by: "date_created", descending: true)
             }
         }
         let snapshot = try await query != nil ? query!.getDocuments() : collection.getDocuments()

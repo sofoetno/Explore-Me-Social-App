@@ -10,14 +10,17 @@ import Foundation
 @MainActor
 final class ChatViewModel: ObservableObject {
     @Published var chat: ChatModel? = nil
-    @Published var messages: [MessageModel] = [MessageModel(text: "Google Messages is a text messaging software application developed by Google for its Android and Wear OS mobile operating systems, while it's also available via the Web. Google's official universal messaging platform for the Android ecosystem, Messages employs SMS and Rich Communication Services. ", chatId: "1", senderId: "1", sendDate: nil)]
+    @Published var messages: [MessageModel] = []
     @Published var participant: UserModel? = nil
     @Published var text: String = ""
     var chatId: String? = nil
+    var participantId: String? = nil
     
     func loadData() async throws {
        
-        chat = try await ChatManager.shared.getChatById(chatId: chatId ?? "")
+        if chat == nil && chatId != nil {
+            chat = try await ChatManager.shared.getChatById(chatId: chatId ?? "")
+        }
         try await getMessages()
         
         let participantIds = chat?.participants.filter({ userId in
@@ -43,5 +46,15 @@ final class ChatViewModel: ObservableObject {
     
     func getMessages() async throws {
         messages = try await MessageManager.shared.getMessages(by: chatId ?? "")
+    }
+    
+    func findOrCreateChat() async throws {
+        chat = try await ChatManager.shared.getChatByParticipants(participantId: participantId ?? "")
+       
+        if chat == nil {
+            chat = try await ChatManager.shared.createChat(participantId: participantId ?? "")
+        }
+        
+        chatId = chat?.id
     }
 }

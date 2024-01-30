@@ -14,13 +14,16 @@ final class ChatManager {
     
     private init() { }
     
-    func createChat(participantId: String) async throws {
+    func createChat(participantId: String) async throws -> ChatModel {
         let id = UUID().uuidString
+        let participants = [participantId, AuthManager.shared.getAuthenticagedUser()?.uid ?? ""]
         let chatData: [String:Any] = [
-            "participants" : [participantId, AuthManager.shared.getAuthenticagedUser()?.uid ?? ""]
+            "participants" : participants
         ]
         
         try await Firestore.firestore().collection("chats").document(id).setData(chatData, merge: false)
+        
+        return ChatModel(id: id, participants: participants)
     }
     
     func getChatById(chatId: String) async throws -> ChatModel? {
@@ -39,10 +42,10 @@ final class ChatManager {
     
     
     func getChatByParticipants(participantId: String) async throws -> ChatModel? {
+        let authenticatedUser = AuthManager.shared.getAuthenticagedUser()?.uid ?? ""
         let snapshot = try await Firestore.firestore()
             .collection("chats")
-            .whereField("participants", arrayContains: participantId)
-            .whereField("participants", arrayContains: AuthManager.shared.getAuthenticagedUser()?.uid ?? "")
+            .whereField("participants", in: [[authenticatedUser, participantId], [participantId, authenticatedUser]])
             .getDocuments()
         
         var chats: [ChatModel] = []
@@ -58,7 +61,6 @@ final class ChatManager {
     }
     
     func getChats() async throws -> [ChatModel] {
-        print(AuthManager.shared.getAuthenticagedUser()?.uid)
         let snapshot = try await Firestore.firestore()
             .collection("chats")
             .whereField("participants", arrayContains: AuthManager.shared.getAuthenticagedUser()?.uid ?? "")

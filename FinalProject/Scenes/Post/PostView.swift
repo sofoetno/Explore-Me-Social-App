@@ -13,6 +13,8 @@ struct PostView: View, WithRootNavigationController {
     @StateObject var postViewModel = PostViewModel()
     @ObservedObject var feedViewModel: FeedViewModel
     @StateObject var likeViewModel = LikeViewModel()
+    @StateObject var profileItemViewModel = ProfileItemViewModel()
+    
     
     var body: some View {
         VStack {
@@ -23,13 +25,12 @@ struct PostView: View, WithRootNavigationController {
                         Button {
                             push(viewController: UIHostingController(rootView: ProfilePageView(userId: post.userId)), animated: true, tab: 0)
                         } label: {
-                            Image("testForPost2")
-                                .resizable()
+                            CustomAsyncImage(imageUrl: profileItemViewModel.currentProfileImageUrl)
                                 .frame(width: 60, height: 60)
                                 .cornerRadius(6)
-                                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                                .clipShape(Circle())
                             
-                            Text("José Saramago")
+                            Text(profileItemViewModel.fullName)
                                 .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
                         }
                         
@@ -44,17 +45,25 @@ struct PostView: View, WithRootNavigationController {
                         .scaledToFit()
                         .overlay(
                             HStack {
-                                Like(likeViewModel: likeViewModel)
-                                
-                                VStack {
-                                    Image(systemName: "text.bubble")
-                                    Text("\(commentViewModel.commentsCount)")
+                                HStack {
+                                    Like(likeViewModel: likeViewModel)
                                 }
-                 
+                                Spacer()
+                                HStack {
+                                    Image(systemName: "text.bubble")
+                                        .foregroundColor(.purple)
+                                    Text("\(commentViewModel.commentsCount)")
+                                    .foregroundStyle(AppColors.darkGray)
+                                }
                             }
+                                .padding(.horizontal, 50)
+                                    .frame(width: 380, height: 50)
+                                    .background(AppColors.customLightBlue)
+                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                    .cornerRadius(10)
 
                               
-                           .offset(x: 120, y: -80)
+                           .offset(y: 94)
                             )
                     
                     VStack {
@@ -63,7 +72,7 @@ struct PostView: View, WithRootNavigationController {
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         }
-                        .padding(.vertical, 8)
+                        .padding(.vertical, 30)
                         
                         
                         Text(post.description)
@@ -88,36 +97,16 @@ struct PostView: View, WithRootNavigationController {
         }
         .onAppear() {
             likeViewModel.postId = post.id
+            profileItemViewModel.userId = post.userId
             
             Task {
                 try await likeViewModel.checkIfLikes()
                 try await commentViewModel.countComments()
+                try await profileItemViewModel.getUser()
             }
         }
         .safeAreaInset(edge: .bottom) {
-            ZStack {
-                TextField("Type your comment here...", text: $commentViewModel.text)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 16)
-                    .background(Color(red: 0.95, green: 0.96, blue: 0.97))
-                    .cornerRadius(10)
-                
-                
-                Button {
-                    Task {
-                        await commentViewModel.saveComment()
-                        commentViewModel.clearForm()
-                        await commentViewModel.fetchComments()
-                        try await commentViewModel.countComments()
-                    }
-                } label: {
-                    Image(systemName: "arrow.right.circle")
-                        .font(.largeTitle)
-                        .foregroundColor(.gray)
-                }
-                .offset(x: 140)
-                
-            }
+            PostCommentTextFieldWithButton(commentViewModel: commentViewModel)
             .padding(.horizontal, 12)
             .frame(height: 78)
             .background(.white)
@@ -130,6 +119,6 @@ struct PostView: View, WithRootNavigationController {
 }
 
 #Preview {
-    PostView(post: PostModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", userId: ""), feedViewModel: FeedViewModel())
+    PostView(post: PostModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", userId: "RskA3hj9VlgFrcAzXNJL9m6rbpZ2"), feedViewModel: FeedViewModel())
 }
 

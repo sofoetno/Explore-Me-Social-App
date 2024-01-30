@@ -15,7 +15,12 @@ struct CustomAsyncImage: View {
     let imageUrl: String
     
     var body: some View {
-        if ImageCache.images[imageUrl] != nil {
+        if imageUrl == "" {
+            Image("mainLogo")
+                .resizable()
+                .scaledToFit()
+        }
+        else if ImageCache.images[imageUrl] != nil {
             ImageCache.images[imageUrl]?
                 .resizable()
         } else {

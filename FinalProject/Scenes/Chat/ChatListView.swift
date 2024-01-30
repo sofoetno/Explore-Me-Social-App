@@ -12,6 +12,9 @@ struct ChatListView: View {
     
     var body: some View {
         VStack {
+            Text("Message")
+                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                .fontWeight(.semibold)
             ChatsTable(chatsViewModel: chatsViewModel)
         }
         .onAppear() {

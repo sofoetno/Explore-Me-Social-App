@@ -14,12 +14,9 @@ struct ProfilePageDropDownMenu: View, WithRootNavigationController {
                 AuthManager.shared.signOutUser()
                 goToAuth()
             }
-            Button("Delete", role: .destructive) {
-                
-            }
         } label: {
             Label("Settings", systemImage: "gearshape")
-                .font(.title)
+                .font(.title2)
                 .foregroundColor(.white)
         }
     }
