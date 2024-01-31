@@ -12,15 +12,31 @@ struct ProfilePageView: View, WithRootNavigationController {
     @State var showImagePicker = false
     @State var inputImage: UIImage?
     @StateObject var profilePageViewModel = ProfilePageViewModel()
+
     
     var body: some View {
         ZStack {
             CustomBackgroundLabelForUser()
+                .offset(y: 40)
             
             HStack {
                 
                 if profilePageViewModel.isMyProfile() {
                     ProfilePageDropDownMenu()
+                }
+                
+                
+                if !profilePageViewModel.isMyProfile() {
+                    Button {
+                        goToTab(tab: 1)
+                        push(viewController: UIHostingController(rootView: ChatView(chatId: nil, participantId: userId)), animated: true, tab: 1)
+                      
+                    } label: {
+                        Image(systemName: "ellipsis.message")
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                    }
                 }
                 
                 Spacer()
@@ -35,7 +51,6 @@ struct ProfilePageView: View, WithRootNavigationController {
                                 try await profilePageViewModel.follow()
                             }
                             try await profilePageViewModel.countFollowers()
-                            
                         }
                         
                     } label: {
@@ -54,12 +69,10 @@ struct ProfilePageView: View, WithRootNavigationController {
                             }
                     }
                 }
-                
-                
-                
+           
             }
-            .padding(.horizontal, 12)
-            .offset(y: -340)
+            .padding(.horizontal, 20)
+            .offset(y: -320)
             
             VStack {
                 Circle()
@@ -105,8 +118,8 @@ struct ProfilePageView: View, WithRootNavigationController {
             .offset(y: -230)
             
             VStack {
-                Text("Bruno Mars")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                Text(profilePageViewModel.fullName)
+                    .font(.title)
                 Text("Singer")
                     .foregroundStyle(Color.gray)
                 
@@ -149,5 +162,5 @@ struct ProfilePageView: View, WithRootNavigationController {
 }
 
 #Preview {
-    ProfilePageView(userId: "QVILtCNWoQOunCgxvcYX6nN8Y9D3")
+    ProfilePageView(userId: "RskA3hj9VlgFrcAzXNJL9m6rbpZ2")
 }

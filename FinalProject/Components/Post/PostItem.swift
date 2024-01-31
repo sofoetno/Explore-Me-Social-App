@@ -10,6 +10,7 @@ import SwiftUI
 struct PostItem: View {
     let post: PostModel
     @StateObject var likeViewModel = LikeViewModel()
+    @StateObject var postItemViewModel = ProfileItemViewModel()
     
     var body: some View {
         
@@ -23,8 +24,7 @@ struct PostItem: View {
                     .foregroundColor(.white)
                     .frame(width: 74, height: 74)
                 
-                Image("avatar")
-                    .resizable()
+                CustomAsyncImage(imageUrl: postItemViewModel.currentProfileImageUrl)
                     .frame(width: 70, height: 70)
                     .cornerRadius(6)
                     .clipShape(Circle())
@@ -73,8 +73,10 @@ struct PostItem: View {
         .shadow(color: Color(red: 0.2, green: 0.33, blue: 0.55).opacity(0.3), radius: 22, x: 0, y: 14)
         .onAppear() {
             likeViewModel.postId = post.id
+            postItemViewModel.userId = post.userId
             
             Task {
+                try await postItemViewModel.getUser()
                 try await likeViewModel.checkIfLikes()
             }
         }
@@ -82,5 +84,5 @@ struct PostItem: View {
 }
 
 #Preview {
-    PostItem(post: PostModel(title: "Story name", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", userId: ""))
+    PostItem(post: PostModel(title: "Story name", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", userId: "QVILtCNWoQOunCgxvcYX6nN8Y9D3"))
 }

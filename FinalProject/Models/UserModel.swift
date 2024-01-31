@@ -9,4 +9,7 @@ import Foundation
 
 struct UserModel: Codable {
     var imageUrl: String? = nil
+    let userId: String
+    let email: String
+    let fullName: String
 }

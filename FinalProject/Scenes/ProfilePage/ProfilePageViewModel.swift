@@ -16,6 +16,7 @@ class ProfilePageViewModel: ObservableObject {
     @Published var followingsCount: Int = 0
     @Published var following = false
     var userId: String = ""
+    @Published var fullName: String = ""
    
         
         func changeProfileImage() async -> (path: String, name: String, downloadUrl: URL)? {
@@ -39,6 +40,8 @@ class ProfilePageViewModel: ObservableObject {
     func getUser() async throws {
         let user = try await UserManager.shared.getUser(by: userId)
         currentProfileImageUrl = user?.imageUrl ?? ""
+        fullName = user?.fullName ?? ""
+        
     }
     
     func isMyProfile() -> Bool {

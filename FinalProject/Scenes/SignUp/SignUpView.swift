@@ -23,13 +23,18 @@ struct SignUpView: View, WithRootNavigationController {
                     .foregroundStyle(.white)
                     .font(.largeTitle)
                 
+                Spacer()
+                TextField("Enter full name...", text: $signUpViewModel.fullName)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 16)
+                    .background(Color(red: 0.95, green: 0.96, blue: 0.97))
+                    .cornerRadius(30)
                 CustomTextFieldsForUser(signUpViewModel: signUpViewModel)
-                    .offset(y: 120)
+               
                 Spacer()
                 
                 PasswordChecker(signUpViewModel: signUpViewModel)
                     .foregroundColor(.red)
-                    .padding(.vertical, 40)
                 
                 CustomSignUpButton(signUpViewModel: signUpViewModel)
                 

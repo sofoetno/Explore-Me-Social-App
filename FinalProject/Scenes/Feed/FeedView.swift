@@ -15,13 +15,13 @@ struct FeedView: View{
 
         VStack(alignment: .trailing, spacing: 12) {
             Spacer()
-            HStack {
+            VStack(alignment: .trailing, spacing: 10) {
                 Image("mainLogo")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 170)
-                    Spacer()
                 FeedBar(feedViewModel: feedViewModel)
+          
             }
 
                 .padding(.horizontal, 16)

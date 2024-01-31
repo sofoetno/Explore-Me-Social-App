@@ -13,10 +13,11 @@ final class UserManager {
     static let shared = UserManager()
     private init() {}
     
-    func creatUser(auth: AuthDataResultModel) async throws {
+    func creatUser(auth: AuthDataResultModel, fullName: String) async throws {
         let userData: [String:Any] = [
             "date_created" : Timestamp(),
-            "email" : auth.email ?? ""
+            "email" : auth.email ?? "",
+            "full_name" : fullName
         ]
          
         try await Firestore.firestore().collection("users").document(auth.uid).setData(userData, merge: false)
@@ -36,7 +37,7 @@ final class UserManager {
         if document.exists {
             let dictionary = document.data()
             
-            var user = UserModel()
+            var user = UserModel(userId: userId, email: dictionary?["email"] as? String ?? "", fullName: dictionary?["full_name"] as? String ?? "")
             
             if let imageUrl =  dictionary?["image_url"] as? String {
                 user.imageUrl = imageUrl
