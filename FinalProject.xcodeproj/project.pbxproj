@@ -54,6 +54,8 @@
 		88980A602B690394003F09EC /* PostCommentCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A5F2B690394003F09EC /* PostCommentCountView.swift */; };
 		88980A622B6904BE003F09EC /* PostCommentTextFieldWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A612B6904BE003F09EC /* PostCommentTextFieldWithButton.swift */; };
 		88980A642B695CFE003F09EC /* ProfileItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A632B695CFE003F09EC /* ProfileItemViewModel.swift */; };
+		88980A662B6A5373003F09EC /* PostsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A652B6A5373003F09EC /* PostsCollection.swift */; };
+		88980A682B6A5473003F09EC /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A672B6A5473003F09EC /* PostsViewModel.swift */; };
 		88B6D7542B5E8D7600F3D3DD /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D7532B5E8D7600F3D3DD /* CommentManager.swift */; };
 		88B6D7562B5E8E2E00F3D3DD /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D7552B5E8E2E00F3D3DD /* CommentModel.swift */; };
 		88B6D7582B5E931B00F3D3DD /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D7572B5E931B00F3D3DD /* CommentViewModel.swift */; };
@@ -128,6 +130,8 @@
 		88980A5F2B690394003F09EC /* PostCommentCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCountView.swift; sourceTree = "<group>"; };
 		88980A612B6904BE003F09EC /* PostCommentTextFieldWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentTextFieldWithButton.swift; sourceTree = "<group>"; };
 		88980A632B695CFE003F09EC /* ProfileItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemViewModel.swift; sourceTree = "<group>"; };
+		88980A652B6A5373003F09EC /* PostsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCollection.swift; sourceTree = "<group>"; };
+		88980A672B6A5473003F09EC /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		88B6D7532B5E8D7600F3D3DD /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		88B6D7552B5E8E2E00F3D3DD /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		88B6D7572B5E931B00F3D3DD /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
@@ -279,6 +283,7 @@
 				88576F2B2B5D7D3300673431 /* PostFormView.swift */,
 				88B6D7572B5E931B00F3D3DD /* CommentViewModel.swift */,
 				88E607FF2B655CCC00D5978D /* LikeViewModel.swift */,
+				88980A672B6A5473003F09EC /* PostsViewModel.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				887E12B62B610E0B00137EA0 /* PostViewDropDownMenu.swift */,
 				88980A5F2B690394003F09EC /* PostCommentCountView.swift */,
 				88980A612B6904BE003F09EC /* PostCommentTextFieldWithButton.swift */,
+				88980A652B6A5373003F09EC /* PostsCollection.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -523,6 +529,7 @@
 				8805DD282B5588A700D16B5E /* Validator.swift in Sources */,
 				887E12BB2B6133E800137EA0 /* CustomAsyncImage.swift in Sources */,
 				8805DD262B55888600D16B5E /* AuthManager.swift in Sources */,
+				88980A682B6A5473003F09EC /* PostsViewModel.swift in Sources */,
 				88CFEEE72B587AFE0018DE6A /* FeedViewModel.swift in Sources */,
 				88B6D7542B5E8D7600F3D3DD /* CommentManager.swift in Sources */,
 				88576F172B5A7C2800673431 /* AuthNavigationController.swift in Sources */,
@@ -558,6 +565,7 @@
 				88B6D7582B5E931B00F3D3DD /* CommentViewModel.swift in Sources */,
 				8805DD1F2B55880500D16B5E /* SignUpAndLoginViewModel.swift in Sources */,
 				88B6D7562B5E8E2E00F3D3DD /* CommentModel.swift in Sources */,
+				88980A662B6A5373003F09EC /* PostsCollection.swift in Sources */,
 				889108BB2B56888600EE831A /* CustomLoginButton.swift in Sources */,
 				889108B22B56812500EE831A /* CustomSignUpButton.swift in Sources */,
 				88576F2C2B5D7D3300673431 /* PostFormView.swift in Sources */,

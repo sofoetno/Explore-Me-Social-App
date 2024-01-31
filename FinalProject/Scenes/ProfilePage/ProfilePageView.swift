@@ -12,6 +12,7 @@ struct ProfilePageView: View, WithRootNavigationController {
     @State var showImagePicker = false
     @State var inputImage: UIImage?
     @StateObject var profilePageViewModel = ProfilePageViewModel()
+    @StateObject var feedViewModel = FeedViewModel()
 
     
     var body: some View {
@@ -142,6 +143,15 @@ struct ProfilePageView: View, WithRootNavigationController {
             }
             .offset(y: -110)
             
+            PostsCollection(feedViewModel: feedViewModel)
+                .offset(y: 320)
+                .onAppear() {
+                    feedViewModel.userId = userId
+                    Task {
+                        await feedViewModel.fetchPosts()
+                    }
+                }
+            
             
         }
         .onAppear() {
@@ -162,5 +172,5 @@ struct ProfilePageView: View, WithRootNavigationController {
 }
 
 #Preview {
-    ProfilePageView(userId: "RskA3hj9VlgFrcAzXNJL9m6rbpZ2")
+    ProfilePageView(userId: "Eu507agEdHMVyFOV2ldbggmq9xw1")
 }

@@ -11,6 +11,7 @@ struct ChatView: View {
     @ObservedObject var chatViewModel = ChatViewModel()
     let chatId: String?
     let participantId: String?
+    @StateObject var profilePageViewModel = ProfileItemViewModel()
     
     
     var body: some View {
@@ -30,8 +31,8 @@ struct ChatView: View {
                     Task {
                         try await  chatViewModel.sendMessage()
                         try await chatViewModel.loadData()
+                        chatViewModel.text = ""
                     }
-                    
                 } label: {
                     Image(systemName: "arrow.right.circle")
                         .font(.largeTitle)
@@ -58,5 +59,5 @@ struct ChatView: View {
 }
 
 #Preview {
-    ChatView(chatId: "d2nJDIUeecCeUztMp75n", participantId: "")
+    ChatView(chatId: "6D5F3776-ABE3-489E-AA0E-98F674DDD13E", participantId: "3wAs5TDmywSnXs7KXuQ2i0WXQ2g1")
 }

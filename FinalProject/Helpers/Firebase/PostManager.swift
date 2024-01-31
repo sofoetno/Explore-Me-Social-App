@@ -41,7 +41,7 @@ final class PostManager {
         try await Firestore.firestore().collection("posts").document(postId).delete()
     }
     
-    func getPosts(searchTerm: String?) async throws -> [PostModel] {
+    func getPosts(searchTerm: String?, userId: String? = nil) async throws -> [PostModel] {
         
         let collection = Firestore.firestore().collection("posts")
         var query: Query? = nil
@@ -52,6 +52,12 @@ final class PostManager {
                     .order(by: "date_created", descending: true)
             }
         }
+        if let userId {
+            query = collection
+                .whereField("user_id", isEqualTo: userId)
+                .order(by: "date_created", descending: true)
+        }
+        
         let snapshot = try await query != nil ? query!.getDocuments() : collection.getDocuments()
         
         var posts: [PostModel] = []

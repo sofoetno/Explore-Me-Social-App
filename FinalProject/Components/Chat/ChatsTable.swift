@@ -56,7 +56,6 @@ struct ChatsTable: UIViewRepresentable, WithRootNavigationController {
             cell.contentConfiguration = UIHostingConfiguration {
                 ChatItem(chat: chat, chatsViewModel: chatsViewModel)
             }
-            cell.selectionStyle = .none
             
             return cell
         }

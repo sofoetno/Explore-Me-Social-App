@@ -45,7 +45,7 @@ struct MessagesTable: UIViewRepresentable, WithRootNavigationController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             
             cell.contentConfiguration = UIHostingConfiguration {
-                MessageItem(message: message, participant: chatViewModel.participant, chatViewModel: chatViewModel)
+                MessageItem(message: message, chatViewModel: chatViewModel)
             }
             cell.selectionStyle = .none
             

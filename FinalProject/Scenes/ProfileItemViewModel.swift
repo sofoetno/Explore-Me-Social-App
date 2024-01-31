@@ -18,4 +18,16 @@ final class ProfileItemViewModel: ObservableObject {
         currentProfileImageUrl = user?.imageUrl ?? ""
         fullName = user?.fullName ?? ""
     }
+    
+    func getParticipantIdFromChat(chat: ChatModel) -> String? {
+        let participantIds = chat.participants.filter({ userId in
+            userId != AuthManager.shared.getAuthenticagedUser()?.uid
+        })
+        
+        if participantIds.count > 0 {
+            return participantIds[0]
+        } else {
+            return nil
+        }
+    }
 }
