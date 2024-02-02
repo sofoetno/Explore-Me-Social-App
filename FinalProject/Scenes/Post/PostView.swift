@@ -19,9 +19,9 @@ struct PostView: View, WithRootNavigationController {
     var body: some View {
         VStack {
             ScrollView {
+                Spacer()
                 VStack {
                     HStack {
-                        
                         Button {
                             push(viewController: UIHostingController(rootView: ProfilePageView(userId: post.userId)), animated: true, tab: 0)
                         } label: {
@@ -33,8 +33,7 @@ struct PostView: View, WithRootNavigationController {
                             Text(profileItemViewModel.fullName)
                                 .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
                         }
-                        
-                       
+
                         Spacer()
                         
                         PostViewDropDownMenu(feedViewModel: feedViewModel, post: $post)
@@ -43,7 +42,7 @@ struct PostView: View, WithRootNavigationController {
                     
                     CustomAsyncImage(imageUrl: post.photoUrl ?? "")
                         .scaledToFit()
-                        .overlay(
+                  
                             HStack {
                                 HStack {
                                     Like(likeViewModel: likeViewModel)
@@ -59,22 +58,20 @@ struct PostView: View, WithRootNavigationController {
                                 .padding(.horizontal, 50)
                                     .frame(width: 380, height: 50)
                                     .background(AppColors.customLightBlue)
-                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                    .font(.title)
                                     .cornerRadius(10)
+                           .offset(y: 120)
+                           .padding(.vertical, 50)
 
-                              
-                           .offset(y: 94)
-                            )
-                    
                     VStack {
                         HStack {
                             Text("The story")
-                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding()
                         }
-                        .padding(.vertical, 30)
-                        
-                        
+                        .padding()
+ 
                         Text(post.description)
                             .foregroundColor(Color(red: 0.51, green: 0.51, blue: 0.51))
                         
@@ -119,6 +116,6 @@ struct PostView: View, WithRootNavigationController {
 }
 
 #Preview {
-    PostView(post: PostModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", userId: "RskA3hj9VlgFrcAzXNJL9m6rbpZ2"), feedViewModel: FeedViewModel())
+    PostView(post: PostModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", userId: "3wAs5TDmywSnXs7KXuQ2i0WXQ2g1"), feedViewModel: FeedViewModel())
 }
 

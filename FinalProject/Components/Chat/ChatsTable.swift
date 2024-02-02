@@ -8,9 +8,6 @@
 import SwiftUI
 import UIKit
 
-import SwiftUI
-import UIKit
-
 struct ChatsTable: UIViewRepresentable, WithRootNavigationController {
     @ObservedObject var chatsViewModel: ChatsViewModel
     

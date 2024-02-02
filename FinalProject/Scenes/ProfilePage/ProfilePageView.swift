@@ -13,6 +13,7 @@ struct ProfilePageView: View, WithRootNavigationController {
     @State var inputImage: UIImage?
     @StateObject var profilePageViewModel = ProfilePageViewModel()
     @StateObject var feedViewModel = FeedViewModel()
+    
 
     
     var body: some View {
@@ -34,7 +35,7 @@ struct ProfilePageView: View, WithRootNavigationController {
                       
                     } label: {
                         Image(systemName: "ellipsis.message")
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            .font(.title)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                     }
@@ -118,24 +119,31 @@ struct ProfilePageView: View, WithRootNavigationController {
             })
             .offset(y: -230)
             
-            VStack {
+            VStack() {
                 Text(profilePageViewModel.fullName)
                     .font(.title)
                 Text("Singer")
                     .foregroundStyle(Color.gray)
                 
                 HStack(alignment: .center, spacing: 48) {
-                    Text("\(profilePageViewModel.followersCount) Followers")
-                        .kerning(0.6)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
+                    Button {
+                        present(viewController: UIHostingController(rootView: FollowView(userId: userId)), animated: true, tab: 2)
+                    } label: {
+                        Text("\(profilePageViewModel.followersCount) Followers")
+                            .kerning(0.6)
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
+                    }
                     
-                    Text("\(profilePageViewModel.followingsCount) Following")
-                        .kerning(0.6)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
+                    Button {
+                        present(viewController: UIHostingController(rootView: FollowView(userId: userId, isFollowing: true)), animated: true, tab: 2)
+                    } label: {
+                        Text("\(profilePageViewModel.followingsCount) Following")
+                            .kerning(0.6)
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
+                    }
                 }
-                .padding(.horizontal, 20)
                 .padding(.vertical, 20)
                 .frame(width: 347, alignment: .center)
                 .background(Color(red: 0.96, green: 0.97, blue: 0.98))
@@ -144,15 +152,13 @@ struct ProfilePageView: View, WithRootNavigationController {
             .offset(y: -110)
             
             PostsCollection(feedViewModel: feedViewModel)
-                .offset(y: 320)
+                .offset(y: 350)
                 .onAppear() {
                     feedViewModel.userId = userId
                     Task {
                         await feedViewModel.fetchPosts()
                     }
-                }
-            
-            
+                } 
         }
         .onAppear() {
             profilePageViewModel.userId = userId
@@ -169,6 +175,7 @@ struct ProfilePageView: View, WithRootNavigationController {
             
         }
     }
+
 }
 
 #Preview {

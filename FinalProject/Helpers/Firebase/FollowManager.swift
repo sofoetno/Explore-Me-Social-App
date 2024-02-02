@@ -9,6 +9,12 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
+
+enum GetFollowMode {
+    case followers
+    case followings
+}
+
 final class FollowManager {
     static let shared = FollowManager()
     
@@ -54,6 +60,31 @@ final class FollowManager {
             .whereField("follower_id", isEqualTo: followerUserId)
             .count.getAggregation(source: .server).count
         return Int(truncating: count)
+    }
+    
+    func getFollows(userId: String, mode: GetFollowMode) async throws -> [String] {
+        var conditionField = "follower_id"
+        var readingField = "following_id"
+        
+        if mode == .followings {
+            conditionField = "following_id"
+            readingField = "follower_id"
+        }
+        
+        let snapshot = try await Firestore.firestore()
+            .collection("followers")
+            .whereField(conditionField, isEqualTo: userId)
+            .getDocuments()
+        
+        var followerIds: [String] = []
+        snapshot.documents.forEach { document in
+            let dictionary = document.data()
+ 
+            followerIds.append(dictionary[readingField] as! String)
+        }
+        
+        print(followerIds)
+        return followerIds
     }
     
     func checkIfFollows(to followingUserId: String) async throws -> Bool {
