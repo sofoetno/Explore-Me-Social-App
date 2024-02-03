@@ -59,7 +59,7 @@ struct LoginView: View, WithRootNavigationController {
     }
     
     func goToSignUp() {
-        authNavigationController?.pushViewController( UIHostingController(rootView: SignUpView()), animated: true)
+        authNavigationController?.setViewControllers([UIHostingController(rootView: SignUpView())], animated: false)
     }
 }
 

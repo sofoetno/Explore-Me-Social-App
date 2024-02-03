@@ -57,23 +57,23 @@ struct PostView: View, WithRootNavigationController {
                             }
                                 .padding(.horizontal, 50)
                                     .frame(width: 380, height: 50)
-                                    .background(AppColors.customLightBlue)
+                                    .background(AppColors.silver)
                                     .font(.title)
                                     .cornerRadius(10)
-                           .offset(y: 120)
-                           .padding(.vertical, 50)
-
+                    
                     VStack {
-                        HStack {
-                            Text("The story")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .padding()
-                        }
+                        Text("Explored Story")
+                        .font(Font.custom("Circular Std", size: 24))
+                        .kerning(2)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.65))
                         .padding()
+                    }
+
+                    VStack(alignment: .leading) {
  
                         Text(post.description)
-                            .foregroundColor(Color(red: 0.51, green: 0.51, blue: 0.51))
+                            .foregroundColor(AppColors.darkGray)
                         
                     }
                     .padding(.horizontal, 1)
@@ -116,6 +116,6 @@ struct PostView: View, WithRootNavigationController {
 }
 
 #Preview {
-    PostView(post: PostModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", userId: "3wAs5TDmywSnXs7KXuQ2i0WXQ2g1"), feedViewModel: FeedViewModel())
+    PostView(post: PostModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", photoUrl: "https://firebasestorage.googleapis.com:443/v0/b/finalproject-7d145.appspot.com/o/682D23D8-8713-47A2-A0E1-AF1C8C4DC41B.jpeg?alt=media&token=9654f63f-eaef-4b56-a7c0-543182b74161", userId: "3wAs5TDmywSnXs7KXuQ2i0WXQ2g1"), feedViewModel: FeedViewModel())
 }
 

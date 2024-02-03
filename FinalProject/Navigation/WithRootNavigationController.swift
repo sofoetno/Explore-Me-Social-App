@@ -13,8 +13,8 @@ protocol WithRootNavigationController {
     var authNavigationController: AuthNavigationController? { get }
     
     // MARK: - Methods
-    func push(viewController: UIViewController, animated: Bool, tab: Int)
-    func pop(animated: Bool, tab: Int)
+    func push(viewController: UIViewController, animated: Bool, tab: Int?)
+    func pop(animated: Bool, tab: Int?)
 }
 
 extension WithRootNavigationController where Self:View {
@@ -24,31 +24,31 @@ extension WithRootNavigationController where Self:View {
         guard let scene = UIApplication.shared.connectedScenes.first,
               let sceneDelegate = scene as? UIWindowScene,
               let authNavigationController = sceneDelegate.windows.first?.rootViewController as? AuthNavigationController
-            else { return nil }
+        else { return nil }
         
         return authNavigationController
     }
     
     // MARK: - Methods
-    func push(viewController: UIViewController, animated: Bool, tab: Int = 0) {
+    func push(viewController: UIViewController, animated: Bool, tab: Int? = nil) {
         if let navigationController = getNavigationController(tab: tab) {
             navigationController.pushViewController(viewController, animated: animated)
         }
     }
     
-    func pop(animated: Bool, tab: Int = 0) {
+    func pop(animated: Bool, tab: Int? = nil) {
         if let navigationController = getNavigationController(tab: tab) {
             navigationController.popViewController(animated: animated)
         }
     }
     
-    func present(viewController: UIViewController, animated: Bool, tab: Int = 0) {
+    func present(viewController: UIViewController, animated: Bool, tab: Int? = nil) {
         if let navigationController = getNavigationController(tab: tab) {
             navigationController.present(viewController, animated: animated)
         }
     }
     
-    func dismiss(animated: Bool, tab: Int = 0) {
+    func dismiss(animated: Bool, tab: Int? = nil) {
         if let navigationController = getNavigationController(tab: tab) {
             navigationController.dismiss(animated: animated)
         }
@@ -58,7 +58,7 @@ extension WithRootNavigationController where Self:View {
         guard let scene = UIApplication.shared.connectedScenes.first,
               let sceneDelegate = scene as? UIWindowScene,
               let window = sceneDelegate.windows.first
-            else {
+        else {
             return
         }
         
@@ -67,14 +67,14 @@ extension WithRootNavigationController where Self:View {
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-    
+        
     }
     
     func goToTab(tab: Int) {
         guard let scene = UIApplication.shared.connectedScenes.first,
               let sceneDelegate = scene as? UIWindowScene,
               let window = sceneDelegate.windows.first
-            else {
+        else {
             return
         }
         
@@ -86,13 +86,13 @@ extension WithRootNavigationController where Self:View {
         }
     }
     
-    private func getNavigationController(tab: Int) -> UINavigationController? {
+    private func getNavigationController(tab: Int? = nil) -> UINavigationController? {
         guard let scene = UIApplication.shared.connectedScenes.first,
               let sceneDelegate = scene as? UIWindowScene,
-              let tabViewController = sceneDelegate.windows.first?.rootViewController as? UITabBarController,
-              let rootNavigationController = tabViewController.viewControllers?[tab] as? UINavigationController
-            else { return nil }
+              let tabViewController = sceneDelegate.windows.first?.rootViewController as? UITabBarController
+        else { return nil }
         
+        let rootNavigationController = tabViewController.viewControllers?[tab ?? tabViewController.selectedIndex] as? UINavigationController
         return rootNavigationController
     }
 }

@@ -30,9 +30,8 @@ struct ProfilePageView: View, WithRootNavigationController {
                 
                 if !profilePageViewModel.isMyProfile() {
                     Button {
-                        goToTab(tab: 1)
-                        push(viewController: UIHostingController(rootView: ChatView(chatId: nil, participantId: userId)), animated: true, tab: 1)
-                      
+                        let viewController =  UIHostingController(rootView: ChatView(chatId: nil, participantId: userId))
+                        push(viewController: viewController, animated: true)
                     } label: {
                         Image(systemName: "ellipsis.message")
                             .font(.title)

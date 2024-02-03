@@ -12,10 +12,7 @@ struct PostsCollection: UIViewRepresentable, WithRootNavigationController {
     @ObservedObject var feedViewModel: FeedViewModel
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator(feedViewModel: feedViewModel) { uiViewController, animated, tab in
-            goToTab(tab: tab)
-            push(viewController: uiViewController, animated: animated, tab: tab)
-        }
+        return Coordinator(feedViewModel: feedViewModel, didSelectHandler: push)
     }
     
     func makeUIView(context: Context) -> UICollectionView {
@@ -25,7 +22,6 @@ struct PostsCollection: UIViewRepresentable, WithRootNavigationController {
         collectionView.dataSource = context.coordinator
         collectionView.delegate = context.coordinator
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-        
         
         return collectionView
     }
@@ -37,9 +33,9 @@ struct PostsCollection: UIViewRepresentable, WithRootNavigationController {
     class Coordinator: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
         @ObservedObject var feedViewModel: FeedViewModel
         
-        private var didSelectHandler: (UIViewController, Bool, Int) -> Void
+        private var didSelectHandler: (UIViewController, Bool, Int?) -> Void
         
-        init(feedViewModel: FeedViewModel, didSelectHandler: @escaping (UIViewController, Bool, Int) -> Void) {
+        init(feedViewModel: FeedViewModel, didSelectHandler: @escaping (UIViewController, Bool, Int?) -> Void) {
             self.feedViewModel = feedViewModel
             self.didSelectHandler = didSelectHandler
         }
@@ -73,7 +69,7 @@ struct PostsCollection: UIViewRepresentable, WithRootNavigationController {
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let post = feedViewModel.posts[indexPath.row]
             
-            didSelectHandler(UIHostingController(rootView: PostView(post: post, feedViewModel: feedViewModel)), true, 0)
+            didSelectHandler(UIHostingController(rootView: PostView(post: post, feedViewModel: feedViewModel)), true, nil)
         }
         
         

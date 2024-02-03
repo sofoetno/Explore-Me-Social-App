@@ -22,7 +22,7 @@ struct PostViewDropDownMenu: View, WithRootNavigationController {
             Button("Delete", role: .destructive) {
                 Task {
                     await postViewModel.deletePost(postId: post.id)
-                    pop(animated: true, tab: 0)
+                    pop(animated: true)
                 }
             }
         } label: {

@@ -10,7 +10,6 @@ import SwiftUI
 @MainActor
 final class FeedViewModel: ObservableObject {
     @Published var posts: [PostModel] = []
-    @Published var searchTerm: String = ""
     @Published var userId: String? = nil
     
     init(userId: String? = nil) {
@@ -18,7 +17,7 @@ final class FeedViewModel: ObservableObject {
     }
     
     
-    func fetchPosts() async {
+    func fetchPosts(searchTerm: String? = nil) async {
         do {
             posts = try await PostManager.shared.getPosts(searchTerm: searchTerm, userId: userId)
         } catch {
