@@ -121,12 +121,11 @@ struct ProfilePageView: View, WithRootNavigationController {
             VStack() {
                 Text(profilePageViewModel.fullName)
                     .font(.title)
-                Text("Singer")
-                    .foregroundStyle(Color.gray)
+
                 
                 HStack(alignment: .center, spacing: 48) {
                     Button {
-                        present(viewController: UIHostingController(rootView: FollowView(userId: userId)), animated: true, tab: 2)
+                        present(viewController: UIHostingController(rootView: FollowView(userId: userId)), animated: true)
                     } label: {
                         Text("\(profilePageViewModel.followersCount) Followers")
                             .kerning(0.6)
@@ -135,7 +134,7 @@ struct ProfilePageView: View, WithRootNavigationController {
                     }
                     
                     Button {
-                        present(viewController: UIHostingController(rootView: FollowView(userId: userId, isFollowing: true)), animated: true, tab: 2)
+                        present(viewController: UIHostingController(rootView: FollowView(userId: userId, isFollowing: true)), animated: true)
                     } label: {
                         Text("\(profilePageViewModel.followingsCount) Following")
                             .kerning(0.6)

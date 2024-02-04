@@ -63,13 +63,8 @@ final class FollowManager {
     }
     
     func getFollows(userId: String, mode: GetFollowMode) async throws -> [String] {
-        var conditionField = "follower_id"
-        var readingField = "following_id"
-        
-        if mode == .followings {
-            conditionField = "following_id"
-            readingField = "follower_id"
-        }
+        let conditionField = mode == .followings ? "follower_id" : "following_id"
+        let readingField = mode == .followings ? "following_id" : "follower_id"
         
         let snapshot = try await Firestore.firestore()
             .collection("followers")

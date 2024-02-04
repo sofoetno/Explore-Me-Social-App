@@ -29,6 +29,12 @@ struct CustomSignUpButton: View, WithRootNavigationController {
             Text("Sign Up by Email")
         }
         .primaryButtonStyle
+        .alert(isPresented: $showAlert, content: {
+            Alert(title: Text("WARNING"),
+                  message: Text("The email address entered is already being used. Please select another."),
+                  dismissButton: .default(Text("OK"))
+            )
+        })
     }
     
     func registrationSuccsess() {
