@@ -15,27 +15,28 @@ class ProfilePageViewModel: ObservableObject {
     @Published var followersCount: Int = 0
     @Published var followingsCount: Int = 0
     @Published var following = false
+    @Published var followList: [String] = []
     var userId: String = ""
     @Published var fullName: String = ""
-   
-        
-        func changeProfileImage() async -> (path: String, name: String, downloadUrl: URL)? {
-            if let imageData {
-                do {
-                    let result = try await ImageManager.shared.saveImage(data: imageData)
-                    currentProfileImageUrl = result.downloadUrl.absoluteString
-                    
-                    if let userId = AuthManager.shared.getAuthenticagedUser()?.uid {
-                        try? await UserManager.shared.saveProfileImage(userId: userId, imageUrl: currentProfileImageUrl)
-                    }
-        
-                    return result
-                } catch {
-                    return nil
+    
+    
+    func changeProfileImage() async -> (path: String, name: String, downloadUrl: URL)? {
+        if let imageData {
+            do {
+                let result = try await ImageManager.shared.saveImage(data: imageData)
+                currentProfileImageUrl = result.downloadUrl.absoluteString
+                
+                if let userId = AuthManager.shared.getAuthenticagedUser()?.uid {
+                    try? await UserManager.shared.saveProfileImage(userId: userId, imageUrl: currentProfileImageUrl)
                 }
+                
+                return result
+            } catch {
+                return nil
             }
-            return nil
         }
+        return nil
+    }
     
     func getUser() async throws {
         let user = try await UserManager.shared.getUser(by: userId)
@@ -50,6 +51,14 @@ class ProfilePageViewModel: ObservableObject {
     
     func countFollowers() async throws {
         followersCount = try await FollowManager.shared.countFollowers(followingUserId: userId)
+    }
+    
+    func getFollowers() async throws {
+        followList = try await FollowManager.shared.getFollows(userId: userId, mode: .followers)
+    }
+    
+    func getFollowings() async throws {
+        followList = try await FollowManager.shared.getFollows(userId: userId, mode: .followings)
     }
     
     func follow() async throws {

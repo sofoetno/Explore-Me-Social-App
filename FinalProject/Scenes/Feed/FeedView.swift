@@ -12,7 +12,7 @@ struct FeedView: View{
     
     var body: some View {
         Spacer()
-
+        
         VStack(alignment: .trailing, spacing: 12) {
             Spacer()
             VStack(alignment: .trailing, spacing: 10) {
@@ -21,10 +21,9 @@ struct FeedView: View{
                     .scaledToFit()
                     .frame(width: 170)
                 FeedBar(feedViewModel: feedViewModel)
-          
             }
-
-                .padding(.horizontal, 16)
+            .padding(.horizontal, 16)
+            
             PostsTable(feedViewModel: feedViewModel)
         }
         .onAppear() {

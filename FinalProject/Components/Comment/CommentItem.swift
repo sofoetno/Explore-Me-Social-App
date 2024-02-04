@@ -19,7 +19,7 @@ struct CommentItem: View {
                 .frame(width: 44, height: 44)
 
             VStack(alignment: .leading, spacing: 12) {
-                Text("author name")
+                Text(profileItemViewModel.fullName)
                     .fontWeight(.bold)
                 
                 Text(comment.text)

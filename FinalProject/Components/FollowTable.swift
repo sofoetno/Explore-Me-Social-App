@@ -1,19 +1,18 @@
 //
-//  MessagesTable.swift
+//  FollowTable.swift
 //  FinalProject
 //
-//  Created by Sofo Machurishvili on 28.01.24.
+//  Created by Sofo Machurishvili on 01.02.24.
 //
-
 
 import SwiftUI
 import UIKit
 
-struct MessagesTable: UIViewRepresentable, WithRootNavigationController {
-    @ObservedObject var chatViewModel: ChatViewModel
+struct FollowTable: UIViewRepresentable, WithRootNavigationController {
+    @ObservedObject var profilePageViewModel: ProfilePageViewModel
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(chatViewModel: chatViewModel)
+        return Coordinator(profilePageViewModel: profilePageViewModel)
     }
     
     func makeUIView(context: Context) -> UITableView {
@@ -28,26 +27,25 @@ struct MessagesTable: UIViewRepresentable, WithRootNavigationController {
     }
     
     class Coordinator: NSObject, UITableViewDataSource {
-        @ObservedObject var chatViewModel: ChatViewModel
+        @ObservedObject var profilePageViewModel: ProfilePageViewModel
         
-        init(chatViewModel: ChatViewModel) {
-            self.chatViewModel = chatViewModel
+        init(profilePageViewModel: ProfilePageViewModel) {
+            self.profilePageViewModel = profilePageViewModel
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            chatViewModel.messages.count
+            profilePageViewModel.followList.count
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-            let message = chatViewModel.messages[indexPath.row]
+            let followerId = profilePageViewModel.followList[indexPath.row]
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             
             cell.contentConfiguration = UIHostingConfiguration {
-                MessageItem(message: message, chatViewModel: chatViewModel)
+                FollowItem(userId: followerId)
             }
-            cell.selectionStyle = .none
             
             return cell
         }
@@ -55,6 +53,5 @@ struct MessagesTable: UIViewRepresentable, WithRootNavigationController {
 }
 
 #Preview {
-    MessagesTable(chatViewModel: ChatViewModel())
+    FollowTable(profilePageViewModel: ProfilePageViewModel())
 }
-

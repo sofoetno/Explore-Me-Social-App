@@ -44,7 +44,6 @@ struct PostsTable: UIViewRepresentable, WithRootNavigationController {
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
             let post = feedViewModel.posts[indexPath.row]
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             
             cell.contentConfiguration = UIHostingConfiguration {
@@ -60,7 +59,6 @@ struct PostsTable: UIViewRepresentable, WithRootNavigationController {
             
             didSelectHandler(UIHostingController(rootView: PostView(post: post, feedViewModel: feedViewModel)), true, 0)
         }
-        
     }
 }
 

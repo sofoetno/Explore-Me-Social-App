@@ -55,6 +55,7 @@ final class MessageManager {
     func getLatestMessage(by chatId: String) async throws -> MessageModel? {
         let snapshot = try await Firestore.firestore()
             .collection("messages")
+            .whereField("chat_id", isEqualTo: chatId)
             .order(by: "send_date", descending: true)
             .limit(to: 1)
             .getDocuments()

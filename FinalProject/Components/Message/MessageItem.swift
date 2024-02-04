@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MessageItem: View {
     let message: MessageModel
-    let participant: UserModel?
     @ObservedObject var chatViewModel: ChatViewModel
     
     var body: some View {
@@ -17,11 +16,10 @@ struct MessageItem: View {
         if chatViewModel.isAuthenticatedUser(userId: message.senderId) {
             VStack {
                 HStack(alignment: .bottom){
-                    Image("avatar")
-                        .resizable()
+                    CustomAsyncImage(imageUrl: chatViewModel.authenticatedUser?.imageUrl ?? "")
                         .clipShape(Circle())
-                        .scaledToFit()
-                        .frame(width: 34, height: 34)
+                        .scaledToFill()
+                        .frame(width: 44, height: 44)
                     
                     Spacer()
                     
@@ -55,11 +53,10 @@ struct MessageItem: View {
                     
                     Spacer()
                     
-                    Image("avatar2")
-                        .resizable()
+                    CustomAsyncImage(imageUrl: chatViewModel.participant?.imageUrl ?? "")
                         .clipShape(Circle())
-                        .scaledToFit()
-                        .frame(width: 34, height: 34)
+                        .scaledToFill()
+                        .frame(width: 44, height: 44)
                 }
                 
                 
@@ -73,5 +70,5 @@ struct MessageItem: View {
 }
 
 #Preview {
-    MessageItem(message: MessageModel(text: "Google Messages is a text messaging software application developed by Google for its Android and Wear OS mobile operating systems, while it's also available via the Web. Google's official universal messaging platform for the Android ecosystem, Messages employs SMS and Rich Communication Services.", chatId: "2", senderId: "3", sendDate: nil), participant: nil, chatViewModel: ChatViewModel())
+    MessageItem(message: MessageModel(text: "Google Messages is a text messaging software application developed by Google for its Android and Wear OS mobile operating systems, while it's also available via the Web. Google's official universal messaging platform for the Android ecosystem, Messages employs SMS and Rich Communication Services.", chatId: "0554B0B1-BC8F-4E6D-B292-6E393C999B14", senderId: "3", sendDate: nil), chatViewModel: ChatViewModel())
 }

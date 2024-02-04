@@ -12,44 +12,40 @@ struct ChatItem: View {
     let chat: ChatModel
     @ObservedObject var chatsViewModel: ChatsViewModel
     @State var latestMessage: MessageModel? = nil
+    @StateObject var profileItemViewModel = ProfileItemViewModel()
     
     var body: some View {
         HStack(spacing: 20) {
-            Image("avatar2")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 30, height: 30)
-                .padding()
+            CustomAsyncImage(imageUrl: profileItemViewModel.currentProfileImageUrl)
+                .scaledToFill()
+                .clipShape(Circle())
+                .frame(width: 40, height: 40)
+                .padding(.horizontal, 10)
             VStack {
-                Text("Name FullName")
+                Text(profileItemViewModel.fullName)
                     .fontWeight(.semibold)
                 Text(latestMessage?.text ?? "")
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(AppColors.darkGray)
             }
-            
-            .padding(.horizontal, 65)
+            .frame(width: 280, height: 56)
             
         }
         .background(
-            LinearGradient(
-                stops: [
-                    Gradient.Stop(color: Color(red: 0.07, green: 0.06, blue: 0.09).opacity(0), location: 0.00),
-                    Gradient.Stop(color: Color(red: 0.07, green: 0.06, blue: 0.09).opacity(0.51), location: 1.00),
-                ],
-                startPoint: UnitPoint(x: 0, y: 0.72),
-                endPoint: UnitPoint(x: 1.3, y: 0.75)
-            )
+            LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .edgesIgnoringSafeArea(.horizontal)
+                .opacity(0.5)
         )
         .cornerRadius(18)
-        .padding(.vertical, 50)
         .onAppear() {
+            profileItemViewModel.userId = profileItemViewModel.getParticipantIdFromChat(chat: chat) ?? ""
             Task {
                 latestMessage = try await chatsViewModel.getLatestMessage(by: chat.id)
+                try await profileItemViewModel.getUser()
             }
         }
     }
 }
 
 #Preview {
-    ChatItem(chat: ChatModel(id: "", participants: [""]), chatsViewModel: ChatsViewModel())
+    ChatItem(chat: ChatModel(id: "0554B0B1-BC8F-4E6D-B292-6E393C999B14", participants: ["Eu507agEdHMVyFOV2ldbggmq9xw1", "rCiONGhVw7cFPWPh1gEdOGX6GXT2"]), chatsViewModel: ChatsViewModel())
 }

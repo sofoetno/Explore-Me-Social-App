@@ -13,6 +13,7 @@ final class ChatViewModel: ObservableObject {
     @Published var messages: [MessageModel] = []
     @Published var participant: UserModel? = nil
     @Published var text: String = ""
+    @Published var authenticatedUser: UserModel?
     var chatId: String? = nil
     var participantId: String? = nil
     
@@ -29,6 +30,10 @@ final class ChatViewModel: ObservableObject {
         
         if participantIds?.count ?? 0 > 0 {
             participant = try await UserManager.shared.getUser(by: participantIds?[0] ?? "")
+        }
+        
+        if let authUserId = AuthManager.shared.getAuthenticagedUser()?.uid {
+            authenticatedUser = try await UserManager.shared.getUser(by: authUserId)
         }
     }
     

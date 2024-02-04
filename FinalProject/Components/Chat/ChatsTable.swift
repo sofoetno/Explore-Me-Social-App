@@ -8,17 +8,11 @@
 import SwiftUI
 import UIKit
 
-import SwiftUI
-import UIKit
-
 struct ChatsTable: UIViewRepresentable, WithRootNavigationController {
     @ObservedObject var chatsViewModel: ChatsViewModel
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(chatsViewModel: chatsViewModel) { uiViewController, animated, tab in
-            goToTab(tab: tab)
-            push(viewController: uiViewController, animated: animated, tab: tab)
-        }
+        return Coordinator(chatsViewModel: chatsViewModel, didSelectHandler: push)
     }
     
     func makeUIView(context: Context) -> UITableView {
@@ -36,9 +30,9 @@ struct ChatsTable: UIViewRepresentable, WithRootNavigationController {
     class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
         @ObservedObject var chatsViewModel: ChatsViewModel
         
-        private var didSelectHandler: (UIViewController, Bool, Int) -> Void
+        private var didSelectHandler: (UIViewController, Bool, Int?) -> Void
         
-        init(chatsViewModel: ChatsViewModel, didSelectHandler: @escaping (UIViewController, Bool, Int) -> Void) {
+        init(chatsViewModel: ChatsViewModel, didSelectHandler: @escaping (UIViewController, Bool, Int?) -> Void) {
             self.chatsViewModel = chatsViewModel
             self.didSelectHandler = didSelectHandler
         }
@@ -56,7 +50,6 @@ struct ChatsTable: UIViewRepresentable, WithRootNavigationController {
             cell.contentConfiguration = UIHostingConfiguration {
                 ChatItem(chat: chat, chatsViewModel: chatsViewModel)
             }
-            cell.selectionStyle = .none
             
             return cell
         }
@@ -64,7 +57,10 @@ struct ChatsTable: UIViewRepresentable, WithRootNavigationController {
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let chat = chatsViewModel.chats[indexPath.row]
             
-            didSelectHandler(UIHostingController(rootView: ChatView(chatId: chat.id, participantId: nil)), true, 1)
+            let viewController = UIHostingController(rootView: ChatView(chatId: chat.id, participantId: nil))
+            viewController.hidesBottomBarWhenPushed = true
+            
+            didSelectHandler(viewController, true, nil)
         }
     }
 }

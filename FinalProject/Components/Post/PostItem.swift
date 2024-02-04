@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct PostItem: View {
+struct PostItem: View, WithRootNavigationController {
     let post: PostModel
     @StateObject var likeViewModel = LikeViewModel()
     @StateObject var postItemViewModel = ProfileItemViewModel()
     
     var body: some View {
-        
+    
         ZStack {
             ZStack {
                 CustomAsyncImage(imageUrl: post.photoUrl ?? "")
@@ -29,6 +29,9 @@ struct PostItem: View {
                     .cornerRadius(6)
                     .clipShape(Circle())
                     .shadow(color: .white, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                    .onTapGesture {
+                        push(viewController: UIHostingController(rootView: ProfilePageView(userId: post.userId)), animated: true)
+                    }
                 
                 Like(likeViewModel: likeViewModel)
                     .offset(x: 120, y: -90)

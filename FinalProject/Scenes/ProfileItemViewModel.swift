@@ -14,8 +14,25 @@ final class ProfileItemViewModel: ObservableObject {
     @Published var fullName: String = ""
     
     func getUser() async throws {
-        let user = try await UserManager.shared.getUser(by: userId)
-        currentProfileImageUrl = user?.imageUrl ?? ""
-        fullName = user?.fullName ?? ""
+        do {
+            let user = try await UserManager.shared.getUser(by: userId)
+            currentProfileImageUrl = user?.imageUrl ?? ""
+            fullName = user?.fullName ?? ""
+        } catch {
+            print(error)
+        }
+       
+    }
+    
+    func getParticipantIdFromChat(chat: ChatModel) -> String? {
+        let participantIds = chat.participants.filter({ userId in
+            userId != AuthManager.shared.getAuthenticagedUser()?.uid
+        })
+        
+        if participantIds.count > 0 {
+            return participantIds[0]
+        } else {
+            return nil
+        }
     }
 }

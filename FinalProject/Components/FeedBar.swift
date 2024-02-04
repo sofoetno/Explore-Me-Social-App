@@ -10,6 +10,7 @@ import SwiftUI
 struct FeedBar: View, WithRootNavigationController {
     @ObservedObject var feedViewModel: FeedViewModel
     @State var searchIsShown: Bool = false
+    @State var searchTerm: String = ""
     
     var body: some View {
         VStack(alignment: .trailing, spacing: 10) {
@@ -18,12 +19,6 @@ struct FeedBar: View, WithRootNavigationController {
                     openPostForm()
                 } label: {
                     Image(systemName: "plus.circle")
-                }
-                
-                Button {
-                 
-                } label: {
-                    Image(systemName: "message")
                 }
                 
                 Button {
@@ -40,7 +35,7 @@ struct FeedBar: View, WithRootNavigationController {
             
             VStack() {
                 if searchIsShown {
-                    TextField("search...", text: $feedViewModel.searchTerm)
+                    TextField("search by title...", text: $searchTerm)
                         .padding(.horizontal, 20)
                         .padding(.vertical, 16)
                         .background(Color(red: 0.95, green: 0.96, blue: 0.97))
@@ -48,7 +43,7 @@ struct FeedBar: View, WithRootNavigationController {
                     
                     Button {
                         Task {
-                            await feedViewModel.fetchPosts()
+                            await feedViewModel.fetchPosts(searchTerm: searchTerm)
                         }
                         
                     } label: {
@@ -58,8 +53,6 @@ struct FeedBar: View, WithRootNavigationController {
                 }
             }
         }
-        
-      
     }
     
     func openPostForm() {
