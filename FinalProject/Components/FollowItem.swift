@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FollowItem: View {
+struct FollowItem: View, WithRootNavigationController {
     
 //    let user: UserModel
     let userId: String
@@ -19,6 +19,10 @@ struct FollowItem: View {
                 .scaledToFill()
                 .clipShape(Circle())
                 .frame(width: 44, height: 44)
+                .onTapGesture {
+                    push(viewController: UIHostingController(rootView: ProfilePageView(userId: profileItemViewModel.userId)), animated: true)
+                    dismiss(animated: true)
+                }
             
             Text(profileItemViewModel.fullName)
             Spacer()

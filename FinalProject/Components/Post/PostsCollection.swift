@@ -17,11 +17,12 @@ struct PostsCollection: UIViewRepresentable, WithRootNavigationController {
     
     func makeUIView(context: Context) -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource = context.coordinator
         collectionView.delegate = context.coordinator
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.alwaysBounceVertical = true
         
         return collectionView
     }

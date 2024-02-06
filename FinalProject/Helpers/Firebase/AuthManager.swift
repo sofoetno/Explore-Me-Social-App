@@ -40,7 +40,7 @@ final class AuthManager {
         }
     }
     
-    func getAuthenticagedUser() -> AuthDataResultModel? {
+    func getAuthenticatedUser() -> AuthDataResultModel? {
         guard let user = Auth.auth().currentUser else {
             return nil
         }

@@ -16,9 +16,10 @@ struct CustomAsyncImage: View {
     
     var body: some View {
         if imageUrl == "" {
-            Image("mainLogo")
+            Image(systemName: "photo.artframe.circle")
                 .resizable()
                 .scaledToFit()
+                .foregroundColor(AppColors.lightGray)
         }
         else if ImageCache.images[imageUrl] != nil {
             ImageCache.images[imageUrl]?
@@ -32,9 +33,10 @@ struct CustomAsyncImage: View {
                             ImageCache.images[imageUrl] = image
                         }
                 } else {
-                    Image("mainLogo")
+                    Image(systemName: "person")
                         .resizable()
                         .scaledToFit()
+                        .foregroundColor(.purple)
                         .padding(.vertical, 100)
                         .padding(.horizontal, 50)
                 }
@@ -45,5 +47,5 @@ struct CustomAsyncImage: View {
 }
 
 #Preview {
-    CustomAsyncImage(imageUrl: "")
+    CustomAsyncImage(imageUrl: "person")
 }

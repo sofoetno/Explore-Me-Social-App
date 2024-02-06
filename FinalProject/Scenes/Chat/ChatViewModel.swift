@@ -25,27 +25,27 @@ final class ChatViewModel: ObservableObject {
         try await getMessages()
         
         let participantIds = chat?.participants.filter({ userId in
-            userId != AuthManager.shared.getAuthenticagedUser()?.uid
+            userId != AuthManager.shared.getAuthenticatedUser()?.uid
         })
         
         if participantIds?.count ?? 0 > 0 {
             participant = try await UserManager.shared.getUser(by: participantIds?[0] ?? "")
         }
         
-        if let authUserId = AuthManager.shared.getAuthenticagedUser()?.uid {
+        if let authUserId = AuthManager.shared.getAuthenticatedUser()?.uid {
             authenticatedUser = try await UserManager.shared.getUser(by: authUserId)
         }
     }
     
     func isAuthenticatedUser(userId: String) -> Bool {
-        AuthManager.shared.getAuthenticagedUser()?.uid == userId
+        AuthManager.shared.getAuthenticatedUser()?.uid == userId
     }
     
     func sendMessage() async throws {
         try await MessageManager.shared.createMassage(message: MessageModel(
             text: text,
             chatId: chatId ?? "",
-            senderId: AuthManager.shared.getAuthenticagedUser()?.uid ?? "",
+            senderId: AuthManager.shared.getAuthenticatedUser()?.uid ?? "",
             sendDate: nil))
     }
     

@@ -16,7 +16,7 @@ class PostViewModel: ObservableObject {
     func savePost(photoUrl: String?, postId: String? = nil) async -> PostModel? {
         do {
             return try await PostManager.shared.savePost(
-                post: PostModel(title: title, description: description, photoUrl: photoUrl, userId: AuthManager.shared.getAuthenticagedUser()?.uid ?? ""),
+                post: PostModel(title: title, description: description, photoUrl: photoUrl, userId: AuthManager.shared.getAuthenticatedUser()?.uid ?? ""),
                 postId: postId
             )
         } catch {

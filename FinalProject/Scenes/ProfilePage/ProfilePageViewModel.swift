@@ -19,14 +19,13 @@ class ProfilePageViewModel: ObservableObject {
     var userId: String = ""
     @Published var fullName: String = ""
     
-    
     func changeProfileImage() async -> (path: String, name: String, downloadUrl: URL)? {
         if let imageData {
             do {
                 let result = try await ImageManager.shared.saveImage(data: imageData)
                 currentProfileImageUrl = result.downloadUrl.absoluteString
                 
-                if let userId = AuthManager.shared.getAuthenticagedUser()?.uid {
+                if let userId = AuthManager.shared.getAuthenticatedUser()?.uid {
                     try? await UserManager.shared.saveProfileImage(userId: userId, imageUrl: currentProfileImageUrl)
                 }
                 
@@ -42,11 +41,10 @@ class ProfilePageViewModel: ObservableObject {
         let user = try await UserManager.shared.getUser(by: userId)
         currentProfileImageUrl = user?.imageUrl ?? ""
         fullName = user?.fullName ?? ""
-        
     }
     
     func isMyProfile() -> Bool {
-        userId == AuthManager.shared.getAuthenticagedUser()?.uid
+        userId == AuthManager.shared.getAuthenticatedUser()?.uid
     }
     
     func countFollowers() async throws {

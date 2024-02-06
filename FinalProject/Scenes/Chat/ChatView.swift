@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ChatView: View {
-    @ObservedObject var chatViewModel = ChatViewModel()
+    @StateObject var chatViewModel = ChatViewModel()
     let chatId: String?
     let participantId: String?
-    @StateObject var profilePageViewModel = ProfileItemViewModel()
+   
     
     
     var body: some View {
@@ -21,7 +21,7 @@ struct ChatView: View {
         
         .safeAreaInset(edge: .bottom) {
             ZStack {
-                TextField("Type here...", text: $chatViewModel.text)
+                TextField("Type as \(chatViewModel.authenticatedUser?.fullName ?? "")...", text: $chatViewModel.text)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 60)
                     .background(Color(red: 0.95, green: 0.96, blue: 0.97))

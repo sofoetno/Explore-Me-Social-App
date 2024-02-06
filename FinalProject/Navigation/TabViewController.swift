@@ -15,7 +15,7 @@ class TabViewController: UITabBarController {
         
         let feed = createNavigationController(title: "Home", image: UIImage(systemName: "house"), rootView: AnyView(FeedView()))
         let offers = createNavigationController(title: "Chats", image: UIImage(systemName: "message"), rootView: AnyView(ChatListView()))
-        let profile = createNavigationController(title: "Profile", image: UIImage(systemName: "person"), rootView: AnyView(ProfilePageView(userId: AuthManager.shared.getAuthenticagedUser()?.uid ?? "")))
+        let profile = createNavigationController(title: "Profile", image: UIImage(systemName: "person"), rootView: AnyView(ProfilePageView(userId: AuthManager.shared.getAuthenticatedUser()?.uid ?? "")))
         
         setViewControllers([feed, offers, profile], animated: true)
     }

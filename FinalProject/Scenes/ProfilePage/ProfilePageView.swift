@@ -14,8 +14,6 @@ struct ProfilePageView: View, WithRootNavigationController {
     @StateObject var profilePageViewModel = ProfilePageViewModel()
     @StateObject var feedViewModel = FeedViewModel()
     
-
-    
     var body: some View {
         ZStack {
             CustomBackgroundLabelForUser()
@@ -66,11 +64,11 @@ struct ProfilePageView: View, WithRootNavigationController {
                                     Text("Follow")
                                         .foregroundColor(Color(red: 0.53, green: 0.55, blue: 0.96))
                                 }
-                               
+                                
                             }
                     }
                 }
-           
+                
             }
             .padding(.horizontal, 20)
             .offset(y: -320)
@@ -121,7 +119,7 @@ struct ProfilePageView: View, WithRootNavigationController {
             VStack() {
                 Text(profilePageViewModel.fullName)
                     .font(.title)
-
+                
                 
                 HStack(alignment: .center, spacing: 48) {
                     Button {
@@ -156,7 +154,8 @@ struct ProfilePageView: View, WithRootNavigationController {
                     Task {
                         await feedViewModel.fetchPosts()
                     }
-                } 
+                }
+                .zIndex(-1)
         }
         .onAppear() {
             profilePageViewModel.userId = userId
@@ -173,7 +172,7 @@ struct ProfilePageView: View, WithRootNavigationController {
             
         }
     }
-
+    
 }
 
 #Preview {

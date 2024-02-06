@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            rootView = AnyView(OnboardingView())
 //        }
         
-        if AuthManager.shared.getAuthenticagedUser() != nil {
+        if AuthManager.shared.getAuthenticatedUser() != nil {
             window?.rootViewController = TabViewController()
         } else {
             let rootViewController = UIHostingController(rootView: LoginView())

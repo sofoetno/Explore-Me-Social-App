@@ -56,8 +56,13 @@ struct FeedBar: View, WithRootNavigationController {
     }
     
     func openPostForm() {
-        present(viewController: UIHostingController(rootView: PostFormView(feedViewModel: feedViewModel)), animated: true, tab: 0)
-        
+        let rootView = PostFormView(feedViewModel: feedViewModel)
+            .onDisappear() {
+                Task {
+                    await feedViewModel.fetchPosts()
+                }
+            }
+        present(viewController: UIHostingController(rootView: rootView), animated: true, tab: 0)
     }
 }
 
