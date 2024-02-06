@@ -10,16 +10,20 @@ import FirebaseFirestoreSwift
 
 final class UserManager {
     
+    // MARK: - Static properties
     static let shared = UserManager()
+    
+    // MARK: - Inits
     private init() {}
     
+    // MARK: - Methods
     func creatUser(auth: AuthDataResultModel, fullName: String) async throws {
         let userData: [String:Any] = [
             "date_created" : Timestamp(),
             "email" : auth.email ?? "",
             "full_name" : fullName
         ]
-         
+        
         try await Firestore.firestore().collection("users").document(auth.uid).setData(userData, merge: false)
     }
     

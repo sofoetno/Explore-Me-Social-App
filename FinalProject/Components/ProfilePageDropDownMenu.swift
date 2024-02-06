@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfilePageDropDownMenu: View, WithRootNavigationController {
+    // MARK: - Body
     var body: some View {
         Menu {
             Button("Sign Out"){

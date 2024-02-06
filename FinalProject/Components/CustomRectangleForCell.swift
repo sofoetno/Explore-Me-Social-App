@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CustomRectangleForCell: View {
+    // MARK: - Body
     var body: some View {
         VStack {
             Rectangle()
@@ -30,6 +31,7 @@ struct CustomRectangleForCell: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     CustomRectangleForCell()
 }

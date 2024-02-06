@@ -10,10 +10,13 @@ import FirebaseFirestoreSwift
 import Foundation
 
 final class MessageManager {
+    // MARK: - Static properties
     static let shared = MessageManager()
     
+    // MARK: - Inits
     private init() { }
     
+    // MARK: - Methods
     func createMassage(message: MessageModel) async throws {
         let id = UUID().uuidString
         let messageData: [String:Any] = [

@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct Like: View {
+    // MARK: - Properties
     @ObservedObject var likeViewModel: LikeViewModel
     
+    // MARK: - Body
     var body: some View {
         HStack {
-
             Text("\(likeViewModel.likesCount)")
                 .foregroundStyle(AppColors.darkGray)
             
@@ -34,7 +35,7 @@ struct Like: View {
                 }
                 try await likeViewModel.countLikes()
             }
-
+            
         }
     }
 }

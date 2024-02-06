@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-struct FeedView: View{
+struct FeedView: View {
+    // MARK: - Properties
     @StateObject var feedViewModel = FeedViewModel()
     
+    // MARK: - Body
     var body: some View {
         Spacer()
         
@@ -34,6 +36,7 @@ struct FeedView: View{
     }
 }
 
+// MARK: - Preview
 #Preview {
     FeedView()
 }

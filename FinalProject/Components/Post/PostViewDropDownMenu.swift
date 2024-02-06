@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct PostViewDropDownMenu: View, WithRootNavigationController {
-    
+    // MARK: - Properties
     @StateObject var postViewModel = PostViewModel()
     @ObservedObject var feedViewModel: FeedViewModel
     @Binding var post: PostModel
     
+    // MARK: - Body
     var body: some View {
         Menu {
             Button("Edit") {
@@ -34,6 +35,7 @@ struct PostViewDropDownMenu: View, WithRootNavigationController {
         }
     }
     
+    // MARK: - Methods
     func openPostForm() {
         present(
             viewController: UIHostingController(
@@ -45,12 +47,12 @@ struct PostViewDropDownMenu: View, WithRootNavigationController {
                     }
                 )
             ),
-            animated: true,
-            tab: 0
+            animated: true
         )
     }
 }
 
+// MARK: - Preview
 #Preview {
     PostViewDropDownMenu(feedViewModel: FeedViewModel(), post: .constant(PostModel(id: "", title: "", description: "", photoUrl: "", userId: "")))
 }

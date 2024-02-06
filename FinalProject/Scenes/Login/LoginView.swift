@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct LoginView: View, WithRootNavigationController {
-    
     // MARK: - Properties
     @ObservedObject private var signUpViewModel = SignUpAndLoginViewModel()
     
+    // MARK: - Body
     var body: some View {
         ZStack {
             CustomBackgroundLabelForUser()
+            
             VStack(spacing: 20) {
-                
                 Text("Welcome back")
                     .foregroundStyle(.white)
                     .font(.largeTitle)
@@ -25,24 +25,27 @@ struct LoginView: View, WithRootNavigationController {
                     .offset(y: 120)
                 Spacer()
                 
-                Image("mainLogo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 220)
-                    .padding(.vertical, 30)
+                logo
                 
                 CustomLoginButton(signUpViewModel: signUpViewModel)
                 
-
-                
                 LoginWithGoogleAndFb()
                     .padding(.vertical, 24)
-
+                
                 notHaveaccount
             }
             .padding()
             
         }
+    }
+    
+    // MARK: - Computed properties
+    var logo: some View {
+        Image("mainLogo")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 220)
+            .padding(.vertical, 30)
     }
     
     var notHaveaccount: some View {
@@ -58,6 +61,7 @@ struct LoginView: View, WithRootNavigationController {
         }
     }
     
+    // MARK: - Methods
     func goToSignUp() {
         authNavigationController?.setViewControllers([UIHostingController(rootView: SignUpView())], animated: false)
     }

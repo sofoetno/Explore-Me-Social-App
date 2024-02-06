@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CustomBackgroundLabelForUser: View {
+    // MARK: - Body
     var body: some View {
         VStack {
             Rectangle()
@@ -24,6 +25,7 @@ struct CustomBackgroundLabelForUser: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     CustomBackgroundLabelForUser()
 }

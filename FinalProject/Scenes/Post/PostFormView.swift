@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PostFormView: View, WithRootNavigationController {
-    
+    // MARK: - Properties
     @StateObject var postViewModel = PostViewModel()
     @ObservedObject var feedViewModel: FeedViewModel
     @State private var image: Image?
@@ -17,6 +17,7 @@ struct PostFormView: View, WithRootNavigationController {
     var existingPost: PostModel? = nil
     var updateCallback: ((PostModel) -> Void)?
     
+    // MARK: - Body
     var body: some View {
         ZStack {
             CustomBackgroundLabelForUser()
@@ -49,7 +50,7 @@ struct PostFormView: View, WithRootNavigationController {
                     .clipShape(Rectangle())
                     .cornerRadius(6)
                 
-                
+                // MARK: - Buttons
                 Button {
                     showImagePicker = true
                 } label: {
@@ -87,6 +88,7 @@ struct PostFormView: View, WithRootNavigationController {
         }
     }
     
+    // MARK: - Methods
     func loadImage() {
         if let inputImage {
             image = Image(uiImage: inputImage)

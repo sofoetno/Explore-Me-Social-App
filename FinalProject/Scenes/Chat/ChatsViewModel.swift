@@ -9,8 +9,10 @@ import Foundation
 
 @MainActor
 final class ChatsViewModel: ObservableObject {
+    // MARK: - Properties
     @Published var chats: [ChatModel] = []
     
+    // MARK: - Methods
     func getChats() async throws {
         chats = try await ChatManager.shared.getChats()
     }
@@ -21,8 +23,7 @@ final class ChatsViewModel: ObservableObject {
         } catch {
             print(error)
         }
-        return nil
-      
+        return nil 
     }
 }
 

@@ -10,9 +10,13 @@ import FirebaseFirestoreSwift
 
 final class PostManager {
     
+    // MARK: - Static properties
     static let shared = PostManager()
+    
+    // MARK: - Inits
     private init() {}
     
+    // MARK: - Methods
     func savePost(post: PostModel, postId: String? = nil) async throws -> PostModel {
         var postData: [String:Any] = [
             "title" : post.title,

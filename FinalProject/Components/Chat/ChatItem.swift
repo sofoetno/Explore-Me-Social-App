@@ -10,10 +10,12 @@ import SwiftUI
 struct ChatItem: View {
     
     let chat: ChatModel
+    // MARK: - properties
     @ObservedObject var chatsViewModel: ChatsViewModel
     @State var latestMessage: MessageModel? = nil
     @StateObject var profileItemViewModel = ProfileItemViewModel()
     
+    // MARK: - Body
     var body: some View {
         HStack(spacing: 20) {
             CustomAsyncImage(imageUrl: profileItemViewModel.currentProfileImageUrl)
@@ -46,6 +48,7 @@ struct ChatItem: View {
     }
 }
 
+// MARK: - preview
 #Preview {
     ChatItem(chat: ChatModel(id: "0554B0B1-BC8F-4E6D-B292-6E393C999B14", participants: ["Eu507agEdHMVyFOV2ldbggmq9xw1", "rCiONGhVw7cFPWPh1gEdOGX6GXT2"]), chatsViewModel: ChatsViewModel())
 }

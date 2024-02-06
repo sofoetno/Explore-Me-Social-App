@@ -9,11 +9,13 @@ import SwiftUI
 import PhotosUI
 
 struct ImagePicker: UIViewControllerRepresentable {
+    // MARK: - Properties
     @Binding var image: UIImage?
     
+    // MARK: - Methods
     func makeCoordinator() -> Coordinator {
         return Coordinator(parent: self)
-
+        
     }
     
     func makeUIViewController(context: Context) -> PHPickerViewController {
@@ -27,12 +29,15 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
     
     class Coordinator: NSObject, PHPickerViewControllerDelegate {
+        // MARK: - Properties
         let parent: ImagePicker
         
+        // MARK: - Inits
         init(parent: ImagePicker) {
             self.parent = parent
         }
         
+        // MARK: - Methods
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             picker.dismiss(animated: true)
             

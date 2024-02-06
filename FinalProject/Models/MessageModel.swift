@@ -8,6 +8,7 @@
 import Foundation
 
 struct MessageModel {
+    // MARK: - Properties
     let text: String
     let chatId: String
     let senderId: String

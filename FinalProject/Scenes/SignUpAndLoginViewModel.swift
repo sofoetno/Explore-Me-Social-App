@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+// MARK: - Enums
 enum LoginError: Error {
     case missingCredentials
 }

@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ImageCache {
+    // MARK: - Static properties
     static var images: [String:Image] = [:]
 }
 
 struct CustomAsyncImage: View {
+    // MARK: - Properties
     let imageUrl: String
     
+    // MARK: - Body
     var body: some View {
         if imageUrl == "" {
             Image(systemName: "photo.artframe.circle")
@@ -46,6 +49,7 @@ struct CustomAsyncImage: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     CustomAsyncImage(imageUrl: "person")
 }

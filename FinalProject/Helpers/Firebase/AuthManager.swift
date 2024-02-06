@@ -8,16 +8,17 @@
 import FirebaseAuth
 
 struct AuthDataResultModel {
-    // MARK: - Properties
+    // MARK: - Static properties
     let uid: String
     let email: String?
 }
 
-
 final class AuthManager {
-
+    
+    // MARK: - Properties
     static let shared = AuthManager()
     
+    // MARK: - Methods
     @discardableResult
     func creatUser(email: String, password: String) async throws -> AuthDataResultModel {
         let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)

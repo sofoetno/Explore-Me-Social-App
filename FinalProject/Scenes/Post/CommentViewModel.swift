@@ -9,11 +9,13 @@ import SwiftUI
 
 @MainActor
 final class CommentViewModel: ObservableObject {
+    // MARK: - Properties
     @Published var comments: [CommentModel] = []
     @Published var commentsCount: Int = 0
     @Published var text: String = ""
     var postId: String = ""
     
+    // MARK: - Methods
     func saveComment() async {
         do {
             try await CommentManager.shared.creatComment(text: text, postId: postId)
