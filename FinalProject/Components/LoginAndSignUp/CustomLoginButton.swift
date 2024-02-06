@@ -33,6 +33,12 @@ struct CustomLoginButton: View, WithRootNavigationController {
                 
         }
         .primaryButtonStyle
+        .alert(isPresented: $showAlert, content: {
+            Alert(title: Text("Somethin went wrong"),
+                  message: Text("Please check your email or password."),
+                  dismissButton: .default(Text("OK"))
+            )
+        })
     }
     
     func goToHome() {

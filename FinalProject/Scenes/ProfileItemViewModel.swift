@@ -26,7 +26,7 @@ final class ProfileItemViewModel: ObservableObject {
     
     func getParticipantIdFromChat(chat: ChatModel) -> String? {
         let participantIds = chat.participants.filter({ userId in
-            userId != AuthManager.shared.getAuthenticagedUser()?.uid
+            userId != AuthManager.shared.getAuthenticatedUser()?.uid
         })
         
         if participantIds.count > 0 {

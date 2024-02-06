@@ -19,7 +19,7 @@ final class PostManager {
             "description" : post.description
         ]
         
-        let userId = AuthManager.shared.getAuthenticagedUser()?.uid ?? ""
+        let userId = AuthManager.shared.getAuthenticatedUser()?.uid ?? ""
         
         if postId == nil {
             postData["user_id"] = userId
@@ -32,7 +32,9 @@ final class PostManager {
         
         let id = postId ?? post.id
         
-        try await Firestore.firestore().collection("posts").document(id).setData(postData, merge: postId != nil)
+        try await Firestore.firestore()
+            .collection("posts")
+            .document(id).setData(postData, merge: postId != nil)
         
         return PostModel(id: id, title: post.title, description: post.description, photoUrl: post.photoUrl, userId: userId)
     }
@@ -43,22 +45,20 @@ final class PostManager {
     
     func getPosts(searchTerm: String?, userId: String? = nil) async throws -> [PostModel] {
         
-        let collection = Firestore.firestore().collection("posts")
-        var query: Query? = nil
+        var collection = Firestore.firestore().collection("posts")
+            .order(by: "date_created", descending: true)
         if let searchTerm {
             if searchTerm != "" {
-                query = collection
+                collection = collection
                     .whereField("title", isEqualTo: searchTerm)
-                    .order(by: "date_created", descending: true)
             }
         }
         if let userId {
-            query = collection
+            collection = collection
                 .whereField("user_id", isEqualTo: userId)
-                .order(by: "date_created", descending: true)
         }
         
-        let snapshot = try await query != nil ? query!.getDocuments() : collection.getDocuments()
+        let snapshot = try await collection.getDocuments()
         
         var posts: [PostModel] = []
         snapshot.documents.forEach { document in

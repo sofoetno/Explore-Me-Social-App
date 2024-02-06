@@ -63,7 +63,6 @@ struct PostFormView: View, WithRootNavigationController {
                         let (_, _, downloadUrl) = await postViewModel.saveImage() ?? (path: "", name: "", URL(string: ""))
                         let savedPost = await postViewModel.savePost(photoUrl: downloadUrl?.absoluteString, postId: existingPost?.id)
                         dismiss(animated: true, tab: 0)
-                        await feedViewModel.fetchPosts()
                         if let savedPost, let updateCallback {
                             updateCallback(savedPost)
                         }

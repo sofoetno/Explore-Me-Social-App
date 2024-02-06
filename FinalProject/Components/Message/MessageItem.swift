@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MessageItem: View {
+struct MessageItem: View, WithRootNavigationController {
     let message: MessageModel
     @ObservedObject var chatViewModel: ChatViewModel
     
@@ -20,6 +20,9 @@ struct MessageItem: View {
                         .clipShape(Circle())
                         .scaledToFill()
                         .frame(width: 44, height: 44)
+                        .onTapGesture {
+                            push(viewController: UIHostingController(rootView: ProfilePageView(userId: message.senderId)), animated: true)
+                        }
                     
                     Spacer()
                     
@@ -57,6 +60,9 @@ struct MessageItem: View {
                         .clipShape(Circle())
                         .scaledToFill()
                         .frame(width: 44, height: 44)
+                        .onTapGesture {
+                            push(viewController: UIHostingController(rootView: ProfilePageView(userId: message.senderId)), animated: true)
+                        }
                 }
                 
                 

@@ -17,7 +17,7 @@ final class MessageManager {
     func createMassage(message: MessageModel) async throws {
         let id = UUID().uuidString
         let messageData: [String:Any] = [
-            "sender_id" : AuthManager.shared.getAuthenticagedUser()?.uid ?? "",
+            "sender_id" : AuthManager.shared.getAuthenticatedUser()?.uid ?? "",
             "chat_id" : message.chatId,
             "text" : message.text,
             "send_date" : Timestamp()

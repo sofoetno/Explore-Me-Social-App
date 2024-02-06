@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
 
 //        var rootView = AnyView(SignInView())
-          let rootView = LoginView()
+          
         
 //        let isUserOnboarded = UserDefaults.standard.bool(forKey: "has-seen-onboarding")
         
@@ -30,10 +30,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            rootView = AnyView(OnboardingView())
 //        }
         
-        let rootViewController = UIHostingController(rootView: rootView)
-        let navigationController = AuthNavigationController(rootViewController: rootViewController)
-        
-        window?.rootViewController = navigationController
+        if AuthManager.shared.getAuthenticatedUser() != nil {
+            window?.rootViewController = TabViewController()
+        } else {
+            let rootViewController = UIHostingController(rootView: LoginView())
+            window?.rootViewController = AuthNavigationController(rootViewController: rootViewController)
+        }
+            
         window?.makeKeyAndVisible()
     }
 

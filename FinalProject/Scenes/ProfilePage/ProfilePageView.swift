@@ -14,8 +14,6 @@ struct ProfilePageView: View, WithRootNavigationController {
     @StateObject var profilePageViewModel = ProfilePageViewModel()
     @StateObject var feedViewModel = FeedViewModel()
     
-
-    
     var body: some View {
         ZStack {
             CustomBackgroundLabelForUser()
@@ -66,11 +64,11 @@ struct ProfilePageView: View, WithRootNavigationController {
                                     Text("Follow")
                                         .foregroundColor(Color(red: 0.53, green: 0.55, blue: 0.96))
                                 }
-                               
+                                
                             }
                     }
                 }
-           
+                
             }
             .padding(.horizontal, 20)
             .offset(y: -320)
@@ -121,12 +119,11 @@ struct ProfilePageView: View, WithRootNavigationController {
             VStack() {
                 Text(profilePageViewModel.fullName)
                     .font(.title)
-                Text("Singer")
-                    .foregroundStyle(Color.gray)
+                
                 
                 HStack(alignment: .center, spacing: 48) {
                     Button {
-                        present(viewController: UIHostingController(rootView: FollowView(userId: userId)), animated: true, tab: 2)
+                        present(viewController: UIHostingController(rootView: FollowView(userId: userId)), animated: true)
                     } label: {
                         Text("\(profilePageViewModel.followersCount) Followers")
                             .kerning(0.6)
@@ -135,7 +132,7 @@ struct ProfilePageView: View, WithRootNavigationController {
                     }
                     
                     Button {
-                        present(viewController: UIHostingController(rootView: FollowView(userId: userId, isFollowing: true)), animated: true, tab: 2)
+                        present(viewController: UIHostingController(rootView: FollowView(userId: userId, isFollowing: true)), animated: true)
                     } label: {
                         Text("\(profilePageViewModel.followingsCount) Following")
                             .kerning(0.6)
@@ -157,7 +154,8 @@ struct ProfilePageView: View, WithRootNavigationController {
                     Task {
                         await feedViewModel.fetchPosts()
                     }
-                } 
+                }
+                .zIndex(-1)
         }
         .onAppear() {
             profilePageViewModel.userId = userId
@@ -174,7 +172,7 @@ struct ProfilePageView: View, WithRootNavigationController {
             
         }
     }
-
+    
 }
 
 #Preview {

@@ -20,18 +20,7 @@ struct PostItem: View, WithRootNavigationController {
                     .scaledToFit()
                     .cornerRadius(10)
                 
-                Circle()
-                    .foregroundColor(.white)
-                    .frame(width: 74, height: 74)
-                
-                CustomAsyncImage(imageUrl: postItemViewModel.currentProfileImageUrl)
-                    .frame(width: 70, height: 70)
-                    .cornerRadius(6)
-                    .clipShape(Circle())
-                    .shadow(color: .white, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                    .onTapGesture {
-                        push(viewController: UIHostingController(rootView: ProfilePageView(userId: post.userId)), animated: true)
-                    }
+               
                 
                 Like(likeViewModel: likeViewModel)
                     .offset(x: 120, y: -90)
@@ -39,6 +28,27 @@ struct PostItem: View, WithRootNavigationController {
             
             ZStack {
                 CustomRectangleForCell()
+                    .overlay {
+                        
+                        ZStack {
+                            Circle()
+                                .foregroundColor(.white)
+                                .frame(width: 74, height: 74)
+                            
+                            
+                            CustomAsyncImage(imageUrl: postItemViewModel.currentProfileImageUrl)
+                                .frame(width: 70, height: 70)
+                                .cornerRadius(6)
+                                .clipShape(Circle())
+                                .shadow(color: .white, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                .onTapGesture {
+                                    push(viewController: UIHostingController(rootView: ProfilePageView(userId: post.userId)), animated: true)
+                                }
+                        }
+                        .offset(y: -94)
+                    
+                    }
+                   
                 
                 VStack(spacing: 8) {
                     Text("Explore the story: \(post.title)")
@@ -87,5 +97,5 @@ struct PostItem: View, WithRootNavigationController {
 }
 
 #Preview {
-    PostItem(post: PostModel(title: "Story name", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", userId: "QVILtCNWoQOunCgxvcYX6nN8Y9D3"))
+    PostItem(post: PostModel(title: "Story name", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.", photoUrl: "https://firebasestorage.googleapis.com:443/v0/b/finalproject-7d145.appspot.com/o/2EC57CE8-CA9E-4428-8117-8F0679E03C18.jpeg?alt=media&token=44d7fda9-e87b-4004-b5ea-719c5d266431", userId: "Eu507agEdHMVyFOV2ldbggmq9xw1"))
 }

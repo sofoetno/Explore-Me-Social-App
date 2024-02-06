@@ -23,7 +23,7 @@ final class FollowManager {
     func createFollower(followingId: String) async throws {
         let id = UUID().uuidString
         let followerData: [String:Any] = [
-            "follower_id" : AuthManager.shared.getAuthenticagedUser()?.uid ?? "",
+            "follower_id" : AuthManager.shared.getAuthenticatedUser()?.uid ?? "",
             "following_id" : followingId
         ]
         
@@ -34,7 +34,7 @@ final class FollowManager {
 
         let snapshot = try await Firestore.firestore().collection("followers")
             .whereField("following_id", isEqualTo: followingId)
-            .whereField("follower_id", isEqualTo: AuthManager.shared.getAuthenticagedUser()?.uid ?? "")
+            .whereField("follower_id", isEqualTo: AuthManager.shared.getAuthenticatedUser()?.uid ?? "")
             .getDocuments()
         
         var ids: [String] = []
@@ -63,13 +63,8 @@ final class FollowManager {
     }
     
     func getFollows(userId: String, mode: GetFollowMode) async throws -> [String] {
-        var conditionField = "follower_id"
-        var readingField = "following_id"
-        
-        if mode == .followings {
-            conditionField = "following_id"
-            readingField = "follower_id"
-        }
+        let conditionField = mode == .followings ? "follower_id" : "following_id"
+        let readingField = mode == .followings ? "following_id" : "follower_id"
         
         let snapshot = try await Firestore.firestore()
             .collection("followers")
@@ -90,7 +85,7 @@ final class FollowManager {
     func checkIfFollows(to followingUserId: String) async throws -> Bool {
         let count = try await Firestore.firestore().collection("followers")
             .whereField("following_id", isEqualTo: followingUserId)
-            .whereField("follower_id", isEqualTo: AuthManager.shared.getAuthenticagedUser()?.uid ?? "")
+            .whereField("follower_id", isEqualTo: AuthManager.shared.getAuthenticatedUser()?.uid ?? "")
             .count.getAggregation(source: .server).count
         
         return Int(truncating: count) > 0

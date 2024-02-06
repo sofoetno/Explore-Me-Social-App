@@ -17,7 +17,7 @@ final class LikeManager {
     func checkIfLikes(postId: String) async throws -> Bool {
         let count = try await Firestore.firestore().collection("likes")
             .whereField("post_id", isEqualTo: postId)
-            .whereField("user_id", isEqualTo: AuthManager.shared.getAuthenticagedUser()?.uid ?? "")
+            .whereField("user_id", isEqualTo: AuthManager.shared.getAuthenticatedUser()?.uid ?? "")
             .count.getAggregation(source: .server).count
         
         return Int(truncating: count) > 0
@@ -26,7 +26,7 @@ final class LikeManager {
     func createLike(postId: String) async throws {
         let id = UUID().uuidString
         let likeData: [String:Any] = [
-            "user_id" : AuthManager.shared.getAuthenticagedUser()?.uid ?? "",
+            "user_id" : AuthManager.shared.getAuthenticatedUser()?.uid ?? "",
             "post_id" : postId
         ]
         
@@ -37,7 +37,7 @@ final class LikeManager {
         
         let snapshot = try await Firestore.firestore().collection("likes")
             .whereField("post_id", isEqualTo: postId)
-            .whereField("user_id", isEqualTo: AuthManager.shared.getAuthenticagedUser()?.uid ?? "")
+            .whereField("user_id", isEqualTo: AuthManager.shared.getAuthenticatedUser()?.uid ?? "")
             .getDocuments()
         
         var ids: [String] = []

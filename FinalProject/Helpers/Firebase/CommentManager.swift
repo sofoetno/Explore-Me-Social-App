@@ -16,7 +16,7 @@ final class CommentManager {
     func creatComment(text: String, postId: String) async throws {
         let id = UUID().uuidString
         let commentData: [String:Any] = [
-            "user_id" : AuthManager.shared.getAuthenticagedUser()?.uid ?? "",
+            "user_id" : AuthManager.shared.getAuthenticatedUser()?.uid ?? "",
             "text" : text,
             "post_id" : postId,
             "date_created" : Timestamp(),
