@@ -27,7 +27,10 @@ struct PostView: View, WithRootNavigationController {
                         
                         Spacer()
                         
-                        PostViewDropDownMenu(feedViewModel: feedViewModel, post: $post)
+                        if postViewModel.isAuthenticatedUser(userId: post.userId) {
+                            PostViewDropDownMenu(feedViewModel: feedViewModel, post: $post)
+                        }
+                        
                     }
                     .padding(.horizontal, 12)
                     
@@ -39,12 +42,7 @@ struct PostView: View, WithRootNavigationController {
                             Like(likeViewModel: likeViewModel)
                         }
                         Spacer()
-                        HStack {
-                            Image(systemName: "text.bubble")
-                                .foregroundColor(.purple)
-                            Text("\(commentViewModel.commentsCount)")
-                                .foregroundStyle(AppColors.darkGray)
-                        }
+                        commentCountView
                     }
                     .padding(.horizontal, 50)
                     .frame(width: 380, height: 50)
@@ -96,6 +94,16 @@ struct PostView: View, WithRootNavigationController {
             try await likeViewModel.checkIfLikes()
             try await commentViewModel.countComments()
             try await profileItemViewModel.getUser()
+        }
+    }
+    
+    // MARK: - Computed properties
+    var commentCountView: some View {
+        HStack {
+            Image(systemName: "text.bubble")
+                .foregroundColor(.purple)
+            Text("\(commentViewModel.commentsCount)")
+                .foregroundStyle(AppColors.darkGray)
         }
     }
     

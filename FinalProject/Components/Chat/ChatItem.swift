@@ -32,11 +32,7 @@ struct ChatItem: View {
             .frame(width: 280, height: 56)
             
         }
-        .background(
-            LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.horizontal)
-                .opacity(0.5)
-        )
+        .background(backgroundColor)
         .cornerRadius(18)
         .onAppear() {
             profileItemViewModel.userId = profileItemViewModel.getParticipantIdFromChat(chat: chat) ?? ""
@@ -45,6 +41,13 @@ struct ChatItem: View {
                 try await profileItemViewModel.getUser()
             }
         }
+    }
+    
+    // MARK: - Computed properties
+    var backgroundColor: some View {
+        LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.horizontal)
+            .opacity(0.5)
     }
 }
 

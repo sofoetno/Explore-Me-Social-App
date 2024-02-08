@@ -42,5 +42,9 @@ final class PostViewModel: ObservableObject {
         }
         return nil
     }
+    
+    func isAuthenticatedUser(userId: String) -> Bool {
+        AuthManager.shared.getAuthenticatedUser()?.uid == userId
+    }
 }
 

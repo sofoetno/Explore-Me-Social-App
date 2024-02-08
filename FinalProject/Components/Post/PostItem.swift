@@ -88,15 +88,7 @@ struct PostItem: View, WithRootNavigationController {
             .foregroundColor(.clear)
             .frame(width: 300, height: 1)
             .background(
-                LinearGradient(
-                    stops: [
-                        Gradient.Stop(color: Color(red: 0.98, green: 0.97, blue: 0.97).opacity(0), location: 0.00),
-                        Gradient.Stop(color: Color(red: 0.98, green: 0.98, blue: 0.98), location: 0.09),
-                        Gradient.Stop(color: Color(red: 0.98, green: 0.97, blue: 0.97).opacity(0), location: 1.00),
-                    ],
-                    startPoint: UnitPoint(x: 0, y: 1),
-                    endPoint: UnitPoint(x: 1, y: 1)
-                )
+                gradientColor
             )
     }
     
@@ -105,6 +97,18 @@ struct PostItem: View, WithRootNavigationController {
             .font(Font.custom("Inter", size: 15))
             .foregroundColor(.white.opacity(0.6))
             .frame(width: 280, height: 64, alignment: .topLeading)
+    }
+    
+    var gradientColor: some View {
+        LinearGradient(
+            stops: [
+                Gradient.Stop(color: Color(red: 0.98, green: 0.97, blue: 0.97).opacity(0), location: 0.00),
+                Gradient.Stop(color: Color(red: 0.98, green: 0.98, blue: 0.98), location: 0.09),
+                Gradient.Stop(color: Color(red: 0.98, green: 0.97, blue: 0.97).opacity(0), location: 1.00),
+            ],
+            startPoint: UnitPoint(x: 0, y: 1),
+            endPoint: UnitPoint(x: 1, y: 1)
+        )
     }
 }
 

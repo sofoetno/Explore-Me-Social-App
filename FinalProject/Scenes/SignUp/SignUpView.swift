@@ -18,9 +18,7 @@ struct SignUpView: View, WithRootNavigationController {
             CustomBackgroundLabelForUser()
             
             VStack(spacing: 20) {
-                Text("Create your account")
-                    .foregroundStyle(.white)
-                    .font(.largeTitle)
+                createAccountTitle
                 
                 Spacer()
                 
@@ -44,6 +42,12 @@ struct SignUpView: View, WithRootNavigationController {
     }
     
     // MARK: - Computed properties
+    var createAccountTitle: some View {
+        Text("Create your account")
+            .foregroundStyle(.white)
+            .font(.largeTitle)
+    }
+    
     var fullNameTextField: some View {
         TextField("Enter full name...", text: $signUpViewModel.fullName)
             .padding(.horizontal, 20)

@@ -36,12 +36,7 @@ struct CustomAsyncImage: View {
                             ImageCache.images[imageUrl] = image
                         }
                 } else {
-                    Image(systemName: "person")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.purple)
-                        .padding(.vertical, 100)
-                        .padding(.horizontal, 50)
+                    ProgressView()
                 }
             }
         }
@@ -51,5 +46,5 @@ struct CustomAsyncImage: View {
 
 // MARK: - Preview
 #Preview {
-    CustomAsyncImage(imageUrl: "person")
+    CustomAsyncImage(imageUrl: "photo.artframe.circle")
 }

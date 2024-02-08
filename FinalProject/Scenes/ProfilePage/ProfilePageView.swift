@@ -22,7 +22,6 @@ struct ProfilePageView: View, WithRootNavigationController {
                 .offset(y: 40)
             
             HStack {
-                
                 if profilePageViewModel.isMyProfile() {
                     ProfilePageDropDownMenu()
                 }
@@ -41,16 +40,9 @@ struct ProfilePageView: View, WithRootNavigationController {
             .offset(y: -320)
             
             VStack {
-                Circle()
-                    .foregroundColor(.white)
-                    .frame(width: 100, height: 100)
-                
+                profilePhotoBackgroundCircle
                     .overlay(
-                        CustomAsyncImage(imageUrl: profilePageViewModel.currentProfileImageUrl)
-                            .frame(width: 90, height: 90)
-                            .scaledToFit()
-                            .cornerRadius(6)
-                            .clipShape(Circle())
+                        profileAsyncImage
                     )
                     .overlay {
                         if profilePageViewModel.isMyProfile() {
@@ -192,6 +184,21 @@ struct ProfilePageView: View, WithRootNavigationController {
                 print(error)
             }
         }
+    }
+    
+    // MARK: - Computed properties
+    var profilePhotoBackgroundCircle: some View {
+        Circle()
+            .foregroundColor(.white)
+            .frame(width: 100, height: 100)
+    }
+    
+    var profileAsyncImage: some View {
+        CustomAsyncImage(imageUrl: profilePageViewModel.currentProfileImageUrl)
+            .frame(width: 90, height: 90)
+            .scaledToFit()
+            .cornerRadius(6)
+            .clipShape(Circle())
     }
     
 }

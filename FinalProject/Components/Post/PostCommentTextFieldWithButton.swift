@@ -33,17 +33,27 @@ struct PostCommentTextFieldWithButton: View {
     // MARK: - Buttons
     var sendCommentButton: some View {
         Button {
-            Task {
-                await commentViewModel.saveComment()
-                commentViewModel.clearForm()
-                await commentViewModel.fetchComments()
-                try await commentViewModel.countComments()
-            }
+            setup()
         } label: {
-            Image(systemName: "arrow.right.circle")
-                .font(.largeTitle)
-                .foregroundColor(.gray)
+            addCommentLabel
         }
+    }
+    
+    // MARK: - Methods
+    func setup() {
+        Task {
+            await commentViewModel.saveComment()
+            commentViewModel.clearForm()
+            await commentViewModel.fetchComments()
+            try await commentViewModel.countComments()
+        }
+    }
+    
+    // MARK: - Computed properties
+    var addCommentLabel: some View {
+        Image(systemName: "arrow.right.circle")
+            .font(.largeTitle)
+            .foregroundColor(.gray)
     }
 }
 

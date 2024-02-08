@@ -305,6 +305,7 @@
 		889108A82B55B2E700EE831A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				88C569FB2B73E3EA006DE016 /* Follow */,
 				88980A5A2B683411003F09EC /* Chat */,
 				88980A592B6833EE003F09EC /* Message */,
 				88980A582B6833CB003F09EC /* Post */,
@@ -318,8 +319,6 @@
 				887E12B42B610D4D00137EA0 /* ProfilePageDropDownMenu.swift */,
 				887E12BA2B6133E800137EA0 /* CustomAsyncImage.swift */,
 				88E608012B656B6C00D5978D /* Like.swift */,
-				88980A692B6B94D6003F09EC /* FollowTable.swift */,
-				88980A6B2B6B9A93003F09EC /* FollowItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -415,6 +414,15 @@
 				88E608052B66759700D5978D /* MessageManager.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		88C569FB2B73E3EA006DE016 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				88980A6B2B6B9A93003F09EC /* FollowItem.swift */,
+				88980A692B6B94D6003F09EC /* FollowTable.swift */,
+			);
+			path = Follow;
 			sourceTree = "<group>";
 		};
 		88CFEEE52B587AE40018DE6A /* Feed */ = {

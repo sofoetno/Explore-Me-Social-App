@@ -17,9 +17,7 @@ struct LoginView: View, WithRootNavigationController {
             CustomBackgroundLabelForUser()
             
             VStack(spacing: 20) {
-                Text("Welcome back")
-                    .foregroundStyle(.white)
-                    .font(.largeTitle)
+                welcomeBackTitle
                 
                 CustomTextFieldsForUser(signUpViewModel: signUpViewModel)
                     .offset(y: 120)
@@ -40,6 +38,12 @@ struct LoginView: View, WithRootNavigationController {
     }
     
     // MARK: - Computed properties
+    var welcomeBackTitle: some View {
+        Text("Welcome back")
+            .foregroundStyle(.white)
+            .font(.largeTitle)
+    }
+    
     var logo: some View {
         Image("mainLogo")
             .resizable()
