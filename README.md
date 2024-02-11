@@ -94,10 +94,10 @@
 
 ## Code organization
 
-- Manager Classes - responsible to communicate with backend (plain Swift)
-- Model Structs (plain Swift)
-- ViewModel Classes (SwiftUI)
-- Views – Scenes & Components (SwiftUI)
+- Manager Classes - to communicate with backend, sending and receiving data (plain Swift)
+- Model Structs - representing data (plain Swift)
+- ViewModel Classes - connecting managers and models with views (SwiftUI)
+- Views: Scenes & Components - representing user UI, visualizing data (SwiftUI)
 - Navigation system (UIKit: UINavigationController, UITabBarController)
 - Tables and Collections (UIKit: UITableViewController, UICollectionViewController)
 - Project Base (UIKit: AppDelegate, SceneDelegate)
