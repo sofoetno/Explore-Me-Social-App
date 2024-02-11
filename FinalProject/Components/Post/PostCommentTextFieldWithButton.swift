@@ -33,14 +33,14 @@ struct PostCommentTextFieldWithButton: View {
     // MARK: - Buttons
     var sendCommentButton: some View {
         Button {
-            setup()
+            saveComment()
         } label: {
             addCommentLabel
         }
     }
     
     // MARK: - Methods
-    func setup() {
+    func saveComment() {
         Task {
             await commentViewModel.saveComment()
             commentViewModel.clearForm()
