@@ -10,9 +10,13 @@ import FirebaseFirestoreSwift
 
 final class CommentManager {
     
+    // MARK: - Static properties
     static let shared = CommentManager()
+    
+    // MARK: - Inits
     private init() {}
     
+    // MARK: - Methods
     func creatComment(text: String, postId: String) async throws {
         let id = UUID().uuidString
         let commentData: [String:Any] = [
@@ -21,7 +25,7 @@ final class CommentManager {
             "post_id" : postId,
             "date_created" : Timestamp(),
         ]
-         
+        
         try await Firestore.firestore().collection("comments").document(id).setData(commentData, merge: false)
     }
     
@@ -39,7 +43,7 @@ final class CommentManager {
                 text: dictionary["text"] as! String,
                 dateCreated: dateCreated,
                 postId: dictionary["post_id"] as! String
-            
+                
             )
             comments.append(comment)
         }

@@ -9,8 +9,10 @@ import SwiftUI
 import UIKit
 
 struct ChatsTable: UIViewRepresentable, WithRootNavigationController {
+    // MARK: - properties
     @ObservedObject var chatsViewModel: ChatsViewModel
     
+    // MARK: - Methods
     func makeCoordinator() -> Coordinator {
         return Coordinator(chatsViewModel: chatsViewModel, didSelectHandler: push)
     }
@@ -30,13 +32,16 @@ struct ChatsTable: UIViewRepresentable, WithRootNavigationController {
     class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
         @ObservedObject var chatsViewModel: ChatsViewModel
         
+        // MARK: - Properties
         private var didSelectHandler: (UIViewController, Bool, Int?) -> Void
         
+        // MARK: - Inits
         init(chatsViewModel: ChatsViewModel, didSelectHandler: @escaping (UIViewController, Bool, Int?) -> Void) {
             self.chatsViewModel = chatsViewModel
             self.didSelectHandler = didSelectHandler
         }
         
+        // MARK: - Methods
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             chatsViewModel.chats.count
         }
@@ -65,6 +70,7 @@ struct ChatsTable: UIViewRepresentable, WithRootNavigationController {
     }
 }
 
+// MARK: - Preview
 #Preview {
     ChatsTable(chatsViewModel: ChatsViewModel())
 }

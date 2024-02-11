@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct PasswordChecker: View {
+    // MARK: - Properties
     @ObservedObject var signUpViewModel: SignUpAndLoginViewModel
     
+    // MARK: - Body
     var body: some View {
         // MARK: - Password chek
         VStack(alignment: .leading, spacing: 10) {
@@ -28,7 +30,7 @@ struct PasswordChecker: View {
     // MARK: - Methods
     func displayPasswordValidation(title: String, conditation: Bool) -> some View {
         HStack {
-        Image(systemName: conditation ? "checkmark.seal" : "x.square")
+            Image(systemName: conditation ? "checkmark.seal" : "x.square")
                 .foregroundColor(conditation ? .green : .red)
             Text(title)
                 .foregroundStyle(.black)
@@ -36,6 +38,7 @@ struct PasswordChecker: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     PasswordChecker(signUpViewModel: SignUpAndLoginViewModel())
 }

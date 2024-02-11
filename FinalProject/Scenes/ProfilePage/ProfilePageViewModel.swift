@@ -8,17 +8,18 @@
 import Foundation
 
 @MainActor
-class ProfilePageViewModel: ObservableObject {
-    
+final class ProfilePageViewModel: ObservableObject {
+    // MARK: - Properties
+    var userId: String = ""
     @Published var imageData: Data? = nil
     @Published var currentProfileImageUrl: String = ""
     @Published var followersCount: Int = 0
     @Published var followingsCount: Int = 0
     @Published var following = false
     @Published var followList: [String] = []
-    var userId: String = ""
     @Published var fullName: String = ""
     
+    // MARK: - Methods
     func changeProfileImage() async -> (path: String, name: String, downloadUrl: URL)? {
         if let imageData {
             do {

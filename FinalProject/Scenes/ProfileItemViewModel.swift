@@ -9,10 +9,12 @@ import Foundation
 
 @MainActor
 final class ProfileItemViewModel: ObservableObject {
+    // MARK: - Properties
     @Published var userId: String = ""
     @Published var currentProfileImageUrl: String = ""
     @Published var fullName: String = ""
     
+    // MARK: - Methods
     func getUser() async throws {
         do {
             let user = try await UserManager.shared.getUser(by: userId)
@@ -21,7 +23,6 @@ final class ProfileItemViewModel: ObservableObject {
         } catch {
             print(error)
         }
-       
     }
     
     func getParticipantIdFromChat(chat: ChatModel) -> String? {

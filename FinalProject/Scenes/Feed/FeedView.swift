@@ -7,19 +7,18 @@
 
 import SwiftUI
 
-struct FeedView: View{
+struct FeedView: View {
+    // MARK: - Properties
     @StateObject var feedViewModel = FeedViewModel()
     
+    // MARK: - Body
     var body: some View {
         Spacer()
         
         VStack(alignment: .trailing, spacing: 12) {
             Spacer()
             VStack(alignment: .trailing, spacing: 10) {
-                Image("mainLogo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 170)
+                logo
                 FeedBar(feedViewModel: feedViewModel)
             }
             .padding(.horizontal, 16)
@@ -32,8 +31,17 @@ struct FeedView: View{
             }
         }
     }
+    
+    // MARK: - Computed properties
+    var logo: some View {
+        Image("mainLogo")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 170)
+    }
 }
 
+// MARK: - Preview
 #Preview {
     FeedView()
 }

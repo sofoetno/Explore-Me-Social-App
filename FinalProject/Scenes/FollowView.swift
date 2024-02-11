@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct FollowView: View {
-    @StateObject var profilePageViewModel = ProfilePageViewModel()
+    // MARK: - Properties
     let userId: String
+    @StateObject var profilePageViewModel = ProfilePageViewModel()
     @State var isFollowing: Bool = false
     
+    // MARK: - Body
     var body: some View {
         Spacer()
         if isFollowing == true {
@@ -21,23 +23,29 @@ struct FollowView: View {
             Text("Followers")
                 .font(.callout)
         }
-      
+        
         VStack {
             FollowTable(profilePageViewModel: profilePageViewModel)
         }
         .onAppear() {
-            profilePageViewModel.userId = userId
-            Task {
-                if isFollowing == true {
-                    try await profilePageViewModel.getFollowings()
-                } else {
-                    try await profilePageViewModel.getFollowers()
-                }
+            setup()
+        }
+    }
+    
+    // MARK: - Methods
+    func setup() {
+        profilePageViewModel.userId = userId
+        Task {
+            if isFollowing == true {
+                try await profilePageViewModel.getFollowings()
+            } else {
+                try await profilePageViewModel.getFollowers()
             }
         }
     }
 }
 
+// MARK: - Preview
 #Preview {
     FollowView(userId: "Eu507agEdHMVyFOV2ldbggmq9xw1")
 }

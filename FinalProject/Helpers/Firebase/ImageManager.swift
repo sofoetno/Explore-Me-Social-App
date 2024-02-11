@@ -9,11 +9,16 @@ import FirebaseStorage
 import Foundation
 
 final class ImageManager {
+    // MARK: - Static properties
     static let shared = ImageManager()
-    private init() { }
     
+    // MARK: - Properties
     private let storage = Storage.storage().reference()
     
+    // MARK: - Inits
+    private init() { }
+    
+    // MARK: - Methods
     func saveImage(data: Data) async throws -> (path: String, name: String, downloadUrl: URL) {
         let meta = StorageMetadata()
         meta.contentType = "image/jpeg"
@@ -28,6 +33,6 @@ final class ImageManager {
         let downloadUrl = try await Storage.storage().reference(withPath: returnedPath).downloadURL()
         
         return (returnedPath, returnedName, downloadUrl)
-         
+        
     }
 }

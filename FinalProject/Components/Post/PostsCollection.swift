@@ -9,8 +9,10 @@ import SwiftUI
 import UIKit
 
 struct PostsCollection: UIViewRepresentable, WithRootNavigationController {
+    // MARK: - Properties
     @ObservedObject var feedViewModel: FeedViewModel
-
+    
+    // MARK: - Methods
     func makeCoordinator() -> Coordinator {
         return Coordinator(feedViewModel: feedViewModel, didSelectHandler: push)
     }
@@ -32,15 +34,17 @@ struct PostsCollection: UIViewRepresentable, WithRootNavigationController {
     }
     
     class Coordinator: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+        // MARK: - Properties
         @ObservedObject var feedViewModel: FeedViewModel
-        
         private var didSelectHandler: (UIViewController, Bool, Int?) -> Void
         
+        // MARK: - Inits
         init(feedViewModel: FeedViewModel, didSelectHandler: @escaping (UIViewController, Bool, Int?) -> Void) {
             self.feedViewModel = feedViewModel
             self.didSelectHandler = didSelectHandler
         }
         
+        // MARK: - Methods
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             feedViewModel.posts.count
         }
@@ -83,17 +87,18 @@ struct PostsCollection: UIViewRepresentable, WithRootNavigationController {
             
             return CGSize(width: width, height: height)
         }
-
+        
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
             return 2
         }
-
+        
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
             return 2
         }
     }
 }
 
+// MARK: - Preview
 #Preview {
     PostsCollection(feedViewModel: FeedViewModel())
 }

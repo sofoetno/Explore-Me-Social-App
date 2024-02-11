@@ -9,6 +9,7 @@ import Foundation
 
 @MainActor
 final class ChatViewModel: ObservableObject {
+    // MARK: - Properties
     @Published var chat: ChatModel? = nil
     @Published var messages: [MessageModel] = []
     @Published var participant: UserModel? = nil
@@ -17,8 +18,9 @@ final class ChatViewModel: ObservableObject {
     var chatId: String? = nil
     var participantId: String? = nil
     
+    // MARK: - Methods
     func loadData() async throws {
-       
+        
         if chat == nil && chatId != nil {
             chat = try await ChatManager.shared.getChatById(chatId: chatId ?? "")
         }
@@ -55,7 +57,7 @@ final class ChatViewModel: ObservableObject {
     
     func findOrCreateChat() async throws {
         chat = try await ChatManager.shared.getChatByParticipants(participantId: participantId ?? "")
-       
+        
         if chat == nil {
             chat = try await ChatManager.shared.createChat(participantId: participantId ?? "")
         }

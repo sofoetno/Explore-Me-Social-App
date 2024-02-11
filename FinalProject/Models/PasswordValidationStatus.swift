@@ -6,7 +6,6 @@
 //
 
 struct PasswordValidationStatus {
-    
     // MARK: - Properties
     var containsNumber: Bool = false
     var containsSymbol: Bool = false

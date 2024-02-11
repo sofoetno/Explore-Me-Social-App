@@ -12,7 +12,7 @@ struct ChatListView: View {
     
     var body: some View {
         VStack {
-            Text("Message")
+            Text("Messages")
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 .fontWeight(.semibold)
             ChatsTable(chatsViewModel: chatsViewModel)
@@ -25,6 +25,7 @@ struct ChatListView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     ChatListView()
 }

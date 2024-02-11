@@ -52,7 +52,6 @@
 		88980A552B680BE2003F09EC /* ChatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A542B680BE2003F09EC /* ChatItem.swift */; };
 		88980A5C2B683553003F09EC /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A5B2B683553003F09EC /* ChatsViewModel.swift */; };
 		88980A5E2B683991003F09EC /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A5D2B683991003F09EC /* ChatListView.swift */; };
-		88980A602B690394003F09EC /* PostCommentCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A5F2B690394003F09EC /* PostCommentCountView.swift */; };
 		88980A622B6904BE003F09EC /* PostCommentTextFieldWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A612B6904BE003F09EC /* PostCommentTextFieldWithButton.swift */; };
 		88980A642B695CFE003F09EC /* ProfileItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A632B695CFE003F09EC /* ProfileItemViewModel.swift */; };
 		88980A662B6A5373003F09EC /* PostsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88980A652B6A5373003F09EC /* PostsCollection.swift */; };
@@ -62,12 +61,13 @@
 		88B6D7542B5E8D7600F3D3DD /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D7532B5E8D7600F3D3DD /* CommentManager.swift */; };
 		88B6D7562B5E8E2E00F3D3DD /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D7552B5E8E2E00F3D3DD /* CommentModel.swift */; };
 		88B6D7582B5E931B00F3D3DD /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D7572B5E931B00F3D3DD /* CommentViewModel.swift */; };
-		88B6D75A2B5E97CA00F3D3DD /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D7592B5E97CA00F3D3DD /* CommentsView.swift */; };
 		88B6D75C2B5E9BA100F3D3DD /* CommentsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D75B2B5E9BA100F3D3DD /* CommentsTable.swift */; };
 		88B6D75E2B5EEE4C00F3D3DD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D75D2B5EEE4C00F3D3DD /* ImagePicker.swift */; };
 		88B6D7602B5EF49300F3D3DD /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D75F2B5EF49300F3D3DD /* ImageManager.swift */; };
 		88B6D7622B5EF4EB00F3D3DD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 88B6D7612B5EF4EB00F3D3DD /* FirebaseStorage */; };
 		88B6D7642B5FC25800F3D3DD /* CommentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D7632B5FC25700F3D3DD /* CommentItem.swift */; };
+		88C569FA2B72CCAD006DE016 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C569F92B72CCAD006DE016 /* Date.swift */; };
+		88C569FD2B7505B6006DE016 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C569FC2B7505B6006DE016 /* OnboardingView.swift */; };
 		88CFEEDE2B57CB850018DE6A /* CustomSignUpAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEDD2B57CB850018DE6A /* CustomSignUpAnimation.swift */; };
 		88CFEEE02B5866430018DE6A /* PostsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEDF2B5866430018DE6A /* PostsTable.swift */; };
 		88CFEEE22B586AAF0018DE6A /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFEEE12B586AAF0018DE6A /* FeedView.swift */; };
@@ -131,7 +131,6 @@
 		88980A542B680BE2003F09EC /* ChatItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItem.swift; sourceTree = "<group>"; };
 		88980A5B2B683553003F09EC /* ChatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
 		88980A5D2B683991003F09EC /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
-		88980A5F2B690394003F09EC /* PostCommentCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCountView.swift; sourceTree = "<group>"; };
 		88980A612B6904BE003F09EC /* PostCommentTextFieldWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentTextFieldWithButton.swift; sourceTree = "<group>"; };
 		88980A632B695CFE003F09EC /* ProfileItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemViewModel.swift; sourceTree = "<group>"; };
 		88980A652B6A5373003F09EC /* PostsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCollection.swift; sourceTree = "<group>"; };
@@ -141,11 +140,12 @@
 		88B6D7532B5E8D7600F3D3DD /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		88B6D7552B5E8E2E00F3D3DD /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		88B6D7572B5E931B00F3D3DD /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
-		88B6D7592B5E97CA00F3D3DD /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		88B6D75B2B5E9BA100F3D3DD /* CommentsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTable.swift; sourceTree = "<group>"; };
 		88B6D75D2B5EEE4C00F3D3DD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		88B6D75F2B5EF49300F3D3DD /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		88B6D7632B5FC25700F3D3DD /* CommentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItem.swift; sourceTree = "<group>"; };
+		88C569F92B72CCAD006DE016 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		88C569FC2B7505B6006DE016 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		88CFEEDD2B57CB850018DE6A /* CustomSignUpAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignUpAnimation.swift; sourceTree = "<group>"; };
 		88CFEEDF2B5866430018DE6A /* PostsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTable.swift; sourceTree = "<group>"; };
 		88CFEEE12B586AAF0018DE6A /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
@@ -230,6 +230,7 @@
 		8805DD172B55872C00D16B5E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				88C569FC2B7505B6006DE016 /* OnboardingView.swift */,
 				880847DB2B6D0ABF0072DB00 /* FollowView.swift */,
 				8805DD1E2B55880500D16B5E /* SignUpAndLoginViewModel.swift */,
 				88980A632B695CFE003F09EC /* ProfileItemViewModel.swift */,
@@ -307,6 +308,7 @@
 		889108A82B55B2E700EE831A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				88C569FB2B73E3EA006DE016 /* Follow */,
 				88980A5A2B683411003F09EC /* Chat */,
 				88980A592B6833EE003F09EC /* Message */,
 				88980A582B6833CB003F09EC /* Post */,
@@ -320,8 +322,6 @@
 				887E12B42B610D4D00137EA0 /* ProfilePageDropDownMenu.swift */,
 				887E12BA2B6133E800137EA0 /* CustomAsyncImage.swift */,
 				88E608012B656B6C00D5978D /* Like.swift */,
-				88980A692B6B94D6003F09EC /* FollowTable.swift */,
-				88980A6B2B6B9A93003F09EC /* FollowItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -331,6 +331,7 @@
 			children = (
 				889108AA2B55B3EC00EE831A /* ButtonExtension.swift */,
 				889108AC2B55B44900EE831A /* ColorExtention.swift */,
+				88C569F92B72CCAD006DE016 /* Date.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -368,7 +369,6 @@
 			children = (
 				88B6D75B2B5E9BA100F3D3DD /* CommentsTable.swift */,
 				88B6D7632B5FC25700F3D3DD /* CommentItem.swift */,
-				88B6D7592B5E97CA00F3D3DD /* CommentsView.swift */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -379,7 +379,6 @@
 				88CFEEDF2B5866430018DE6A /* PostsTable.swift */,
 				88CFEEE32B5877E90018DE6A /* PostItem.swift */,
 				887E12B62B610E0B00137EA0 /* PostViewDropDownMenu.swift */,
-				88980A5F2B690394003F09EC /* PostCommentCountView.swift */,
 				88980A612B6904BE003F09EC /* PostCommentTextFieldWithButton.swift */,
 				88980A652B6A5373003F09EC /* PostsCollection.swift */,
 			);
@@ -418,6 +417,15 @@
 				88E608052B66759700D5978D /* MessageManager.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		88C569FB2B73E3EA006DE016 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				88980A6B2B6B9A93003F09EC /* FollowItem.swift */,
+				88980A692B6B94D6003F09EC /* FollowTable.swift */,
+			);
+			path = Follow;
 			sourceTree = "<group>";
 		};
 		88CFEEE52B587AE40018DE6A /* Feed */ = {
@@ -560,11 +568,10 @@
 				889108BD2B568CFD00EE831A /* LoginWithGoogleAndFb.swift in Sources */,
 				88980A532B680B88003F09EC /* ChatsTable.swift in Sources */,
 				88E608042B66757900D5978D /* ChatManager.swift in Sources */,
-				88B6D75A2B5E97CA00F3D3DD /* CommentsView.swift in Sources */,
 				88E6080A2B66787500D5978D /* MessageModel.swift in Sources */,
-				88980A602B690394003F09EC /* PostCommentCountView.swift in Sources */,
 				887BE6532B64379300C67F31 /* ProfilePageViewModel.swift in Sources */,
 				887E12B72B610E0B00137EA0 /* PostViewDropDownMenu.swift in Sources */,
+				88C569FD2B7505B6006DE016 /* OnboardingView.swift in Sources */,
 				88E608002B655CCC00D5978D /* LikeViewModel.swift in Sources */,
 				88980A5E2B683991003F09EC /* ChatListView.swift in Sources */,
 				8805DD1B2B5587B800D16B5E /* LoginView.swift in Sources */,
@@ -574,6 +581,7 @@
 				88E608152B66EAD300D5978D /* MessageItem.swift in Sources */,
 				88576F232B5D4DD600673431 /* UserManager.swift in Sources */,
 				889108B62B56846B00EE831A /* CustomTextFieldsForUser.swift in Sources */,
+				88C569FA2B72CCAD006DE016 /* Date.swift in Sources */,
 				88B6D7582B5E931B00F3D3DD /* CommentViewModel.swift in Sources */,
 				8805DD1F2B55880500D16B5E /* SignUpAndLoginViewModel.swift in Sources */,
 				88B6D7562B5E8E2E00F3D3DD /* CommentModel.swift in Sources */,

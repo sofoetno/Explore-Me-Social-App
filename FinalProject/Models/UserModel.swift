@@ -8,6 +8,7 @@
 import Foundation
 
 struct UserModel: Codable {
+    // MARK: - Properties
     var imageUrl: String? = nil
     let userId: String
     let email: String

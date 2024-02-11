@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct FollowItem: View, WithRootNavigationController {
-    
-//    let user: UserModel
+    // MARK: - Properties
     let userId: String
     @StateObject var profileItemViewModel = ProfileItemViewModel()
-
+    
+    // MARK: - Body
     var body: some View {
         HStack(spacing: 10) {
             CustomAsyncImage(imageUrl: profileItemViewModel.currentProfileImageUrl)
@@ -28,17 +28,20 @@ struct FollowItem: View, WithRootNavigationController {
             Spacer()
         }
         .onAppear() {
-            print("userId: \(userId)")
-            profileItemViewModel.userId = userId
-            Task {
-               try await profileItemViewModel.getUser()
-            }
-
+            setup()
         }
-
+    }
+    
+    // MARK: - Methods
+    func setup() {
+        profileItemViewModel.userId = userId
+        Task {
+            try await profileItemViewModel.getUser()
+        }
     }
 }
 
+// MARK: - Preview
 #Preview {
     FollowItem(userId: "3wAs5TDmywSnXs7KXuQ2i0WXQ2g1")
 }

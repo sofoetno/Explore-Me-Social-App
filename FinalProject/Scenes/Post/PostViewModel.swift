@@ -8,11 +8,13 @@
 import SwiftUI
 
 @MainActor
-class PostViewModel: ObservableObject {
+final class PostViewModel: ObservableObject {
+    // MARK: - Properties
     @Published var title: String = ""
     @Published var description: String = ""
     @Published var imageData: Data? = nil
     
+    // MARK: - Methods
     func savePost(photoUrl: String?, postId: String? = nil) async -> PostModel? {
         do {
             return try await PostManager.shared.savePost(
@@ -39,6 +41,10 @@ class PostViewModel: ObservableObject {
             }
         }
         return nil
+    }
+    
+    func isAuthenticatedUser(userId: String) -> Bool {
+        AuthManager.shared.getAuthenticatedUser()?.uid == userId
     }
 }
 

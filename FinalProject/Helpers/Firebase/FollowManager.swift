@@ -9,17 +9,20 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
-
+// MARK: - Enums
 enum GetFollowMode {
     case followers
     case followings
 }
 
 final class FollowManager {
+    // MARK: - Static properties
     static let shared = FollowManager()
     
+    // MARK: - Inits
     private init() {}
     
+    // MARK: - Methods
     func createFollower(followingId: String) async throws {
         let id = UUID().uuidString
         let followerData: [String:Any] = [
@@ -31,7 +34,7 @@ final class FollowManager {
     }
     
     func deleteFollower(followingId: String) async throws {
-
+        
         let snapshot = try await Firestore.firestore().collection("followers")
             .whereField("following_id", isEqualTo: followingId)
             .whereField("follower_id", isEqualTo: AuthManager.shared.getAuthenticatedUser()?.uid ?? "")
@@ -74,7 +77,7 @@ final class FollowManager {
         var followerIds: [String] = []
         snapshot.documents.forEach { document in
             let dictionary = document.data()
- 
+            
             followerIds.append(dictionary[readingField] as! String)
         }
         

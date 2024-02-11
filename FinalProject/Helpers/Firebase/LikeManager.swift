@@ -10,10 +10,13 @@ import FirebaseFirestoreSwift
 import Foundation
 
 final class LikeManager {
+    // MARK: - Static properties
     static let shared = LikeManager()
     
+    // MARK: - Inits
     private init() {}
     
+    // MARK: - Methods
     func checkIfLikes(postId: String) async throws -> Bool {
         let count = try await Firestore.firestore().collection("likes")
             .whereField("post_id", isEqualTo: postId)

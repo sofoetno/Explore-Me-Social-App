@@ -9,8 +9,10 @@ import SwiftUI
 import UIKit
 
 struct CommentsTable: UIViewRepresentable, WithRootNavigationController {
+    // MARK: - Properties
     @ObservedObject var commentViewModel: CommentViewModel
     
+    // MARK: - Methods
     func makeCoordinator() -> Coordinator {
         return Coordinator(commentViewModel: commentViewModel)
     }
@@ -27,12 +29,15 @@ struct CommentsTable: UIViewRepresentable, WithRootNavigationController {
     }
     
     class Coordinator: NSObject, UITableViewDataSource {
+        // MARK: - Properties
         @ObservedObject var commentViewModel: CommentViewModel
         
+        // MARK: - Inits
         init(commentViewModel: CommentViewModel) {
             self.commentViewModel = commentViewModel
         }
         
+        // MARK: - Methods
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             commentViewModel.comments.count
         }
@@ -53,6 +58,7 @@ struct CommentsTable: UIViewRepresentable, WithRootNavigationController {
     }
 }
 
+// MARK: - Preview
 #Preview {
     CommentsTable(commentViewModel: CommentViewModel())
 }

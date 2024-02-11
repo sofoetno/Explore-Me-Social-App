@@ -10,10 +10,13 @@ import FirebaseFirestoreSwift
 import Foundation
 
 final class ChatManager {
+    // MARK: - Static properties
     static let shared = ChatManager()
     
+    // MARK: - Inits
     private init() { }
     
+    // MARK: - Methods
     func createChat(participantId: String) async throws -> ChatModel {
         let id = UUID().uuidString
         let participants = [participantId, AuthManager.shared.getAuthenticatedUser()?.uid ?? ""]
@@ -52,7 +55,7 @@ final class ChatManager {
         
         snapshot.documents.forEach { document in
             let dictionary = document.data()
-         
+            
             let chat = ChatModel(id: document.documentID, participants: dictionary["participants"] as! [String])
             chats.append(chat)
         }
@@ -70,7 +73,7 @@ final class ChatManager {
         
         snapshot.documents.forEach { document in
             let dictionary = document.data()
-         
+            
             let chat = ChatModel(id: document.documentID, participants: dictionary["participants"] as! [String])
             chats.append(chat)
         }

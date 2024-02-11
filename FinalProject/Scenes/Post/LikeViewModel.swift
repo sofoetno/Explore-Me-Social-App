@@ -9,10 +9,12 @@ import Foundation
 
 @MainActor
 final class LikeViewModel: ObservableObject {
+    // MARK: - Properties
     var postId: String = ""
     @Published var isLiked: Bool = false
     @Published var likesCount: Int = 0
     
+    // MARK: - Methods
     func checkIfLikes() async throws {
         isLiked = try await LikeManager.shared.checkIfLikes(postId: postId)
     }
@@ -28,6 +30,6 @@ final class LikeViewModel: ObservableObject {
     }
     
     func countLikes() async throws {
-       likesCount = try await LikeManager.shared.countLikes(postId: postId)
+        likesCount = try await LikeManager.shared.countLikes(postId: postId)
     }
 }

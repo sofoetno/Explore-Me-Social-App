@@ -9,8 +9,10 @@ import SwiftUI
 import UIKit
 
 struct PostsTable: UIViewRepresentable, WithRootNavigationController {
+    // MARK: - Properties
     @ObservedObject var feedViewModel: FeedViewModel
     
+    // MARK: - Methods
     func makeCoordinator() -> Coordinator {
         return Coordinator(feedViewModel: feedViewModel, didSelectHandler: self.push)
     }
@@ -28,15 +30,18 @@ struct PostsTable: UIViewRepresentable, WithRootNavigationController {
     }
     
     class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
+        // MARK: - Properties
         @ObservedObject var feedViewModel: FeedViewModel
         
         private var didSelectHandler: (UIViewController, Bool, Int) -> Void
         
+        // MARK: - Inits
         init(feedViewModel: FeedViewModel, didSelectHandler: @escaping (UIViewController, Bool, Int) -> Void) {
             self.feedViewModel = feedViewModel
             self.didSelectHandler = didSelectHandler
         }
         
+        // MARK: - Methods
         func tableView(_ collectionView: UITableView, numberOfRowsInSection section: Int) -> Int {
             feedViewModel.posts.count
         }
@@ -62,6 +67,7 @@ struct PostsTable: UIViewRepresentable, WithRootNavigationController {
     }
 }
 
+// MARK: - Preview
 #Preview {
     PostsTable(feedViewModel: FeedViewModel())
 }

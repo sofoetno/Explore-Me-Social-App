@@ -8,6 +8,7 @@
 import Foundation
 
 struct CommentModel: Codable {
+    // MARK: - Properties
     var id: String = UUID().uuidString
     let userId: String
     let text: String

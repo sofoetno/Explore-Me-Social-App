@@ -9,8 +9,10 @@ import SwiftUI
 import UIKit
 
 struct FollowTable: UIViewRepresentable, WithRootNavigationController {
+    // MARK: - Properties
     @ObservedObject var profilePageViewModel: ProfilePageViewModel
     
+    // MARK: - Methods
     func makeCoordinator() -> Coordinator {
         return Coordinator(profilePageViewModel: profilePageViewModel)
     }
@@ -27,12 +29,15 @@ struct FollowTable: UIViewRepresentable, WithRootNavigationController {
     }
     
     class Coordinator: NSObject, UITableViewDataSource {
+        // MARK: - Properties
         @ObservedObject var profilePageViewModel: ProfilePageViewModel
         
+        // MARK: - Inits
         init(profilePageViewModel: ProfilePageViewModel) {
             self.profilePageViewModel = profilePageViewModel
         }
         
+        // MARK: - Methods
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             profilePageViewModel.followList.count
         }
@@ -52,6 +57,7 @@ struct FollowTable: UIViewRepresentable, WithRootNavigationController {
     }
 }
 
+// MARK: - Preview
 #Preview {
     FollowTable(profilePageViewModel: ProfilePageViewModel())
 }

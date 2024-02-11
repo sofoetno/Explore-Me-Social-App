@@ -7,8 +7,9 @@
 
 import UIKit
 
-class AuthNavigationController: UINavigationController {
+final class AuthNavigationController: UINavigationController {
 
+    // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
     }

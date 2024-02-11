@@ -8,99 +8,49 @@
 import SwiftUI
 
 struct ProfilePageView: View, WithRootNavigationController {
+    // MARK: - Properties
     let userId: String
     @State var showImagePicker = false
     @State var inputImage: UIImage?
     @StateObject var profilePageViewModel = ProfilePageViewModel()
     @StateObject var feedViewModel = FeedViewModel()
     
+    // MARK: - Body
     var body: some View {
         ZStack {
             CustomBackgroundLabelForUser()
                 .offset(y: 40)
             
             HStack {
-                
                 if profilePageViewModel.isMyProfile() {
                     ProfilePageDropDownMenu()
                 }
                 
-                
                 if !profilePageViewModel.isMyProfile() {
-                    Button {
-                        let viewController =  UIHostingController(rootView: ChatView(chatId: nil, participantId: userId))
-                        push(viewController: viewController, animated: true)
-                    } label: {
-                        Image(systemName: "ellipsis.message")
-                            .font(.title)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                    }
+                    messageButton
                 }
                 
                 Spacer()
                 
                 if !profilePageViewModel.isMyProfile() {
-                    Button {
-                        Task {
-                            
-                            if profilePageViewModel.following {
-                                try await profilePageViewModel.unfollow()
-                            } else {
-                                try await profilePageViewModel.follow()
-                            }
-                            try await profilePageViewModel.countFollowers()
-                        }
-                        
-                    } label: {
-                        Capsule()
-                            .frame(width: 100, height: 40)
-                            .foregroundColor(.white)
-                            .overlay {
-                                if profilePageViewModel.following {
-                                    Text("Following")
-                                        .foregroundColor(Color(red: 0.53, green: 0.55, blue: 0.96))
-                                } else {
-                                    Text("Follow")
-                                        .foregroundColor(Color(red: 0.53, green: 0.55, blue: 0.96))
-                                }
-                                
-                            }
-                    }
+                    followButton
                 }
-                
             }
             .padding(.horizontal, 20)
             .offset(y: -320)
             
             VStack {
-                Circle()
-                    .foregroundColor(.white)
-                    .frame(width: 100, height: 100)
-                
-                
+                profilePhotoBackgroundCircle
                     .overlay(
-                        
-                        CustomAsyncImage(imageUrl: profilePageViewModel.currentProfileImageUrl)
-                            .frame(width: 90, height: 90)
-                            .scaledToFit()
-                            .cornerRadius(6)
-                            .clipShape(Circle())
+                        profileAsyncImage
                     )
                     .overlay {
                         if profilePageViewModel.isMyProfile() {
-                            Button {
-                                showImagePicker = true
-                            } label: {
-                                Image(systemName: "square.and.pencil.circle.fill")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundColor(.purple)
-                            }
-                            .sheet(isPresented: $showImagePicker, content: {
-                                ImagePicker(image: $inputImage)
-                            })
-                            .offset(x: 34, y: 38)
+                            addImageButton
+                                .sheet(isPresented: $showImagePicker, content: {
+                                    ImagePicker(image: $inputImage)
+                                })
+                                .offset(x: 34, y: 38)
                             
                         } else {
                             EmptyView()
@@ -120,25 +70,10 @@ struct ProfilePageView: View, WithRootNavigationController {
                 Text(profilePageViewModel.fullName)
                     .font(.title)
                 
-                
                 HStack(alignment: .center, spacing: 48) {
-                    Button {
-                        present(viewController: UIHostingController(rootView: FollowView(userId: userId)), animated: true)
-                    } label: {
-                        Text("\(profilePageViewModel.followersCount) Followers")
-                            .kerning(0.6)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
-                    }
+                    followersCountButton
                     
-                    Button {
-                        present(viewController: UIHostingController(rootView: FollowView(userId: userId, isFollowing: true)), animated: true)
-                    } label: {
-                        Text("\(profilePageViewModel.followingsCount) Following")
-                            .kerning(0.6)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
-                    }
+                    followingCountButton
                 }
                 .padding(.vertical, 20)
                 .frame(width: 347, alignment: .center)
@@ -158,23 +93,117 @@ struct ProfilePageView: View, WithRootNavigationController {
                 .zIndex(-1)
         }
         .onAppear() {
-            profilePageViewModel.userId = userId
+            setup()
+        }
+    }
+    
+    // MARK: - Buttons
+    var messageButton: some View {
+        Button {
+            let viewController =  UIHostingController(rootView: ChatView(chatId: nil, participantId: userId))
+            push(viewController: viewController, animated: true)
+        } label: {
+            Image(systemName: "ellipsis.message")
+                .font(.title)
+                .fontWeight(.semibold)
+                .foregroundColor(.white)
+        }
+    }
+    
+    var followButton: some View {
+        Button {
             Task {
-                do {
-                    try await profilePageViewModel.getUser()
-                    try await profilePageViewModel.countFollowers()
-                    try await profilePageViewModel.countFollowings()
-                    try await profilePageViewModel.checkIfFollows()
-                } catch {
-                    print(error)
+                if profilePageViewModel.following {
+                    try await profilePageViewModel.unfollow()
+                } else {
+                    try await profilePageViewModel.follow()
                 }
+                try await profilePageViewModel.countFollowers()
             }
             
+        } label: {
+            Capsule()
+                .frame(width: 100, height: 40)
+                .foregroundColor(.white)
+                .overlay {
+                    if profilePageViewModel.following {
+                        Text("Following")
+                            .foregroundColor(Color(red: 0.53, green: 0.55, blue: 0.96))
+                    } else {
+                        Text("Follow")
+                            .foregroundColor(Color(red: 0.53, green: 0.55, blue: 0.96))
+                    }
+                    
+                }
         }
+    }
+    
+    var addImageButton: some View {
+        Button {
+            showImagePicker = true
+        } label: {
+            Image(systemName: "square.and.pencil.circle.fill")
+                .resizable()
+                .frame(width: 30, height: 30)
+                .foregroundColor(.purple)
+        }
+    }
+    
+    var followersCountButton: some View {
+        Button {
+            present(viewController: UIHostingController(rootView: FollowView(userId: userId)), animated: true)
+        } label: {
+            Text("\(profilePageViewModel.followersCount) Followers")
+                .kerning(0.6)
+                .multilineTextAlignment(.center)
+                .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
+        }
+    }
+    
+    var followingCountButton: some View {
+        Button {
+            present(viewController: UIHostingController(rootView: FollowView(userId: userId, isFollowing: true)), animated: true)
+        } label: {
+            Text("\(profilePageViewModel.followingsCount) Following")
+                .kerning(0.6)
+                .multilineTextAlignment(.center)
+                .foregroundColor(Color(red: 0.14, green: 0.14, blue: 0.14))
+        }
+    }
+    
+    // MARK: - Methods
+    func setup() {
+        profilePageViewModel.userId = userId
+        Task {
+            do {
+                try await profilePageViewModel.getUser()
+                try await profilePageViewModel.countFollowers()
+                try await profilePageViewModel.countFollowings()
+                try await profilePageViewModel.checkIfFollows()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    // MARK: - Computed properties
+    var profilePhotoBackgroundCircle: some View {
+        Circle()
+            .foregroundColor(.white)
+            .frame(width: 100, height: 100)
+    }
+    
+    var profileAsyncImage: some View {
+        CustomAsyncImage(imageUrl: profilePageViewModel.currentProfileImageUrl)
+            .frame(width: 90, height: 90)
+            .scaledToFit()
+            .cornerRadius(6)
+            .clipShape(Circle())
     }
     
 }
 
+// MARK: - Preview
 #Preview {
     ProfilePageView(userId: "Eu507agEdHMVyFOV2ldbggmq9xw1")
 }

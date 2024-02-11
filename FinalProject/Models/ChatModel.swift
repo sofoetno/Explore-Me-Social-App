@@ -8,6 +8,7 @@
 import Foundation
 
 struct ChatModel {
+    // MARK: - Properties
     let id: String
     let participants: [String]
 }
