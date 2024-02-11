@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if AuthManager.shared.getAuthenticatedUser() != nil {
             window?.rootViewController = TabViewController()
         } else {
-            var rootView = UserDefaults.standard.bool(forKey: "has-seen-onboarding") ? AnyView(LoginView()) : AnyView(OnboardingView())
+            let rootView = UserDefaults.standard.bool(forKey: "has-seen-onboarding") ? AnyView(LoginView()) : AnyView(OnboardingView())
             let rootViewController = UIHostingController(rootView: rootView)
             window?.rootViewController = AuthNavigationController(rootViewController: rootViewController)
         }
