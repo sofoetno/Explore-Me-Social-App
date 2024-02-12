@@ -41,7 +41,7 @@ struct ChatView: View {
         }
     }
     
-    // MARK: - Comuted properties
+    // MARK: - Computed properties
     var textFieldForChat: some View {
         TextField("Type as \(chatViewModel.authenticatedUser?.fullName ?? "")...", text: $chatViewModel.text)
             .padding(.horizontal, 10)
