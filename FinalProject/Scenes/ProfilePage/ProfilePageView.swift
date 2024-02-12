@@ -23,7 +23,7 @@ struct ProfilePageView: View, WithRootNavigationController {
             
             HStack {
                 if profilePageViewModel.isMyProfile() {
-                    ProfilePageDropDownMenu()
+                    LogoutButton()
                 }
                 
                 if !profilePageViewModel.isMyProfile() {
@@ -101,7 +101,9 @@ struct ProfilePageView: View, WithRootNavigationController {
     var messageButton: some View {
         Button {
             let viewController =  UIHostingController(rootView: ChatView(chatId: nil, participantId: userId))
+            viewController.hidesBottomBarWhenPushed = true
             push(viewController: viewController, animated: true)
+           
         } label: {
             Image(systemName: "ellipsis.message")
                 .font(.title)

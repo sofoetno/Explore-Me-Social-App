@@ -23,6 +23,8 @@
 		8805DD372B55892D00D16B5E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8805DD362B55892D00D16B5E /* FirebaseAuth */; };
 		8805DD5B2B558B7B00D16B5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8805DD5A2B558B7B00D16B5E /* GoogleService-Info.plist */; };
 		880847DC2B6D0ABF0072DB00 /* FollowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880847DB2B6D0ABF0072DB00 /* FollowView.swift */; };
+		882BEA972B79005200B644DE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 882BEA962B79005200B644DE /* README.md */; };
+		882BEA992B7900C800B644DE /* dbdiagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 882BEA982B7900C800B644DE /* dbdiagram.png */; };
 		883FD9162B644B37005B4A06 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883FD9152B644B37005B4A06 /* UserModel.swift */; };
 		884FCD852B592F8200DDB630 /* CustomRectangleForCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FCD842B592F8200DDB630 /* CustomRectangleForCell.swift */; };
 		884FCD872B5969F000DDB630 /* FeedBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FCD862B5969F000DDB630 /* FeedBar.swift */; };
@@ -37,7 +39,7 @@
 		88576F2C2B5D7D3300673431 /* PostFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F2B2B5D7D3300673431 /* PostFormView.swift */; };
 		88576F2E2B5D80B300673431 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576F2D2B5D80B300673431 /* PostManager.swift */; };
 		887BE6532B64379300C67F31 /* ProfilePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887BE6522B64379300C67F31 /* ProfilePageViewModel.swift */; };
-		887E12B52B610D4D00137EA0 /* ProfilePageDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E12B42B610D4D00137EA0 /* ProfilePageDropDownMenu.swift */; };
+		887E12B52B610D4D00137EA0 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E12B42B610D4D00137EA0 /* LogoutButton.swift */; };
 		887E12B72B610E0B00137EA0 /* PostViewDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E12B62B610E0B00137EA0 /* PostViewDropDownMenu.swift */; };
 		887E12BB2B6133E800137EA0 /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E12BA2B6133E800137EA0 /* CustomAsyncImage.swift */; };
 		889108AB2B55B3EC00EE831A /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889108AA2B55B3EC00EE831A /* ButtonExtension.swift */; };
@@ -104,6 +106,8 @@
 		8805DD272B5588A700D16B5E /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		8805DD5A2B558B7B00D16B5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		880847DB2B6D0ABF0072DB00 /* FollowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowView.swift; sourceTree = "<group>"; };
+		882BEA962B79005200B644DE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		882BEA982B7900C800B644DE /* dbdiagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dbdiagram.png; sourceTree = "<group>"; };
 		883FD9152B644B37005B4A06 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		884FCD842B592F8200DDB630 /* CustomRectangleForCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRectangleForCell.swift; sourceTree = "<group>"; };
 		884FCD862B5969F000DDB630 /* FeedBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBar.swift; sourceTree = "<group>"; };
@@ -116,7 +120,7 @@
 		88576F2B2B5D7D3300673431 /* PostFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFormView.swift; sourceTree = "<group>"; };
 		88576F2D2B5D80B300673431 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		887BE6522B64379300C67F31 /* ProfilePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewModel.swift; sourceTree = "<group>"; };
-		887E12B42B610D4D00137EA0 /* ProfilePageDropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageDropDownMenu.swift; sourceTree = "<group>"; };
+		887E12B42B610D4D00137EA0 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		887E12B62B610E0B00137EA0 /* PostViewDropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewDropDownMenu.swift; sourceTree = "<group>"; };
 		887E12BA2B6133E800137EA0 /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
 		889108AA2B55B3EC00EE831A /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 		8805DCF62B55863700D16B5E = {
 			isa = PBXGroup;
 			children = (
+				882BEA982B7900C800B644DE /* dbdiagram.png */,
+				882BEA962B79005200B644DE /* README.md */,
 				8805DD012B55863700D16B5E /* FinalProject */,
 				8805DD002B55863700D16B5E /* Products */,
 				8805DD5C2B558BE600D16B5E /* Frameworks */,
@@ -319,7 +325,7 @@
 				884FCD842B592F8200DDB630 /* CustomRectangleForCell.swift */,
 				889108B32B5683D600EE831A /* CustomBackgroundLabelForUser.swift */,
 				88B6D75D2B5EEE4C00F3D3DD /* ImagePicker.swift */,
-				887E12B42B610D4D00137EA0 /* ProfilePageDropDownMenu.swift */,
+				887E12B42B610D4D00137EA0 /* LogoutButton.swift */,
 				887E12BA2B6133E800137EA0 /* CustomAsyncImage.swift */,
 				88E608012B656B6C00D5978D /* Like.swift */,
 			);
@@ -519,6 +525,8 @@
 			files = (
 				8805DD0F2B55863900D16B5E /* LaunchScreen.storyboard in Resources */,
 				8805DD5B2B558B7B00D16B5E /* GoogleService-Info.plist in Resources */,
+				882BEA972B79005200B644DE /* README.md in Resources */,
+				882BEA992B7900C800B644DE /* dbdiagram.png in Resources */,
 				8805DD0C2B55863900D16B5E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,7 +562,7 @@
 				88576F172B5A7C2800673431 /* AuthNavigationController.swift in Sources */,
 				88980A6C2B6B9A93003F09EC /* FollowItem.swift in Sources */,
 				88980A552B680BE2003F09EC /* ChatItem.swift in Sources */,
-				887E12B52B610D4D00137EA0 /* ProfilePageDropDownMenu.swift in Sources */,
+				887E12B52B610D4D00137EA0 /* LogoutButton.swift in Sources */,
 				884FCD852B592F8200DDB630 /* CustomRectangleForCell.swift in Sources */,
 				88980A5C2B683553003F09EC /* ChatsViewModel.swift in Sources */,
 				88576F1D2B5AB35300673431 /* ProfilePageView.swift in Sources */,

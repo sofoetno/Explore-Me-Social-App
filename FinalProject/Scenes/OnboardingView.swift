@@ -8,114 +8,20 @@
 import SwiftUI
 
 struct OnboardingView: View, WithRootNavigationController {
+    // MARK: - Body
     var body: some View {
         ZStack {
-            Image("onboardingBackground")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            onboardingBackground
             
-            Image("mainLogo2")
-                .resizable()
-                .scaledToFit()
-                .padding(50)
-                .offset(y: -290)
+            logo
             
-            ZStack() {
-                VStack(spacing: 100) {
-                    onboardingRectangle
-                        .overlay {
-                            Rectangle()
-                            .foregroundColor(.clear)
-                            .frame(width: 120, height: 120)
-                            .background(
-                            Image("cook")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 120, height: 120)
-                            .clipped()
-                            )
-                            .cornerRadius(12)
-                            .rotationEffect(Angle(degrees: 45))
-                            .offset(y: 12)
-                        }
-                    
-                    onboardingRectangle
-                        .overlay {
-                            Rectangle()
-                            .foregroundColor(.clear)
-                            .frame(width: 120, height: 120)
-                            .background(
-                            Image("music")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 120, height: 120)
-                            .clipped()
-                            )
-                            .cornerRadius(12)
-                            .rotationEffect(Angle(degrees: 45))
-                            .offset(y: -12)
-                        }
-                }
-                
-                HStack(spacing: 90) {
-                    onboardingRectangleBack
-                        .overlay {
-                            Rectangle()
-                            .foregroundColor(.clear)
-                            .frame(width: 120, height: 120)
-                            .background(
-                            Image("paint")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 120, height: 120)
-                            .clipped()
-                            )
-                            .cornerRadius(12)
-                            .rotationEffect(Angle(degrees: 45))
-                            .offset(x: 12)
-                        }
-                    
-                    onboardingRectangle
-                        .overlay {
-                            Rectangle()
-                            .foregroundColor(.clear)
-                            .frame(width: 120, height: 120)
-                            .background(
-                            Image("photography")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 120, height: 120)
-                            .clipped()
-                            )
-                            .cornerRadius(12)
-                            .rotationEffect(Angle(degrees: 45))
-                            .offset(x: -12)
-                        }
-                }
-            }
+            retanglesWithPhotos
             
             VStack(spacing: 30) {
-                VStack(spacing: 10) {
-                    Text("SHARE - INSPIRE - CONNECT")
-                    Text("Your Storytelling App")
-                }
-                    .foregroundStyle(.white)
-                    .font(Font.custom("Circular Std", size: 18))
+                appTextLabel
                 
                 HStack {
-                    Button {
-                        UserDefaults.standard.set(true, forKey: "has-seen-onboarding")
-                        
-                        authNavigationController?.setViewControllers([UIHostingController(rootView: LoginView())], animated: true)
-                        
-                        
-                    } label: {
-                        Text("GET STARTED")
-                            .foregroundStyle(.white)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    }
+                    getStartedButton
                 }
                     .padding(.horizontal, 24)
                     .padding(.vertical, 14)
@@ -128,6 +34,7 @@ struct OnboardingView: View, WithRootNavigationController {
 
     }
     
+    // MARK: - Computed properties
     var onboardingRectangle: some View {
         Rectangle()
         .foregroundColor(.clear)
@@ -165,8 +72,125 @@ struct OnboardingView: View, WithRootNavigationController {
         .rotationEffect(Angle(degrees: 45))
     }
     
+    // MARK: - Computed properties
+    var onboardingBackground: some View {
+        Image("onboardingBackground")
+            .resizable()
+            .scaledToFill()
+            .edgesIgnoringSafeArea(.all)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    var logo: some View {
+        Image("mainLogo2")
+            .resizable()
+            .scaledToFit()
+            .padding(50)
+            .offset(y: -290)
+    }
+    
+    var retanglesWithPhotos: some View {
+        ZStack() {
+            VStack(spacing: 100) {
+                onboardingRectangle
+                    .overlay {
+                        Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 120, height: 120)
+                        .background(
+                        Image("cook")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 120, height: 120)
+                        .clipped()
+                        )
+                        .cornerRadius(12)
+                        .rotationEffect(Angle(degrees: 45))
+                        .offset(y: 12)
+                    }
+                
+                onboardingRectangle
+                    .overlay {
+                        Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 120, height: 120)
+                        .background(
+                        Image("music")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 120, height: 120)
+                        .clipped()
+                        )
+                        .cornerRadius(12)
+                        .rotationEffect(Angle(degrees: 45))
+                        .offset(y: -12)
+                    }
+            }
+            
+            HStack(spacing: 90) {
+                onboardingRectangleBack
+                    .overlay {
+                        Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 120, height: 120)
+                        .background(
+                        Image("paint")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 120, height: 120)
+                        .clipped()
+                        )
+                        .cornerRadius(12)
+                        .rotationEffect(Angle(degrees: 45))
+                        .offset(x: 12)
+                    }
+                
+                onboardingRectangle
+                    .overlay {
+                        Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 120, height: 120)
+                        .background(
+                        Image("photography")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 120, height: 120)
+                        .clipped()
+                        )
+                        .cornerRadius(12)
+                        .rotationEffect(Angle(degrees: 45))
+                        .offset(x: -12)
+                    }
+            }
+        }
+    }
+    
+    var appTextLabel: some View {
+        VStack(spacing: 10) {
+            Text("SHARE - INSPIRE - CONNECT")
+            Text("Your Storytelling App")
+        }
+            .foregroundStyle(.white)
+            .font(Font.custom("Circular Std", size: 18))
+    }
+    
+    // MARK: - Buttons
+    var getStartedButton: some View {
+        Button {
+            UserDefaults.standard.set(true, forKey: "has-seen-onboarding")
+            
+            authNavigationController?.setViewControllers([UIHostingController(rootView: LoginView())], animated: true)
+            
+            
+        } label: {
+            Text("GET STARTED")
+                .foregroundStyle(.white)
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+        }
+    }
 }
 
+// MARK: - Preview
 #Preview {
     OnboardingView()
 }
